@@ -20,11 +20,12 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 h-16 flex items-center justify-between">
         {/* Logo */}
        <Link to="/" className="flex items-center gap-2">
-  <img
-    src="/logo_bjd.png"
-    alt="BJD Build logo"
-    className="h-14 w-auto hover:scale-100 transition-transform duration-300"
-  />
+ <img
+  src={`${process.env.PUBLIC_URL}/logo_bjd.png`}
+  alt="BJD Build logo"
+  className="h-14 w-auto hover:scale-100 transition-transform duration-300"
+/>
+
   <BJDProTitle/>
 </Link>
 
