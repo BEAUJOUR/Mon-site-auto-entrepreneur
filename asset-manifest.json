@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Mon-site-auto-entrepreneur/static/css/main.90a88534.css",
+    "main.js": "/Mon-site-auto-entrepreneur/static/js/main.b1958427.js",
+    "index.html": "/Mon-site-auto-entrepreneur/index.html",
+    "main.90a88534.css.map": "/Mon-site-auto-entrepreneur/static/css/main.90a88534.css.map",
+    "main.b1958427.js.map": "/Mon-site-auto-entrepreneur/static/js/main.b1958427.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.90a88534.css",
+    "static/js/main.b1958427.js"
+  ]
+}
