@@ -32,16 +32,27 @@
       content="Agencement intérieur, mobilier sur-mesure, salle de bain, cuisine, plans techniques et développement web. Faites confiance à un seul professionnel."
     />
     <meta property="og:image" content="%PUBLIC_URL%/logo_bjd.png" />
-    <meta property="og:url" content="https://www.bjd-home-pro.com" />
+    <!-- Conseil: en déploiement GitHub Pages, tu peux mettre l'URL du site Pages -->
+    <meta property="og:url" content="https://beaujour.github.io/Mon-site-auto-entrepreneur/" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
-    <noscript
-      >Activez JavaScript pour profiter de l'expérience complète.</noscript
-    >
+    <!-- 👇 Script SPA: restaure l'URL propre après la redirection 404 -->
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var p = params.get("p");
+        if (p) {
+          var clean = p.startsWith("/") ? p : ("/" + p);
+          window.history.replaceState({}, "", clean);
+        }
+      })();
+    </script>
+
+    <noscript>Activez JavaScript pour profiter de l'expérience complète.</noscript>
     <div id="root"></div>
   </body>
 </html>
