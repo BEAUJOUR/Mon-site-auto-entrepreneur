@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Hero() {
   return (
-    <section className="bg-gradient-to-b from-secondary to-white py-16 px-4">
+    <section className="min-h-screen bg-gradient-to-b from-secondary to-white px-4 py-16">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
         {/* Texte */}
         <div className="md:w-1/2 text-center md:text-left">
