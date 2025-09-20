@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Mon-site-auto-entrepreneur/static/css/main.8d2677c5.css",
-    "main.js": "/Mon-site-auto-entrepreneur/static/js/main.36d128fe.js",
+    "main.css": "/Mon-site-auto-entrepreneur/static/css/main.0a52443b.css",
+    "main.js": "/Mon-site-auto-entrepreneur/static/js/main.12f05163.js",
     "index.html": "/Mon-site-auto-entrepreneur/index.html",
-    "main.8d2677c5.css.map": "/Mon-site-auto-entrepreneur/static/css/main.8d2677c5.css.map",
-    "main.36d128fe.js.map": "/Mon-site-auto-entrepreneur/static/js/main.36d128fe.js.map"
+    "main.0a52443b.css.map": "/Mon-site-auto-entrepreneur/static/css/main.0a52443b.css.map",
+    "main.12f05163.js.map": "/Mon-site-auto-entrepreneur/static/js/main.12f05163.js.map"
   },
   "entrypoints": [
-    "static/css/main.8d2677c5.css",
-    "static/js/main.36d128fe.js"
+    "static/css/main.0a52443b.css",
+    "static/js/main.12f05163.js"
   ]
 }
