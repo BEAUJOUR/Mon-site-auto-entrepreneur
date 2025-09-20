@@ -25,7 +25,6 @@ export default function Navbar() {
   alt="BJD Build logo"
   className="h-14 w-auto hover:scale-100 transition-transform duration-300"
 />
-
   <BJDProTitle/>
 </Link>
 
