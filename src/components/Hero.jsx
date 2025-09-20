@@ -12,14 +12,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-text-dark leading-tight"
+            className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-text-dark leading-[1.4] sm:leading-[1.25]"
           >
-           <h1 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-text-dark leading-[1.4] sm:leading-[1.25]">
-  Créateur d’espaces <span className="text-primary">techniques</span>
-  <br />
-  et esthétiques
-</h1>
-
+            CRÉATEUR D’ESPACES <span className="text-primary">TECHNIQUES</span>
+            <br />
+            ET ESTHÉTIQUES
           </motion.h1>
 
           <p className="mt-6 text-base sm:text-lg text-text-light max-w-prose mx-auto md:mx-0">
