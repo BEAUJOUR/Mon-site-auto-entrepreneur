@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Mon-site-auto-entrepreneur/static/css/main.c5f13a35.css",
+    "main.js": "/Mon-site-auto-entrepreneur/static/js/main.e6919137.js",
+    "static/media/logo_bjd.png": "/Mon-site-auto-entrepreneur/static/media/logo_bjd.d950e02d1b06a9c7f84a.png",
+    "index.html": "/Mon-site-auto-entrepreneur/index.html",
+    "main.c5f13a35.css.map": "/Mon-site-auto-entrepreneur/static/css/main.c5f13a35.css.map",
+    "main.e6919137.js.map": "/Mon-site-auto-entrepreneur/static/js/main.e6919137.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c5f13a35.css",
+    "static/js/main.e6919137.js"
+  ]
+}
