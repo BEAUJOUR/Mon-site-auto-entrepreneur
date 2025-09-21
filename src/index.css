@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --bg: 0 0% 100%;
+  --fg: 224 71% 4%;
+  --muted: 220 14% 96%;
+  --primary: 172 100% 36%;       /* #00b8a9 */
+  --primary-dark: 172 100% 28%;  /* #00917c */
+  --secondary: 185 100% 98%;     /* #f1fbfc */
+  --text-dark: 212 70% 20%;      /* #10375c */
+  --text-light: 210 10% 60%;     /* #6c7a89 */
+  --white: 0 0% 100%;
+  --border: 220 14% 90%;
+  --ring: 172 100% 36%;
+}
+
+.dark {
+  --bg: 224 10% 10%;
+  --fg: 0 0% 100%;
+  --muted: 224 10% 14%;
+  --primary: 172 100% 40%;
+  --primary-dark: 172 100% 30%;
+  --secondary: 210 20% 15%;
+  --text-dark: 0 0% 100%;
+  --text-light: 220 10% 65%;
+  --white: 0 0% 100%;
+  --border: 224 10% 20%;
+  --ring: 172 100% 50%;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>BJD-PRO | Agencement intérieur et Développement Web</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#00b8a9" />
+    <meta name="author" content="Benoît D." />
+    <meta name="copyright" content="BJD-HOME PRO" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="description"
+      content="BJD-HOME PRO est votre expert en agencement intérieur, mobilier sur mesure, salles de bain, cuisines, dessins techniques et développement web. Un seul interlocuteur pour des projets clés en main."
+    />
+
+    <!-- Favicon & Manifest -->
+    <link rel="icon" href="%PUBLIC_URL%/logo_bjd.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo_bjd.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Open Graph (partage réseaux sociaux) -->
+    <meta property="og:title" content="BJD-HOME PRO | Artisan du sur-mesure" />
+    <meta
+      property="og:description"
+      content="Agencement intérieur, mobilier sur-mesure, salle de bain, cuisine, plans techniques et développement web. Faites confiance à un seul professionnel."
+    />
+    <meta property="og:image" content="%PUBLIC_URL%/logo_bjd.png" />
+    <!-- Conseil: en déploiement GitHub Pages, tu peux mettre l'URL du site Pages -->
+    <meta property="og:url" content="https://beaujour.github.io/Mon-site-auto-entrepreneur/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <!-- 👇 Script SPA: restaure l'URL propre après la redirection 404 -->
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var p = params.get("p");
+        if (p) {
+          var clean = p.startsWith("/") ? p : ("/" + p);
+          window.history.replaceState({}, "", clean);
+        }
+      })();
+    </script>
+
+    <noscript>Activez JavaScript pour profiter de l'expérience complète.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
