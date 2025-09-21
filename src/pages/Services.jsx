@@ -3,6 +3,7 @@
 import React from "react";
 import { Wrench, Hammer, ShowerHead, PencilRuler, Ruler, MonitorSmartphone } from "lucide-react";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 export default function Services() {
   const services = [
@@ -129,12 +130,12 @@ export default function Services() {
         <div className="max-w-7xl mx-auto bg-primary text-white rounded-2xl p-10 text-center">
           <h2 className="text-3xl font-bold mb-4">Prêt à commencer votre projet ?</h2>
           <p className="mb-6">Contactez-moi pour un devis gratuit personnalisé. Chaque projet mérite un soin particulier.</p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-block bg-white text-primary px-6 py-3 rounded-2xl font-semibold hover:bg-primary-dark hover:text-white transition"
           >
             Demander un devis
-          </a>
+          </Link>
         </div>
       </section>
 

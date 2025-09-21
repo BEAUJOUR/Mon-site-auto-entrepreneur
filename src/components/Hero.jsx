@@ -1,6 +1,7 @@
 // src/components/Hero.jsx
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -26,18 +27,18 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-            <a
-              href="/services"
+            <Link
+              to="/contact"
               className="bg-primary text-white px-6 py-3 rounded-2xl font-semibold shadow-soft hover:bg-primary-dark transition"
             >
               Découvrir mes services
-            </a>
-            <a
-              href="/contact"
+            </Link>
+            <Link
+              to="/contact"
               className="border-2 border-primary text-primary px-6 py-3 rounded-2xl font-semibold hover:bg-primary hover:text-white transition"
             >
               Me contacter
-            </a>
+            </Link>
           </div>
         </div>
 

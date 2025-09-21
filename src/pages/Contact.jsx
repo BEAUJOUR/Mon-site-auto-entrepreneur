@@ -14,14 +14,16 @@ export default function Contact() {
           Contactez-moi
         </h1>
         <p className="text-text-light max-w-xl mx-auto mb-12">
-          Une idée, un projet, une rénovation ou un besoin web ?
-          Parlons-en. Je réponds sous 24h.
+          Une idée, un projet, une rénovation ou un besoin web ? Parlons-en. Je
+          réponds sous 24h.
         </p>
 
         <div className="grid md:grid-cols-2 gap-10">
           <form className="bg-white rounded-2xl shadow-card p-8 text-left space-y-6">
             <div>
-              <label className="block text-sm font-medium text-text-dark mb-1">Nom</label>
+              <label className="block text-sm font-medium text-text-dark mb-1">
+                Nom
+              </label>
               <input
                 type="text"
                 placeholder="Votre nom"
@@ -29,7 +31,9 @@ export default function Contact() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-text-dark mb-1">Email</label>
+              <label className="block text-sm font-medium text-text-dark mb-1">
+                Email
+              </label>
               <input
                 type="email"
                 placeholder="exemple@domaine.com"
@@ -37,7 +41,9 @@ export default function Contact() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-text-dark mb-1">Message</label>
+              <label className="block text-sm font-medium text-text-dark mb-1">
+                Message
+              </label>
               <textarea
                 placeholder="Décrivez votre besoin..."
                 rows="5"
@@ -56,17 +62,17 @@ export default function Contact() {
             <div className="flex items-center gap-3">
               <Mail className="text-primary" />
               <span className="text-text-dark font-medium">
-                contact@bjd-build.com
+                contact@bjd-pro.com
               </span>
             </div>
             <div className="flex items-center gap-3">
               <Phone className="text-primary" />
-              <span className="text-text-dark font-medium">+33 6 12 34 56 78</span>
+              <span classNae="text-text-dark font-medium">07 45 49 46 20</span>
             </div>
             <div className="flex items-center gap-3">
               <MapPin className="text-primary" />
               <span className="text-text-dark font-medium">
-                Lyon, France
+                60 rue François 1er<br/> 75008 PARIS 8E ARRONDISSEMENT FRANCE
               </span>
             </div>
           </div>
