@@ -4,10 +4,12 @@ import React from "react";
 export default function BJDProTitle() {
   return (
     <div className="leading-tight">
-      <span className="text-base sm:text-lg md:text-xl font-bold uppercase tracking-wide text-text-dark font-futuristic">
-        <span className="text-primary">BJD</span>
-        <span className="text-text-dark">-PRO</span>
-      </span>
+      <h1 className="text-2xl sm:text-2xl md:text-2xl font-[Orbitron] uppercase ">
+        <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+          BJD
+        </span>
+        <span className="ml-2 text-text-dark">- PRO</span>
+      </h1>
     </div>
   );
 }
