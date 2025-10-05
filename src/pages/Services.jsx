@@ -1,143 +1,305 @@
-// src/pages/Services.jsx
-
-import React from "react";
-import { Wrench, Hammer, ShowerHead, PencilRuler, Ruler, MonitorSmartphone } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Testimonials from "../components/Testimonials";
+import {
+  Wrench,
+  Hammer,
+  ShowerHead,
+  PencilRuler,
+  Ruler,
+  ChevronDown,
+  ChevronUp,
+  HelpCircle,
+} from "lucide-react";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
 export default function Services() {
-  const services = [
-    { title: "Agencement intérieur", desc: "Cloisons, placo, peinture, optimisation d’espace", icon: Wrench },
-    { title: "Cuisine & Dressing", desc: "Conception et installation de meubles fonctionnels et esthétiques", icon: Hammer },
-    { title: "Salle de bain", desc: "Rénovation complète, plomberie, carrelage, accessoires modernes", icon: ShowerHead },
-    { title: "Mobilier sur mesure", desc: "Fabrication artisanale en bois ou métal pour chaque espace", icon: PencilRuler },
-    { title: "Dessin & Métrage", desc: "Plans techniques précis, devis détaillés, métrage exact pour vos projets", icon: Ruler },
-    { title: "Développement Web", desc: "Sites vitrines, outils métiers, UX design et déploiement optimisé", icon: MonitorSmartphone },
-  ];
+  const [openIndex, setOpenIndex] = useState(null);
+  const toggleFAQ = (index) => setOpenIndex(openIndex === index ? null : index);
 
-  const reviews = [
-    { name: "Jean Dupont", text: "Travail impeccable, respect des délais, finition parfaite. Je recommande vivement." },
-    { name: "Marie Leduc", text: "Mobilier sur mesure magnifique, très professionnel du plan à la pose." },
-    { name: "Eric Martin", text: "Le site web qu’il a conçu m’a apporté des clients, très bon travail technique et esthétique." },
+  const services = [
+    {
+      title: "Agencement intérieur",
+      desc: "Optimisation d’espace, cloisonnement, peinture et finitions haut de gamme pour sublimer vos pièces.",
+      icon: Wrench,
+    },
+    {
+      title: "Cuisine & Dressing",
+      desc: "Création sur mesure alliant esthétique, durabilité et fonctionnalité. Fabrication et pose clé en main.",
+      icon: Hammer,
+    },
+    {
+      title: "Salle de bain",
+      desc: "Rénovation complète avec pose de carrelage, plomberie, meuble vasque et accessoires modernes.",
+      icon: ShowerHead,
+    },
+    {
+      title: "Mobilier sur mesure",
+      desc: "Tables, étagères, bureaux et rangements uniques réalisés selon vos envies et vos dimensions.",
+      icon: PencilRuler,
+    },
+    {
+      title: "Dessin technique",
+      desc: "Conception de plans précis, croquis techniques et visualisations pour garantir une exécution parfaite.",
+      icon: Ruler,
+    },
+    {
+      title: "Métrage & devis",
+      desc: "Mesures exactes, calculs précis et estimations détaillées pour un budget clair et maîtrisé.",
+      icon: Ruler,
+    },
   ];
 
   const faq = [
-    { q: "Quels sont vos délais pour une cuisine sur‑mesure ?", a: "En général, entre 4 à 6 semaines selon complexité, fabrication et pose incluses." },
-    { q: "Travaillez‑vous dans toute l’Île‑de‑France ?", a: "Oui, je couvre l’Île‑de‑France, parfois au-delà selon le projet. Me contacter pour devis." },
-    { q: "Quels matériaux utilisez‑vous pour vos meubles ?", a: "Bois massif, contreplaqué de qualité, finitions laquées, métaux selon besoin." },
-    { q: "Faites‑vous les plans 3D avant construction ?", a: "Oui, je réalise des rendus 3D pour vous donner une vision réaliste avant la réalisation." },
+    {
+      q: "Quels sont vos délais pour une cuisine sur-mesure ?",
+      a: "En moyenne 4 à 6 semaines selon la complexité, incluant fabrication et installation.",
+    },
+    {
+      q: "Travaillez-vous dans toute l’Île-de-France ?",
+      a: "Oui, je couvre toute l’Île-de-France et peux me déplacer au-delà selon le projet.",
+    },
+    {
+      q: "Quels matériaux utilisez-vous ?",
+      a: "Bois massif, MDF, stratifié, finitions laquées ou vernies, selon le style souhaité.",
+    },
+    {
+      q: "Proposez-vous des plans 3D avant réalisation ?",
+      a: "Oui, je réalise des rendus 3D pour visualiser votre projet avant le lancement.",
+    },
   ];
 
+  // Animation fluide unifiée
+  const fadeIn = {
+    hidden: { opacity: 0, y: 60, scale: 0.97 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        delay: i * 0.1,
+        type: "spring",
+        damping: 22,
+        stiffness: 100,
+        duration: 0.9,
+      },
+    }),
+  };
+
   return (
-    <div className="bg-white px-4">
-      {/* Intro Services */}
-      <section className="py-16 max-w-7xl mx-auto text-center">
-        <h1 className="text-4xl font-bold text-text-dark mb-4">Mes Services Complets</h1>
-        <p className="text-text-light max-w-2xl mx-auto mb-10 text-lg">
-          Artisan & développeur : je propose une gamme complète de services
-          allant de l’aménagement intérieur à la création digitale. Chaque projet est unique, chaque solution sur mesure.
+    <div
+      className="bg-white text-text-dark overflow-hidden"
+      style={{ fontFamily: "Didot, Garamond, 'Times New Roman', serif" }}
+    >
+      {/* === SECTION INTRO === */}
+      <motion.section
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+        className="py-28 bg-gradient-to-tr from-secondary to-white text-center"
+      >
+        <h1 className="text-5xl font-bold mb-6 tracking-wide">
+          Mes Services d’Artisan Polyvalent
+        </h1>
+        <p className="text-gray-700 max-w-3xl mx-auto text-xl leading-relaxed">
+          Je mets mon savoir-faire à votre service pour vos projets
+          d’aménagement, de rénovation et de menuiserie sur mesure. Chaque
+          réalisation est pensée pour allier élégance, durabilité et
+          fonctionnalité.
         </p>
-      </section>
+      </motion.section>
 
-      {/* Bloc icônes + services */}
-      <section className="py-8 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map(({ title, desc, icon: Icon }) => (
-          <div key={title} className="bg-secondary rounded-2xl shadow-card p-6 hover:-translate-y-1 transition-transform">
-            <div className="flex items-center justify-center mb-4 w-16 h-16 rounded-full bg-primary text-white mx-auto">
-              <Icon size={32} />
-            </div>
-            <h2 className="text-xl font-semibold text-text-dark mb-2">{title}</h2>
-            <p className="text-text-light text-sm leading-relaxed">{desc}</p>
-          </div>
-        ))}
-      </section>
-
-      {/* Processus de travail */}
-      <section className="py-16 bg-secondary">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-text-dark text-center mb-8">Comment je travaille</h2>
-          <div className="space-y-8">
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="md:w-1/3 text-center md:text-left">
-                <span className="inline-block bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg">1</span>
+      {/* === SECTION SERVICES === */}
+      <motion.section
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.25 }}
+        className="py-20 bg-gradient-to-tr from-white to-secondary px-6"
+      >
+        <h2 className="text-4xl font-bold text-center mb-16">Mes Services</h2>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+          {services.map((service, i) => (
+            <motion.div
+              key={service.title}
+              custom={i}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.25 }}
+              className="bg-white/85 backdrop-blur-sm border border-primary/10 rounded-2xl shadow-md p-10 text-center hover:shadow-xl hover:border-primary/30 transition-all duration-500"
+            >
+              <div className="flex items-center justify-center w-24 h-24 mx-auto mb-6 rounded-full bg-primary/10 text-primary-dark shadow-inner">
+                <service.icon size={42} />
               </div>
-              <div className="md:w-2/3">
-                <h3 className="text-2xl font-semibold text-text-dark mb-2">Premier échange & devis</h3>
-                <p className="text-text-light">Nous discutons de votre projet, de vos besoins, de votre budget. Je réalise un devis détaillé avec plans ou croquis selon la nécessité.</p>
-              </div>
-            </div>
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="md:w-1/3 text-center md:text-left">
-                <span className="inline-block bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg">2</span>
-              </div>
-              <div className="md:w-2/3">
-                <h3 className="text-2xl font-semibold text-text-dark mb-2">Validation & conception technique</h3>
-                <p className="text-text-light">Création des plans 2D/3D, choix des matériaux, validations avant fabrication ou démarrage des travaux.</p>
-              </div>
-            </div>
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="md:w-1/3 text-center md:text-left">
-                <span className="inline-block bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg">3</span>
-              </div>
-              <div className="md:w-2/3">
-                <h3 className="text-2xl font-semibold text-text-dark mb-2">Fabrication & pose</h3>
-                <p className="text-text-light">Réalisation en atelier ou sur chantier, coordination des interventions, respect des délais et finitions qualité.</p>
-              </div>
-            </div>
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="md:w-1/3 text-center md:text-left">
-                <span className="inline-block bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg">4</span>
-              </div>
-              <div className="md:w-2/3">
-                <h3 className="text-2xl font-semibold text-text-dark mb-2">Livraison & suivi</h3>
-                <p className="text-text-light">Je m’assure que tout est parfait : livraison, installation, vérifications, et suivi client après‑travail si besoin.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Témoignages */}
-      <section className="py-16 max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-text-dark text-center mb-8">Témoignages de clients</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {reviews.map((r, i) => (
-            <blockquote key={i} className="bg-secondary p-6 rounded-2xl shadow-card">
-              <p className="text-text-light mb-4 italic">“{r.text}”</p>
-              <cite className="block text-text-dark font-semibold">— {r.name}</cite>
-            </blockquote>
+              <h3 className="text-2xl font-semibold mb-3">{service.title}</h3>
+              <p className="text-gray-700 text-base leading-relaxed max-w-xs mx-auto">
+                {service.desc}
+              </p>
+            </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
-      {/* FAQ */}
-      <section className="py-16 bg-secondary px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-text-dark text-center mb-6">FAQ</h2>
-          <div className="space-y-4">
-            {faq.map((f, i) => (
-              <div key={i} className="border border-border rounded-xl p-4">
-                <h3 className="text-lg font-semibold text-text-dark mb-1">{f.q}</h3>
-                <p className="text-text-light">{f.a}</p>
+      {/* === SECTION COMMENT JE TRAVAILLE === */}
+      <motion.section
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.25 }}
+        className="py-24 bg-gradient-to-tr from-white to-secondary px-6"
+      >
+        <h2 className="text-4xl font-bold text-center mb-20">
+          Comment je travaille
+        </h2>
+
+        <div className="max-w-5xl mx-auto relative">
+          <div className="hidden md:block absolute left-1/2 top-0 h-full w-1 bg-primary/20 transform -translate-x-1/2"></div>
+
+          {[
+            {
+              icon: "💬",
+              title: "Premier contact & devis",
+              text: "Échange sur vos besoins, conseils personnalisés et devis clair et détaillé.",
+            },
+            {
+              icon: "🧭",
+              title: "Étude & conception",
+              text: "Plans techniques, rendus 3D et validation des matériaux selon votre budget et vos goûts.",
+            },
+            {
+              icon: "🪚",
+              title: "Fabrication & pose",
+              text: "Travail artisanal, finitions soignées et respect des délais convenus.",
+            },
+            {
+              icon: "✅",
+              title: "Contrôle & satisfaction",
+              text: "Livraison conforme à vos attentes avec accompagnement après projet.",
+            },
+          ].map((step, i) => (
+            <motion.div
+              key={i}
+              custom={i}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              className={`relative flex flex-col md:flex-row items-center gap-6 md:gap-10 mb-14 ${
+                i % 2 === 0 ? "md:flex-row-reverse" : ""
+              }`}
+            >
+              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-primary rounded-full shadow-md z-10"></div>
+              <div className="md:w-1/2 flex justify-center md:justify-end">
+                <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary text-white text-3xl shadow-lg">
+                  {step.icon}
+                </div>
               </div>
+              <div className="md:w-1/2 text-center md:text-left bg-white rounded-2xl shadow-card p-8">
+                <h3 className="text-2xl font-semibold mb-3">{step.title}</h3>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  {step.text}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* === SECTION TÉMOIGNAGES === */}
+      <motion.div
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.25 }}
+      >
+        <Testimonials />
+      </motion.div>
+
+      {/* === SECTION FAQ === */}
+      <motion.section
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+        className="py-28 bg-gradient-to-tr from-secondary/70 to-white px-6"
+      >
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-14">FAQ</h2>
+          <div className="space-y-6">
+            {faq.map((f, i) => (
+              <motion.div
+                key={i}
+                custom={i}
+                variants={fadeIn}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.25 }}
+                className="bg-white/90 backdrop-blur-sm border border-primary/10 rounded-2xl shadow-md p-6 hover:shadow-lg transition-all duration-500"
+              >
+                <button
+                  onClick={() => toggleFAQ(i)}
+                  className="w-full flex justify-between items-center text-left"
+                >
+                  <div className="flex items-center gap-3">
+                    <HelpCircle className="text-primary" size={26} />
+                    <h3 className="text-xl font-semibold">{f.q}</h3>
+                  </div>
+                  {openIndex === i ? (
+                    <ChevronUp className="text-primary-dark" />
+                  ) : (
+                    <ChevronDown className="text-primary-dark" />
+                  )}
+                </button>
+
+                <AnimatePresence>
+                  {openIndex === i && (
+                    <motion.p
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{
+                        duration: 0.5,
+                        ease: [0.4, 0, 0.2, 1],
+                      }}
+                      className="text-gray-700 text-lg mt-4 pl-9 pr-2 leading-relaxed"
+                    >
+                      {f.a}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Appel à l’action */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto bg-primary text-white rounded-2xl p-10 text-center">
-          <h2 className="text-3xl font-bold mb-4">Prêt à commencer votre projet ?</h2>
-          <p className="mb-6">Contactez-moi pour un devis gratuit personnalisé. Chaque projet mérite un soin particulier.</p>
+      {/* === SECTION APPEL À L’ACTION === */}
+      <motion.section
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+        className="py-24 px-6"
+      >
+        <div className="max-w-7xl mx-auto bg-primary text-white rounded-2xl p-14 text-center shadow-soft">
+          <h2 className="text-4xl font-bold mb-6">
+            Prêt à démarrer votre projet ?
+          </h2>
+          <p className="mb-8 text-white/90 text-lg leading-relaxed max-w-2xl mx-auto">
+            Contactez-moi dès aujourd’hui pour un devis gratuit et personnalisé.
+            Ensemble, donnons vie à vos idées.
+          </p>
           <Link
             to="/contact"
-            className="inline-block bg-white text-primary px-6 py-3 rounded-2xl font-semibold hover:bg-primary-dark hover:text-white transition"
+            className="inline-block bg-white text-primary px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-primary-dark hover:text-white transition-all duration-500"
           >
             Demander un devis
           </Link>
         </div>
-      </section>
+      </motion.section>
 
       <Footer />
     </div>

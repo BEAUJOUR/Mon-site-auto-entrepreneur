@@ -1,131 +1,340 @@
 // src/components/Experts.jsx
-
-import { Wrench, ShowerHead, LayoutTemplate, ThumbsUp, PackageCheck, UserCheck, Smile, ClipboardList, ShieldCheck } from "lucide-react";
+import {
+  Wrench,
+  ShowerHead,
+  LayoutTemplate,
+  ThumbsUp,
+  PackageCheck,
+  UserCheck,
+  Smile,
+  ClipboardList,
+  ShieldCheck,
+} from "lucide-react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function Experts() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 60 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        type: "spring",
+        damping: 22,
+        stiffness: 100,
+        duration: 0.8,
+      },
+    }),
+  };
+
+  const slideIn = (direction = "left", delay = 0) => ({
+    hidden: {
+      opacity: 0,
+      x: direction === "left" ? -60 : 60,
+      scale: 0.98,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      transition: {
+        delay,
+        type: "spring",
+        damping: 22,
+        stiffness: 100,
+        duration: 0.9,
+      },
+    },
+  });
+
+  // Composant Card avec tilt 3D sur desktop uniquement
+  const Card = ({ children }) => {
+    const [transform, setTransform] = useState("");
+
+    const handleMouseMove = (e) => {
+      if (isMobile) return; // désactivation sur mobile
+      const { offsetX, offsetY, target } = e.nativeEvent;
+      const { clientWidth, clientHeight } = target;
+      const x = (offsetX / clientWidth - 0.5) * 10;
+      const y = (offsetY / clientHeight - 0.5) * -10;
+      setTransform(`rotateX(${y}deg) rotateY(${x}deg)`);
+    };
+
+    const handleMouseLeave = () => setTransform("");
+
+    return (
+      <div
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          transform,
+          transformStyle: "preserve-3d",
+          transition: "transform 0.3s ease-out",
+        }}
+        className="h-full"
+      >
+        {children}
+      </div>
+    );
+  };
+
   return (
     <>
-      {/* Section principale : Expertise */}
-    <section className="bg-secondary py-20 px-4">
-  <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
-   <div className="md:w-1/2">
-  <img
-    src="https://cdn.manomano.com/promo-pages/inspirational-images/V2/FR/salle-de-bain-contemporain/image_0_0.jpg"
-    alt="Salle de bain rénovée"
-    className="rounded-2xl shadow-xl object-cover w-full h-auto transition-transform duration-500 hover:rotate-y-0"
-    style={{
-      transform: "perspective(1000px) rotateY(45deg)",
-    }}
-  />
-</div>
-
-
-    <div className="md:w-1/2 text-center md:text-left">
-      <h2 className="text-3xl md:text-4xl font-bold text-text-dark mb-6 uppercase">
-        Expert dans la transformation<br />
-        <span className="text-primary">des espaces du quotidien</span>
-      </h2>
-      <p className="text-text-light mb-6 text-lg">
-        Chaque pièce mérite une attention unique. Mon approche allie fonctionnalité, esthétisme
-        et savoir-faire artisanal pour des intérieurs qui durent.
-      </p>
-
-      <div className="space-y-4 mb-6">
-        <div className="flex items-start gap-4">
-          <LayoutTemplate className="text-primary w-6 h-6 mt-1" />
-          <div>
-            <h4 className="font-semibold text-text-dark uppercase">Conception sur-mesure</h4>
-            <p className="text-text-light text-sm">
-              Plans précis et choix des matériaux adaptés à votre usage quotidien.
-            </p>
-          </div>
-        </div>
-        <div className="flex items-start gap-4">
-          <ShowerHead className="text-primary w-6 h-6 mt-1" />
-          <div>
-            <h4 className="font-semibold text-text-dark uppercase">Rénovation complète</h4>
-            <p className="text-text-light text-sm">
-              Démolition, plomberie, carrelage, mobilier... je m’occupe de tout.
-            </p>
-          </div>
-        </div>
-        <div className="flex items-start gap-4">
-          <Wrench className="text-primary w-6 h-6 mt-1" />
-          <div>
-            <h4 className="font-semibold text-text-dark uppercase">Installation professionnelle</h4>
-            <p className="text-text-light text-sm">
-              Pose soignée et finitions robustes, prêtes à durer dans le temps.
-            </p>
-          </div>
-        </div>
-      </div>
-
-     
-
-      <Link
-        to="/services"
-        className="inline-block bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark transition"
+      {/* === SECTION PRINCIPALE === */}
+      <motion.section
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+        className="bg-secondary py-16 px-4 sm:px-6 lg:px-8"
       >
-        Voir mes réalisations
-      </Link>
-    </div>
-  </div>
-</section>
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
+          {/* Image inchangée */}
+          <motion.div
+            custom={0}
+            variants={fadeIn}
+            className="md:w-1/2 w-full"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <img
+              src="https://cdn.manomano.com/promo-pages/inspirational-images/V2/FR/salle-de-bain-contemporain/image_0_0.jpg"
+              alt="Salle de bain rénovée"
+              className="rounded-2xl shadow-xl object-cover w-full h-auto transition-transform duration-700 hover:scale-[1.02]"
+              style={{
+                transform: "perspective(1000px) rotateY(45deg)",
+              }}
+            />
+          </motion.div>
 
+          {/* Texte */}
+          <motion.div
+            custom={1}
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.4 }}
+            className="md:w-1/2 w-full text-center md:text-left"
+          >
+            <h2
+              className="font-bold text-text-dark mb-6 uppercase leading-snug
+             text-[clamp(1.5rem,4vw,2.5rem)] sm:text-[clamp(2rem,3vw,2.8rem)]"
+            >
+              <span className="block">Expert dans la transformation</span>
+              <span className="block text-primary">
+                des espaces du quotidien
+              </span>
+            </h2>
 
-      {/* Pourquoi choisir BJD PRO ? */}
-      <section className="bg-white py-20 px-4 text-center">
+            <p className="text-text-light mb-6 text-sm sm:text-base md:text-lg leading-relaxed">
+              Chaque pièce mérite une attention unique. Mon approche allie
+              fonctionnalité, esthétisme et savoir-faire artisanal pour des
+              intérieurs qui durent.
+            </p>
+
+            <div className="space-y-5 mb-8">
+              {[
+                {
+                  icon: (
+                    <LayoutTemplate className="text-primary w-6 h-6 mt-1 shrink-0" />
+                  ),
+                  title: "Conception sur-mesure",
+                  desc: "Plans précis et choix des matériaux adaptés à votre usage quotidien.",
+                },
+                {
+                  icon: (
+                    <ShowerHead className="text-primary w-6 h-6 mt-1 shrink-0" />
+                  ),
+                  title: "Rénovation complète",
+                  desc: "Démolition, plomberie, carrelage, mobilier... je m’occupe de tout.",
+                },
+                {
+                  icon: (
+                    <Wrench className="text-primary w-6 h-6 mt-1 shrink-0" />
+                  ),
+                  title: "Installation professionnelle",
+                  desc: "Pose soignée et finitions robustes, prêtes à durer dans le temps.",
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  custom={i + 2}
+                  variants={slideIn(i % 2 === 0 ? "left" : "right", i * 0.2)}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="flex items-start gap-4"
+                >
+                  {item.icon}
+                  <div>
+                    <h4 className="font-semibold text-text-dark uppercase text-sm sm:text-base">
+                      {item.title}
+                    </h4>
+                    <p className="text-text-light text-xs sm:text-sm">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <Link
+              to="/services"
+              className="inline-block bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark transition-all duration-500 text-sm sm:text-base"
+            >
+              Voir mes réalisations
+            </Link>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* === SECTION POURQUOI CHOISIR === */}
+      <motion.section
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+        className="bg-white py-16 px-4 sm:px-6 lg:px-8 text-center"
+      >
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-text-dark mb-10 uppercase">Pourquoi choisir <span className="text-primary">BJD-PRO</span> ?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="p-6 rounded-2xl bg-secondary shadow-card">
-              <ThumbsUp className="text-primary w-10 h-10 mx-auto mb-4" />
-              <h4 className="text-xl font-semibold text-text-dark mb-2 uppercase">Satisfaction Garantie</h4>
-              <p className="text-text-light text-sm">Je m’engage à livrer un travail soigné, conforme à vos attentes, dans les délais convenus.</p>
-            </div>
-            <div className="p-6 rounded-2xl bg-secondary shadow-card">
-              <PackageCheck className="text-primary w-10 h-10 mx-auto mb-4" />
-              <h4 className="text-xl font-semibold text-text-dark mb-2 uppercase">Solution Complète</h4>
-              <p className="text-text-light text-sm">De la conception au montage, tout est pris en charge avec précision et transparence.</p>
-            </div>
-            <div className="p-6 rounded-2xl bg-secondary shadow-card">
-              <UserCheck className="text-primary w-10 h-10 mx-auto mb-4" />
-              <h4 className="text-xl font-semibold text-text-dark mb-2 uppercase">Un seul interlocuteur</h4>
-              <p className="text-text-light text-sm">Plus de perte de temps ou de malentendus, vous parlez directement à celui qui conçoit et réalise.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-text-dark mb-10 uppercase">
+            Pourquoi choisir <span className="text-primary">BJD-PRO</span> ?
+          </h2>
 
-      {/* Mon engagement au-delà des travaux */}
-      <section className="bg-secondary py-20 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-text-dark mb-10 uppercase">Mon engagement au-delà des travaux</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white rounded-2xl p-6 shadow-card">
-              <ClipboardList className="text-primary w-10 h-10 mx-auto mb-4" />
-              <h4 className="text-lg font-semibold text-text-dark mb-2 uppercase">Accompagnement</h4>
-              <p className="text-sm text-text-light">Je vous accompagne à chaque étape : conseil, planification, choix des matériaux, suivi de chantier.</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-card">
-              <ShieldCheck className="text-primary w-10 h-10 mx-auto mb-4" />
-              <h4 className="text-lg font-semibold text-text-dark mb-2 uppercase">Fiabilité & transparence</h4>
-              <p className="text-sm text-text-light">Des devis clairs, des délais respectés, une qualité irréprochable à chaque livraison.</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-card">
-              <Smile className="text-primary w-10 h-10 mx-auto mb-4" />
-              <h4 className="text-lg font-semibold text-text-dark mb-2 uppercase">Écoute & proximité</h4>
-              <p className="text-sm text-text-light">Je prends le temps de comprendre votre besoin et d’y répondre au plus juste, avec attention.</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-card">
-              <UserCheck className="text-primary w-10 h-10 mx-auto mb-4" />
-              <h4 className="text-lg font-semibold text-text-dark mb-2 uppercase">Polyvalence rare</h4>
-              <p className="text-sm text-text-light">Allier artisanat, design, technique et digital me permet d’offrir une réponse complète et unique.</p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {[
+              {
+                icon: (
+                  <ThumbsUp className="text-primary w-10 h-10 mx-auto mb-4" />
+                ),
+                title: "Satisfaction garantie",
+                desc: "Je m’engage à livrer un travail soigné, conforme à vos attentes, dans les délais convenus.",
+              },
+              {
+                icon: (
+                  <PackageCheck className="text-primary w-10 h-10 mx-auto mb-4" />
+                ),
+                title: "Solution complète",
+                desc: "De la conception au montage, tout est pris en charge avec précision et transparence.",
+              },
+              {
+                icon: (
+                  <UserCheck className="text-primary w-10 h-10 mx-auto mb-4" />
+                ),
+                title: "Un seul interlocuteur",
+                desc: "Plus de perte de temps ou de malentendus, vous parlez directement à celui qui conçoit et réalise.",
+              },
+            ].map((card, i) => (
+              <motion.div
+                key={i}
+                variants={slideIn(i % 2 === 0 ? "left" : "right", i * 0.15)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3 }}
+                className="h-full"
+              >
+                <Card>
+                  <div className="p-6 sm:p-8 min-h-[320px] flex flex-col justify-between rounded-2xl bg-secondary shadow-card hover:shadow-xl transition-all duration-500 group cursor-pointer">
+                    {card.icon}
+                    <div>
+                      <h4 className="text-lg sm:text-xl font-semibold text-text-dark mb-2 uppercase relative inline-block">
+                        {card.title}
+                        <span className="absolute left-0 bottom-[-2px] w-0 h-[2px] bg-primary transition-all duration-500 group-hover:w-full"></span>
+                      </h4>
+                      <p className="text-text-light text-sm leading-relaxed">
+                        {card.desc}
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </section>
+      </motion.section>
+
+      {/* === SECTION ENGAGEMENT === */}
+      <motion.section
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+        className="bg-secondary py-16 px-4 sm:px-6 lg:px-8"
+      >
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-text-dark mb-10 uppercase">
+            Mon engagement au-delà des travaux
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {[
+              {
+                icon: (
+                  <ClipboardList className="text-primary w-10 h-10 mx-auto mb-4" />
+                ),
+                title: "Accompagnement",
+                desc: "Je vous accompagne à chaque étape : conseil, planification, choix des matériaux, suivi de chantier.",
+              },
+              {
+                icon: (
+                  <ShieldCheck className="text-primary w-10 h-10 mx-auto mb-4" />
+                ),
+                title: "Fiabilité & transparence",
+                desc: "Des devis clairs, des délais respectés, une qualité irréprochable à chaque livraison.",
+              },
+              {
+                icon: <Smile className="text-primary w-10 h-10 mx-auto mb-4" />,
+                title: "Écoute & proximité",
+                desc: "Je prends le temps de comprendre votre besoin et d’y répondre au plus juste, avec attention.",
+              },
+              {
+                icon: (
+                  <UserCheck className="text-primary w-10 h-10 mx-auto mb-4" />
+                ),
+                title: "Polyvalence rare",
+                desc: "Allier artisanat, design, technique et digital me permet d’offrir une réponse complète et unique.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={slideIn(i % 2 === 0 ? "right" : "left", i * 0.2)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3 }}
+                className="h-full"
+              >
+                <Card>
+                  <div className="bg-white p-6 sm:p-8 min-h-[320px] flex flex-col justify-between rounded-2xl shadow-card hover:shadow-xl transition-all duration-500 group cursor-pointer">
+                    {item.icon}
+                    <div>
+                      <h4 className="text-base sm:text-lg font-semibold text-text-dark mb-2 uppercase relative inline-block">
+                        {item.title}
+                        <span className="absolute left-0 bottom-[-2px] w-0 h-[2px] bg-primary transition-all duration-500 group-hover:w-full"></span>
+                      </h4>
+                      <p className="text-sm text-text-light leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
     </>
   );
 }
