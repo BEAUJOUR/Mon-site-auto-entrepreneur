@@ -59,12 +59,11 @@ export default function Experts() {
     },
   });
 
-  // Composant Card avec tilt 3D sur desktop uniquement
   const Card = ({ children }) => {
     const [transform, setTransform] = useState("");
 
     const handleMouseMove = (e) => {
-      if (isMobile) return; // désactivation sur mobile
+      if (isMobile) return;
       const { offsetX, offsetY, target } = e.nativeEvent;
       const { clientWidth, clientHeight } = target;
       const x = (offsetX / clientWidth - 0.5) * 10;
@@ -92,7 +91,7 @@ export default function Experts() {
 
   return (
     <>
-      {/* === SECTION PRINCIPALE === */}
+      {/* SECTION PRINCIPALE */}
       <motion.section
         variants={fadeIn}
         initial="hidden"
@@ -101,15 +100,7 @@ export default function Experts() {
         className="bg-secondary py-16 px-4 sm:px-6 lg:px-8"
       >
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
-          {/* Image inchangée */}
-          <motion.div
-            custom={0}
-            variants={fadeIn}
-            className="md:w-1/2 w-full"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <motion.div custom={0} variants={fadeIn} className="md:w-1/2 w-full">
             <img
               src="https://cdn.manomano.com/promo-pages/inspirational-images/V2/FR/salle-de-bain-contemporain/image_0_0.jpg"
               alt="Salle de bain rénovée"
@@ -120,26 +111,19 @@ export default function Experts() {
             />
           </motion.div>
 
-          {/* Texte */}
           <motion.div
             custom={1}
             variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.4 }}
             className="md:w-1/2 w-full text-center md:text-left"
           >
-            <h2
-              className="font-bold text-text-dark mb-6 uppercase leading-snug
-             text-[clamp(1.5rem,4vw,2.5rem)] sm:text-[clamp(2rem,3vw,2.8rem)]"
-            >
+            <h2 className="font-bold text-text-dark mb-6 leading-snug text-[clamp(1.5rem,4vw,2.5rem)] sm:text-[clamp(2rem,3vw,2.8rem)]">
               <span className="block">Expert dans la transformation</span>
               <span className="block text-primary">
                 des espaces du quotidien
               </span>
             </h2>
 
-            <p className="text-text-light mb-6 text-sm sm:text-base md:text-lg leading-relaxed">
+            <p className="text-text-light mb-6 text-md md:text-lg leading-relaxed">
               Chaque pièce mérite une attention unique. Mon approche allie
               fonctionnalité, esthétisme et savoir-faire artisanal pour des
               intérieurs qui durent.
@@ -173,17 +157,14 @@ export default function Experts() {
                   key={i}
                   custom={i + 2}
                   variants={slideIn(i % 2 === 0 ? "left" : "right", i * 0.2)}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: false, amount: 0.3 }}
                   className="flex items-start gap-4"
                 >
                   {item.icon}
                   <div>
-                    <h4 className="font-semibold text-text-dark uppercase text-sm sm:text-base">
+                    <h4 className="font-semibold text-text-dark  text-lg md:text-xl">
                       {item.title}
                     </h4>
-                    <p className="text-text-light text-xs sm:text-sm">
+                    <p className="text-text-light text-base md:text-md leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
@@ -193,7 +174,7 @@ export default function Experts() {
 
             <Link
               to="/services"
-              className="inline-block bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark transition-all duration-500 text-sm sm:text-base"
+              className="inline-block bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark transition-all duration-500 text-base"
             >
               Voir mes réalisations
             </Link>
@@ -201,7 +182,7 @@ export default function Experts() {
         </div>
       </motion.section>
 
-      {/* === SECTION POURQUOI CHOISIR === */}
+      {/* POURQUOI CHOISIR */}
       <motion.section
         variants={fadeIn}
         initial="hidden"
@@ -210,7 +191,7 @@ export default function Experts() {
         className="bg-white py-16 px-4 sm:px-6 lg:px-8 text-center"
       >
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text-dark mb-10 uppercase">
+          <h2 className="text-2xl sm:text-3xl font-bold text-text-dark mb-10 ">
             Pourquoi choisir <span className="text-primary">BJD-PRO</span> ?
           </h2>
 
@@ -241,20 +222,17 @@ export default function Experts() {
               <motion.div
                 key={i}
                 variants={slideIn(i % 2 === 0 ? "left" : "right", i * 0.15)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
                 className="h-full"
               >
                 <Card>
                   <div className="p-6 sm:p-8 min-h-[320px] flex flex-col justify-between rounded-2xl bg-secondary shadow-card hover:shadow-xl transition-all duration-500 group cursor-pointer">
                     {card.icon}
                     <div>
-                      <h4 className="text-lg sm:text-xl font-semibold text-text-dark mb-2 uppercase relative inline-block">
+                      <h4 className="text-lg md:text-xl font-semibold text-text-dark mb-2 relative inline-block">
                         {card.title}
-                        <span className="absolute left-0 bottom-[-2px] w-0 h-[2px] bg-primary transition-all duration-500 group-hover:w-full"></span>
+                        <span className="absolute left-0 bottom-[-2px] w-0 h-[2px] bg-primary transition-all duration-500 group-hover:w-full" />
                       </h4>
-                      <p className="text-text-light text-sm leading-relaxed">
+                      <p className="text-text-light text-base md:text-md leading-relaxed">
                         {card.desc}
                       </p>
                     </div>
@@ -266,7 +244,7 @@ export default function Experts() {
         </div>
       </motion.section>
 
-      {/* === SECTION ENGAGEMENT === */}
+      {/* ENGAGEMENT */}
       <motion.section
         variants={fadeIn}
         initial="hidden"
@@ -275,7 +253,7 @@ export default function Experts() {
         className="bg-secondary py-16 px-4 sm:px-6 lg:px-8"
       >
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text-dark mb-10 uppercase">
+          <h2 className="text-2xl sm:text-3xl font-bold text-text-dark mb-10 ">
             Mon engagement au-delà des travaux
           </h2>
 
@@ -311,20 +289,17 @@ export default function Experts() {
               <motion.div
                 key={i}
                 variants={slideIn(i % 2 === 0 ? "right" : "left", i * 0.2)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
                 className="h-full"
               >
                 <Card>
                   <div className="bg-white p-6 sm:p-8 min-h-[320px] flex flex-col justify-between rounded-2xl shadow-card hover:shadow-xl transition-all duration-500 group cursor-pointer">
                     {item.icon}
                     <div>
-                      <h4 className="text-base sm:text-lg font-semibold text-text-dark mb-2 uppercase relative inline-block">
+                      <h4 className="text-lg md:text-xl font-semibold text-text-dark mb-2 relative inline-block">
                         {item.title}
-                        <span className="absolute left-0 bottom-[-2px] w-0 h-[2px] bg-primary transition-all duration-500 group-hover:w-full"></span>
+                        <span className="absolute left-0 bottom-[-2px] w-0 h-[2px] bg-primary transition-all duration-500 group-hover:w-full" />
                       </h4>
-                      <p className="text-sm text-text-light leading-relaxed">
+                      <p className="text-base md:text-md text-text-light leading-relaxed">
                         {item.desc}
                       </p>
                     </div>

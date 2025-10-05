@@ -35,7 +35,7 @@ export default function Hero() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8, type: "spring" }}
-            className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-text-dark leading-[1.4] sm:leading-[1.25]"
+            className="text-2xl sm:text-4xl md:text-5xl font-title font-extrabold uppercase tracking-tight text-text-dark leading-[1.4] sm:leading-[1.25]"
           >
             CRÉATEUR D’ESPACES <span className="text-primary">TECHNIQUES</span>
             <br />
@@ -47,7 +47,7 @@ export default function Hero() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.8, type: "spring" }}
-            className="mt-6 text-base sm:text-lg text-text-light max-w-prose mx-auto md:mx-0"
+            className="mt-6 text-md md:text-lg text-text-light max-w-prose mx-auto md:mx-0 leading-relaxed"
           >
             Agencement intérieur, mobilier sur mesure, conception 2D/3D et
             développement web : un seul interlocuteur pour des projets pensés,

@@ -1,5 +1,11 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+// src/pages/Services.jsx
+import { useState, useRef } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import Testimonials from "../components/Testimonials";
 import {
   Wrench,
@@ -70,7 +76,6 @@ export default function Services() {
     },
   ];
 
-  // Animation fluide unifiée
   const fadeIn = {
     hidden: { opacity: 0, y: 60, scale: 0.97 },
     visible: (i = 1) => ({
@@ -80,30 +85,35 @@ export default function Services() {
       transition: {
         delay: i * 0.1,
         type: "spring",
-        damping: 22,
+        damping: 20,
         stiffness: 100,
-        duration: 0.9,
+        duration: 0.8,
       },
     }),
   };
 
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const iconY = useTransform(scrollYProgress, [0, 1], [0, 40]);
+  const iconScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+
   return (
-    <div
-      className="bg-white text-text-dark overflow-hidden"
-      style={{ fontFamily: "Didot, Garamond, 'Times New Roman', serif" }}
-    >
-      {/* === SECTION INTRO === */}
+    <div className="bg-white text-text-dark overflow-hidden font-[Didot,serif]">
       <motion.section
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}
-        className="py-28 bg-gradient-to-tr from-secondary to-white text-center"
+        className="py-20 sm:py-28 bg-gradient-to-tr from-secondary to-white text-center px-4"
       >
-        <h1 className="text-5xl font-bold mb-6 tracking-wide">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight tracking-wide">
           Mes Services d’Artisan Polyvalent
         </h1>
-        <p className="text-gray-700 max-w-3xl mx-auto text-xl leading-relaxed">
+        <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
           Je mets mon savoir-faire à votre service pour vos projets
           d’aménagement, de rénovation et de menuiserie sur mesure. Chaque
           réalisation est pensée pour allier élégance, durabilité et
@@ -111,16 +121,19 @@ export default function Services() {
         </p>
       </motion.section>
 
-      {/* === SECTION SERVICES === */}
       <motion.section
+        ref={sectionRef}
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.25 }}
-        className="py-20 bg-gradient-to-tr from-white to-secondary px-6"
+        className="py-16 sm:py-20 bg-gradient-to-tr from-white to-secondary px-6"
       >
-        <h2 className="text-4xl font-bold text-center mb-16">Mes Services</h2>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16">
+          Mes Services
+        </h2>
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
@@ -129,13 +142,18 @@ export default function Services() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.25 }}
-              className="bg-white/85 backdrop-blur-sm border border-primary/10 rounded-2xl shadow-md p-10 text-center hover:shadow-xl hover:border-primary/30 transition-all duration-500"
+              className="bg-white/90 backdrop-blur-sm border border-primary/10 rounded-2xl shadow-md p-8 sm:p-10 text-center hover:shadow-xl hover:border-primary/30 transition-all duration-500"
             >
-              <div className="flex items-center justify-center w-24 h-24 mx-auto mb-6 rounded-full bg-primary/10 text-primary-dark shadow-inner">
-                <service.icon size={42} />
-              </div>
-              <h3 className="text-2xl font-semibold mb-3">{service.title}</h3>
-              <p className="text-gray-700 text-base leading-relaxed max-w-xs mx-auto">
+              <motion.div
+                style={{ y: iconY, scale: iconScale }}
+                className="flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-6 rounded-full bg-primary/10 text-primary-dark shadow-inner"
+              >
+                <service.icon size={38} />
+              </motion.div>
+              <h3 className="text-xl md:text-2xl font-semibold mb-3">
+                {service.title}
+              </h3>
+              <p className="text-base md:text-md text-gray-700 leading-relaxed max-w-xs mx-auto">
                 {service.desc}
               </p>
             </motion.div>
@@ -143,20 +161,19 @@ export default function Services() {
         </div>
       </motion.section>
 
-      {/* === SECTION COMMENT JE TRAVAILLE === */}
       <motion.section
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.25 }}
-        className="py-24 bg-gradient-to-tr from-white to-secondary px-6"
+        className="py-20 sm:py-24 bg-gradient-to-tr from-white to-secondary px-6"
       >
-        <h2 className="text-4xl font-bold text-center mb-20">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 sm:mb-20">
           Comment je travaille
         </h2>
 
         <div className="max-w-5xl mx-auto relative">
-          <div className="hidden md:block absolute left-1/2 top-0 h-full w-1 bg-primary/20 transform -translate-x-1/2"></div>
+          <div className="hidden md:block absolute left-1/2 top-0 h-full w-[2px] bg-primary/20 transform -translate-x-1/2"></div>
 
           {[
             {
@@ -187,19 +204,21 @@ export default function Services() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
-              className={`relative flex flex-col md:flex-row items-center gap-6 md:gap-10 mb-14 ${
+              className={`relative flex flex-col md:flex-row items-center gap-6 md:gap-10 mb-12 sm:mb-14 ${
                 i % 2 === 0 ? "md:flex-row-reverse" : ""
               }`}
             >
               <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-primary rounded-full shadow-md z-10"></div>
               <div className="md:w-1/2 flex justify-center md:justify-end">
-                <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary text-white text-3xl shadow-lg">
+                <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary text-white text-2xl sm:text-3xl shadow-lg">
                   {step.icon}
                 </div>
               </div>
-              <div className="md:w-1/2 text-center md:text-left bg-white rounded-2xl shadow-card p-8">
-                <h3 className="text-2xl font-semibold mb-3">{step.title}</h3>
-                <p className="text-gray-700 text-lg leading-relaxed">
+              <div className="md:w-1/2 text-center md:text-left bg-white rounded-2xl shadow-card p-6 sm:p-8">
+                <h3 className="text-xl md:text-2xl font-semibold mb-2 sm:mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-base md:text-md text-gray-700 leading-relaxed">
                   {step.text}
                 </p>
               </div>
@@ -208,7 +227,6 @@ export default function Services() {
         </div>
       </motion.section>
 
-      {/* === SECTION TÉMOIGNAGES === */}
       <motion.div
         variants={fadeIn}
         initial="hidden"
@@ -218,17 +236,19 @@ export default function Services() {
         <Testimonials />
       </motion.div>
 
-      {/* === SECTION FAQ === */}
       <motion.section
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}
-        className="py-28 bg-gradient-to-tr from-secondary/70 to-white px-6"
+        className="py-20 sm:py-28 bg-gradient-to-tr from-secondary/70 to-white px-4 sm:px-6"
       >
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-14">FAQ</h2>
-          <div className="space-y-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-14">
+            FAQ
+          </h2>
+
+          <div className="space-y-5 sm:space-y-6">
             {faq.map((f, i) => (
               <motion.div
                 key={i}
@@ -237,15 +257,15 @@ export default function Services() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.25 }}
-                className="bg-white/90 backdrop-blur-sm border border-primary/10 rounded-2xl shadow-md p-6 hover:shadow-lg transition-all duration-500"
+                className="bg-white/90 backdrop-blur-sm border border-primary/10 rounded-2xl shadow-md p-5 sm:p-6 hover:shadow-lg transition-all duration-500"
               >
                 <button
                   onClick={() => toggleFAQ(i)}
                   className="w-full flex justify-between items-center text-left"
                 >
                   <div className="flex items-center gap-3">
-                    <HelpCircle className="text-primary" size={26} />
-                    <h3 className="text-xl font-semibold">{f.q}</h3>
+                    <HelpCircle className="text-primary shrink-0" size={24} />
+                    <h3 className="text-lg md:text-xl font-semibold">{f.q}</h3>
                   </div>
                   {openIndex === i ? (
                     <ChevronUp className="text-primary-dark" />
@@ -260,11 +280,8 @@ export default function Services() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      transition={{
-                        duration: 0.5,
-                        ease: [0.4, 0, 0.2, 1],
-                      }}
-                      className="text-gray-700 text-lg mt-4 pl-9 pr-2 leading-relaxed"
+                      transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                      className="text-base md:text-md text-gray-700 mt-3 pl-8 pr-2 leading-relaxed"
                     >
                       {f.a}
                     </motion.p>
@@ -276,25 +293,24 @@ export default function Services() {
         </div>
       </motion.section>
 
-      {/* === SECTION APPEL À L’ACTION === */}
       <motion.section
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}
-        className="py-24 px-6"
+        className="py-16 sm:py-24 px-4 sm:px-6"
       >
-        <div className="max-w-7xl mx-auto bg-primary text-white rounded-2xl p-14 text-center shadow-soft">
-          <h2 className="text-4xl font-bold mb-6">
+        <div className="max-w-7xl mx-auto bg-primary text-white rounded-2xl p-10 sm:p-14 text-center shadow-soft">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
             Prêt à démarrer votre projet ?
           </h2>
-          <p className="mb-8 text-white/90 text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="mb-8 text-white/90  text-base md:text-mdleading-relaxed max-w-2xl mx-auto">
             Contactez-moi dès aujourd’hui pour un devis gratuit et personnalisé.
             Ensemble, donnons vie à vos idées.
           </p>
           <Link
             to="/contact"
-            className="inline-block bg-white text-primary px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-primary-dark hover:text-white transition-all duration-500"
+            className="inline-block bg-white text-primary px-8 py-3 sm:px-10 sm:py-4 rounded-2xl text-base md:text-lg font-semibold hover:bg-primary-dark hover:text-white transition-all duration-500"
           >
             Demander un devis
           </Link>

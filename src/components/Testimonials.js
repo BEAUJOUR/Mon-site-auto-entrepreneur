@@ -37,20 +37,19 @@ export default function Testimonials() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-3xl font-bold text-text-dark text-center mb-14"
+        className="text-3xl md:text-4xl font-bold text-text-dark text-center mb-14"
       >
         Témoignages clients
       </motion.h2>
 
-      {/* Conteneur horizontal avec effet défilement visible */}
+      {/* Marquee horizontale */}
       <div className="relative w-full overflow-hidden">
-        {/* Ligne de cartes (animation infinie droite -> gauche) */}
         <motion.div
           className="flex gap-8"
           animate={{ x: ["0%", "-100%"] }}
           transition={{
             repeat: Infinity,
-            duration: 40, // plus la durée est grande, plus c’est lent
+            duration: 40,
             ease: "linear",
           }}
         >
@@ -62,10 +61,10 @@ export default function Testimonials() {
               <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary text-white flex items-center justify-center shadow-md">
                 <Quote size={20} />
               </div>
-              <p className="text-text-light italic mb-3 text-sm leading-relaxed">
+              <p className="text-text-light italic mb-3 text-base md:text-lg leading-relaxed">
                 “{t.text}”
               </p>
-              <cite className="block text-text-dark font-semibold text-sm">
+              <cite className="block text-text-dark font-semibold text-base">
                 — {t.name}
               </cite>
               <div className="mt-3 w-12 h-[2px] bg-primary/50 mx-auto rounded-full" />
@@ -73,18 +72,18 @@ export default function Testimonials() {
           ))}
         </motion.div>
 
-        {/* Effet dégradé sur les bords */}
+        {/* Dégradés latéraux */}
         <div className="pointer-events-none absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-white via-white/80 to-transparent" />
         <div className="pointer-events-none absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-white via-white/80 to-transparent" />
       </div>
 
-      {/* Texte de bas de section */}
+      {/* Légende */}
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5, duration: 0.8 }}
-        className="text-center text-text-light mt-16 max-w-2xl mx-auto px-6"
+        className="text-center text-text-light mt-16 max-w-2xl mx-auto px-6 text-base md:text-lg"
       >
         Des clients satisfaits par la qualité, la précision et la passion du
         travail bien fait. Merci pour leur confiance.

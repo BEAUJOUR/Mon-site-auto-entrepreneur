@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
-import { Hammer, Ruler, DraftingCompass, Globe } from "lucide-react";
+import { Hammer, Ruler, DraftingCompass, ClipboardList } from "lucide-react";
 
 export default function About() {
   const cards = [
@@ -22,13 +22,12 @@ export default function About() {
       icon: <DraftingCompass size={40} className="text-primary" />,
     },
     {
-      title: "Développement Web",
-      desc: "Sites vitrines, outils métier, présence digitale professionnelle. J’accompagne les artisans et indépendants dans leur transition numérique.",
-      icon: <Globe size={40} className="text-primary" />,
+      title: "Métrage & Devis",
+      desc: "Relevés précis, calculs rigoureux et estimations détaillées pour une vision claire de votre projet dès le départ.",
+      icon: <ClipboardList size={40} className="text-primary" />,
     },
   ];
 
-  // Animation fluide au scroll
   const fadeIn = {
     hidden: { opacity: 0, y: 50, scale: 0.98 },
     visible: (i = 1) => ({
@@ -59,7 +58,7 @@ export default function About() {
           <motion.h2
             custom={0}
             variants={fadeIn}
-            className="text-4xl font-bold text-text-dark mb-6"
+            className="text-4xl md:text-5xl font-title font-bold text-text-dark mb-6"
           >
             Polyvalence et passion au service de vos projets
           </motion.h2>
@@ -67,12 +66,12 @@ export default function About() {
           <motion.p
             custom={1}
             variants={fadeIn}
-            className="text-text-light max-w-3xl mx-auto mb-12 text-lg"
+            className="text-md md:text-lg text-text-light max-w-3xl mx-auto mb-12 leading-relaxed"
           >
             Depuis plus de 10 ans, je conçois, fabrique et transforme les
             espaces de vie ou de travail. D’un chantier de rénovation à une
-            application web sur-mesure, j’apporte une vision globale, pratique
-            et moderne.
+            solution technique sur mesure, j’apporte une vision globale,
+            pratique et moderne.
           </motion.p>
 
           {/* CARTES */}
@@ -92,10 +91,12 @@ export default function About() {
                 className="bg-secondary rounded-2xl shadow-card p-6 hover:translate-y-[-5px] transition-all duration-500"
               >
                 <div className="mb-4 flex justify-center">{c.icon}</div>
-                <h3 className="text-xl font-semibold text-text-dark mb-2">
+                <h3 className="text-lg md:text-xl font-semibold text-text-dark mb-2">
                   {c.title}
                 </h3>
-                <p className="text-text-light text-sm">{c.desc}</p>
+                <p className="text-base md:text-md text-text-light leading-relaxed">
+                  {c.desc}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -109,19 +110,19 @@ export default function About() {
             viewport={{ once: false, amount: 0.3 }}
             className="mt-16 text-left max-w-4xl mx-auto"
           >
-            <h3 className="text-2xl font-bold text-text-dark mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-text-dark mb-4">
               Mon histoire
             </h3>
-            <p className="text-text-light text-base leading-relaxed">
+            <p className="text-md md:text-lg text-text-light leading-relaxed">
               Tout a commencé dans l’atelier de mon père, artisan menuisier.
               Très jeune, j’ai appris à manier les outils, à comprendre les
               matières et à respecter le travail bien fait. Cette passion pour
               le concret ne m’a jamais quitté. Après plusieurs années dans le
               bâtiment, j’ai élargi mes compétences au dessin technique et à
               l’informatique. Aujourd’hui, je suis fier d’allier tradition
-              artisanale et innovation numérique. Mon objectif ? Offrir à mes
-              clients une prise en charge complète, humaine et efficace, du
-              premier croquis à la livraison finale.
+              artisanale et innovation. Mon objectif ? Offrir à mes clients une
+              prise en charge complète, humaine et efficace, du premier croquis
+              à la livraison finale.
             </p>
           </motion.div>
         </div>

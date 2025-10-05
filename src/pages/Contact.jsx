@@ -28,9 +28,8 @@ export default function Contact() {
         className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-secondary to-white px-4 py-12"
       >
         <div className="max-w-6xl w-full bg-white rounded-2xl shadow-card overflow-hidden grid grid-cols-1 md:grid-cols-2">
-          {/* Bloc gauche avec fond visuel et texte centré */}
+          {/* Bloc gauche */}
           <div className="relative bg-gradient-to-br from-primary/70 via-primary-dark/70 to-[#004e45]/70 text-white p-10 flex items-center justify-center text-center overflow-hidden">
-            {/* Bulles animées */}
             <div className="absolute inset-0 z-0">
               <motion.div
                 className="absolute -top-20 -left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl"
@@ -49,45 +48,38 @@ export default function Contact() {
               />
             </div>
 
-            {/* Contenu texte centré */}
             <div className="relative z-10 max-w-md space-y-5">
-              <h2 className="text-4xl font-title font-bold">BJD-PRO</h2>
-              <p className="text-white/90 text-lg leading-relaxed">
-                Artisan polyvalent à votre service pour tous vos travaux de{" "}
-                <span className="font-semibold">
-                  menuiserie, agencement intérieur, montage, rénovation
-                </span>{" "}
-                et
-                <span className="font-semibold"> petits dépannages</span>.
-              </p>
-              <p className="text-white/80">
-                Je mets un point d’honneur à offrir un travail de qualité,
-                soigné, durable et sur mesure — que ce soit pour votre maison,
-                appartement, bureau ou local professionnel.
+              <h2 className="text-xl md:text-2xl font-title font-semibold ">
+                BJD‑PRO
+              </h2>
+              <p className="text-base md:text-lg leading-relaxed text-white/90">
+                Artisan polyvalent, je transforme vos espaces avec soin,
+                précision et efficacité — de la menuiserie à la rénovation, chez
+                vous ou au travail.
               </p>
 
-              <div className="grid grid-cols-2 gap-3 text-sm mt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm md:text-base mt-6">
                 <div className="bg-white/10 rounded-xl p-3 backdrop-blur-sm">
                   🔨 <strong>Menuiserie</strong>
-                  <p className="text-white/80 text-xs">
+                  <p className="text-white/80 text-xs md:text-sm">
                     Pose, découpe, sur mesure
                   </p>
                 </div>
                 <div className="bg-white/10 rounded-xl p-3 backdrop-blur-sm">
                   🏠 <strong>Agencement</strong>
-                  <p className="text-white/80 text-xs">
+                  <p className="text-white/80 text-xs md:text-sm">
                     Placards, cuisines, bureaux
                   </p>
                 </div>
                 <div className="bg-white/10 rounded-xl p-3 backdrop-blur-sm">
                   ⚙️ <strong>Dépannage</strong>
-                  <p className="text-white/80 text-xs">
+                  <p className="text-white/80 text-xs md:text-sm">
                     Petits travaux rapides
                   </p>
                 </div>
                 <div className="bg-white/10 rounded-xl p-3 backdrop-blur-sm">
                   🎨 <strong>Finitions</strong>
-                  <p className="text-white/80 text-xs">
+                  <p className="text-white/80 text-xs md:text-sm">
                     Peinture, joints, entretien
                   </p>
                 </div>
@@ -95,20 +87,19 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Formulaire de contact connecté à Formspree */}
+          {/* Formulaire & contacts */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="p-10 space-y-6"
           >
-            <h3 className="text-2xl font-title font-semibold text-text-dark uppercase">
-              Contactez-moi dès aujourd’hui
+            <h3 className="text-xl md:text-2xl font-title font-semibold text-text-dark uppercase">
+              Contactez-moi
             </h3>
-            <p className="text-text-light">
-              Expliquez-moi votre projet, vos besoins ou vos urgences. Je vous
-              réponds rapidement avec une solution personnalisée et
-              transparente.
+            <p className="text-base md:text-lg text-text-light">
+              Décrivez-moi votre besoin — je vous réponds vite avec une solution
+              claire et sur mesure.
             </p>
 
             <form
@@ -121,31 +112,31 @@ export default function Contact() {
                 name="name"
                 placeholder="Votre nom complet"
                 required
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <input
                 type="email"
                 name="email"
                 placeholder="Votre adresse e-mail"
                 required
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <textarea
                 name="message"
                 rows="5"
                 placeholder="Décrivez vos besoins, vos travaux ou votre projet..."
                 required
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <button
                 type="submit"
                 className="w-full flex items-center justify-center gap-2 bg-primary text-white font-semibold py-3 rounded-xl hover:bg-primary-dark transition"
               >
-                <Send size={18} /> Envoyer mon message
+                <Send size={18} /> Envoyer
               </button>
             </form>
 
-            <div className="text-sm text-text-light border-t pt-4 space-y-2">
+            <div className="text-sm md:text-base text-text-light border-t pt-4 space-y-2">
               <div
                 className="flex items-center gap-2 cursor-pointer hover:underline"
                 onClick={() => handleCopy("contact@bjd-pro.com")}
@@ -166,8 +157,8 @@ export default function Contact() {
           </motion.div>
         </div>
       </motion.div>
-      <Footer/>
-    
+
+      <Footer />
     </>
   );
 }

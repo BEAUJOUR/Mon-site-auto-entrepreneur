@@ -24,33 +24,47 @@ module.exports = {
         "text-light": "#6c7a89",
         white: "#ffffff",
       },
-
       boxShadow: {
         soft: "0 10px 20px rgba(0, 0, 0, 0.05)",
         card: "0 6px 15px rgba(0, 0, 0, 0.05)",
       },
-
       borderRadius: {
         xl: "0.75rem",
         "2xl": "1.25rem",
       },
 
-      // 🩶 Police : Montserrat (équilibrée)
       fontFamily: {
-        sans: ["Montserrat", "sans-serif"],
-        title: ["Montserrat", "sans-serif"],
+        serif: [
+          "Didot",
+          "Didot LT STD",
+          "Hoefler Text",
+          "Garamond",
+          "Calisto MT",
+          "Times New Roman",
+          "serif",
+        ],
+        title: [
+          "Didot",
+          "Didot LT STD",
+          "Hoefler Text",
+          "Garamond",
+          "Calisto MT",
+          "Times New Roman",
+          "serif",
+        ],
       },
 
-      // 📏 Échelle typographique ajustée
+      // 💬 Augmentation globale de la typographie
       fontSize: {
-        sm: ["0.95rem", "1.6rem"], // petit texte (légende)
-        base: ["1.05rem", "1.9rem"], // corps de texte
-        lg: ["1.2rem", "2rem"], // paragraphes importants
-        xl: ["1.45rem", "2.2rem"], // sous-titres
-        "2xl": ["1.7rem", "2.3rem"], // titres secondaires
-        "3xl": ["2rem", "2.6rem"], // titres principaux
-        "4xl": ["2.4rem", "2.8rem"], // h1 sur desktop
-        "5xl": ["3rem", "3.2rem"], // très grand titre (landing)
+        xs: ["0.875rem", "1.3rem"], // 14px — petits éléments
+        sm: ["1rem", "1.5rem"], // 16px — captions lisibles
+        base: ["1.120rem", "1.75rem"], // 18px — texte normal confortable
+        md: ["1.25rem", "1.9rem"], // 20px — descriptions, cartes
+        lg: ["1.5rem", "2.2rem"], // 24px — sous-titres
+        xl: ["1.875rem", "2.4rem"], // 30px — titres section
+        "2xl": ["2.10rem", "2.8rem"], // 36px — titres forts
+        "3xl": ["3rem", "3.4rem"], // 48px — hero desktop
+        "4xl": ["3.50rem", "4rem"], // 60px
       },
     },
   },
