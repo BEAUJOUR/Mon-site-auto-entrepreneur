@@ -16,6 +16,7 @@ export default function Navbar() {
     { label: "Accueil", to: "/" },
     { label: "À propos", to: "/about" },
     { label: "Services", to: "/services" },
+    { label: "Projets", to: "/projets" },
     { label: "Contact", to: "/contact" },
   ];
 

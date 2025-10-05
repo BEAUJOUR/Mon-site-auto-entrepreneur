@@ -66,6 +66,15 @@ module.exports = {
         "3xl": ["3rem", "3.4rem"], // 48px — hero desktop
         "4xl": ["3.50rem", "4rem"], // 60px
       },
+      keyframes: {
+        circleAnim: {
+          "50%": { transform: "scale(0.7)" },
+          "100%": { transform: "scale(1)" },
+        },
+      },
+      animation: {
+        circleAnim: "circleAnim 16s infinite alternate",
+      },
     },
   },
   plugins: [],

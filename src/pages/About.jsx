@@ -3,130 +3,142 @@ import React from "react";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import { Hammer, Ruler, DraftingCompass, ClipboardList } from "lucide-react";
+import heroImage from "../assets/atelier-bjdpro.png";
 
 export default function About() {
-  const cards = [
-    {
-      title: "Agencement intérieur",
-      desc: "Pose de cloisons, faux plafonds, isolation, optimisation de l’espace. Chaque projet est pensé pour maximiser confort, esthétique et fonctionnalité.",
-      icon: <Hammer size={40} className="text-primary" />,
-    },
-    {
-      title: "Mobilier sur mesure",
-      desc: "Cuisine, dressing, meubles personnalisés selon vos besoins. Chaque pièce est conçue avec précision et souci du détail.",
-      icon: <Ruler size={40} className="text-primary" />,
-    },
-    {
-      title: "Conception & dessin 2D/3D",
-      desc: "Plans techniques, rendus 3D réalistes, relevés précis — je donne vie à vos idées avant même le premier coup de marteau.",
-      icon: <DraftingCompass size={40} className="text-primary" />,
-    },
-    {
-      title: "Métrage & Devis",
-      desc: "Relevés précis, calculs rigoureux et estimations détaillées pour une vision claire de votre projet dès le départ.",
-      icon: <ClipboardList size={40} className="text-primary" />,
-    },
-  ];
-
   const fadeIn = {
-    hidden: { opacity: 0, y: 50, scale: 0.98 },
-    visible: (i = 1) => ({
+    hidden: { opacity: 0, y: 50 },
+    visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      transition: {
-        delay: i * 0.1,
-        type: "spring",
-        damping: 22,
-        stiffness: 100,
-        duration: 0.8,
-      },
-    }),
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
   };
 
   return (
     <>
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.25 }}
-        variants={fadeIn}
-        className="bg-white py-20 px-4 text-center"
-      >
-        <div className="max-w-7xl mx-auto">
-          {/* TITRE + INTRO */}
+      {/* SECTION HERO – IMAGE ENTIÈRE */}
+     
+
+      {/* SECTION À PROPOS */}
+      <section className="py-20 px-6 bg-white text-center">
+        <div className="max-w-5xl mx-auto">
           <motion.h2
-            custom={0}
-            variants={fadeIn}
-            className="text-4xl md:text-5xl font-title font-bold text-text-dark mb-6"
-          >
-            Polyvalence et passion au service de vos projets
-          </motion.h2>
-
-          <motion.p
-            custom={1}
-            variants={fadeIn}
-            className="text-md md:text-lg text-text-light max-w-3xl mx-auto mb-12 leading-relaxed"
-          >
-            Depuis plus de 10 ans, je conçois, fabrique et transforme les
-            espaces de vie ou de travail. D’un chantier de rénovation à une
-            solution technique sur mesure, j’apporte une vision globale,
-            pratique et moderne.
-          </motion.p>
-
-          {/* CARTES */}
-          <motion.div
-            custom={2}
-            variants={fadeIn}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
-          >
-            {cards.map((c, i) => (
-              <motion.div
-                key={c.title}
-                custom={i}
-                variants={fadeIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.25 }}
-                className="bg-secondary rounded-2xl shadow-card p-6 hover:translate-y-[-5px] transition-all duration-500"
-              >
-                <div className="mb-4 flex justify-center">{c.icon}</div>
-                <h3 className="text-lg md:text-xl font-semibold text-text-dark mb-2">
-                  {c.title}
-                </h3>
-                <p className="text-base md:text-md text-text-light leading-relaxed">
-                  {c.desc}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* MON HISTOIRE */}
-          <motion.div
-            custom={3}
             variants={fadeIn}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-            className="mt-16 text-left max-w-4xl mx-auto"
+            className="text-4xl md:text-5xl font-bold text-text-dark mb-8"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-text-dark mb-4">
-              Mon histoire
+            À propos de <span className="text-primary">BJD PRO</span>
+          </motion.h2>
+
+          <motion.p
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
+            className="text-lg text-text-light leading-relaxed max-w-3xl mx-auto"
+          >
+            Je suis <strong>Jean Danor Beaujour</strong>, fondateur de{" "}
+            <strong>BJD PRO</strong>, une structure qui allie savoir-faire du
+            bâtiment, précision du métré et innovation dans l’agencement. Mon
+            parcours débute en 2007 comme apprenti maçon avant d’évoluer chef
+            d’équipe, puis chef de chantier, et enfin spécialiste en menuiserie
+            et agencement intérieur. Après une formation de métreur tous corps
+            d’état et en dessin 2D/3D, j’ai perfectionné ma maîtrise de la
+            conception et du suivi technique de chantier. Aujourd’hui,{" "}
+            <strong>BJD PRO</strong> incarne une vision : unir l’artisanat, la
+            technique et la précision pour des projets modernes, fiables et sur
+            mesure.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* SECTION MÉTIER */}
+      <section className="bg-secondary py-20 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <motion.div
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
+            className="order-2 md:order-1 text-left"
+          >
+            <h3 className="text-3xl font-bold text-text-dark mb-4">
+              Un partenaire de confiance pour vos projets
             </h3>
-            <p className="text-md md:text-lg text-text-light leading-relaxed">
-              Tout a commencé dans l’atelier de mon père, artisan menuisier.
-              Très jeune, j’ai appris à manier les outils, à comprendre les
-              matières et à respecter le travail bien fait. Cette passion pour
-              le concret ne m’a jamais quitté. Après plusieurs années dans le
-              bâtiment, j’ai élargi mes compétences au dessin technique et à
-              l’informatique. Aujourd’hui, je suis fier d’allier tradition
-              artisanale et innovation. Mon objectif ? Offrir à mes clients une
-              prise en charge complète, humaine et efficace, du premier croquis
-              à la livraison finale.
+            <p className="text-text-light text-lg leading-relaxed mb-6">
+              De l’étude à la pose, BJD PRO intervient sur tous types de projets
+              d’agencement intérieur, de rénovation ou de transformation
+              d’espaces. Chaque chantier est conduit avec sérieux, méthode et
+              souci du détail, en respectant les délais et les exigences du
+              client.
             </p>
+
+            <ul className="space-y-3 text-text-dark font-medium">
+              <li>🏗️ Travaux tous corps d’état – coordination globale</li>
+              <li>🪵 Fabrication et pose de mobilier sur mesure</li>
+              <li>📐 Métrage, relevés et plans d’exécution</li>
+              <li>🏠 Agencement complet d’espaces professionnels ou privés</li>
+            </ul>
+          </motion.div>
+
+          <motion.div
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
+            className="order-1 md:order-2"
+          >
+            <img
+              src={heroImage}
+              alt="Chantier BJD PRO"
+              className="rounded-3xl shadow-xl w-full object-cover"
+            />
           </motion.div>
         </div>
-      </motion.section>
+      </section>
+
+      {/* SECTION VALEURS */}
+      <section className="bg-white py-20 px-6 text-center">
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          className="max-w-5xl mx-auto"
+        >
+          <h3 className="text-3xl font-semibold text-text-dark mb-8">
+            Nos valeurs
+          </h3>
+
+          <div className="grid md:grid-cols-3 gap-10">
+            <div>
+              <Hammer size={42} className="mx-auto text-primary mb-4" />
+              <h4 className="text-xl font-bold mb-2">Savoir-faire</h4>
+              <p className="text-text-light">
+                Hérité de plus de 15 ans d’expérience terrain, le goût du
+                travail bien fait est au cœur de chaque réalisation.
+              </p>
+            </div>
+            <div>
+              <Ruler size={42} className="mx-auto text-primary mb-4" />
+              <h4 className="text-xl font-bold mb-2">Précision</h4>
+              <p className="text-text-light">
+                Un travail rigoureux, basé sur le détail, la mesure et la
+                fiabilité technique de chaque étape.
+              </p>
+            </div>
+            <div>
+              <DraftingCompass
+                size={42}
+                className="mx-auto text-primary mb-4"
+              />
+              <h4 className="text-xl font-bold mb-2">Accompagnement</h4>
+              <p className="text-text-light">
+                Une écoute attentive et un accompagnement personnalisé, de la
+                conception à la livraison.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </section>
 
       <Footer />
     </>
