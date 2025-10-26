@@ -1,4 +1,3 @@
-// src/components/Experts.jsx
 import {
   Wrench,
   ShowerHead,
@@ -91,7 +90,7 @@ export default function Experts() {
 
   return (
     <>
-      {/* SECTION PRINCIPALE */}
+      {/* EXPERTISE */}
       <motion.section
         variants={fadeIn}
         initial="hidden"
@@ -117,40 +116,30 @@ export default function Experts() {
             className="md:w-1/2 w-full text-center md:text-left"
           >
             <h2 className="font-bold text-text-dark mb-6 leading-snug text-[clamp(1.5rem,4vw,2.5rem)] sm:text-[clamp(2rem,3vw,2.8rem)]">
-              <span className="block">Expert dans la transformation</span>
-              <span className="block text-primary">
-                des espaces du quotidien
-              </span>
+          <span className="block">Créer des espaces utiles</span>
+          <span className="block text-primary">beaux, solides, durables</span>
             </h2>
 
             <p className="text-text-light mb-6 text-md md:text-lg leading-relaxed">
-              Chaque pièce mérite une attention unique. Mon approche allie
-              fonctionnalité, esthétisme et savoir-faire artisanal pour des
-              intérieurs qui durent.
+           Artisan du second œuvre, je conçois et rénove chaque pièce avec soin et précision.
             </p>
 
             <div className="space-y-5 mb-8">
               {[
                 {
-                  icon: (
-                    <LayoutTemplate className="text-primary w-6 h-6 mt-1 shrink-0" />
-                  ),
+                  icon: <LayoutTemplate className="text-primary w-6 h-6 mt-1 shrink-0" />,
                   title: "Conception sur-mesure",
-                  desc: "Plans précis et choix des matériaux adaptés à votre usage quotidien.",
+                  desc: "Plans clairs, choix de matériaux adaptés, et solutions pensées pour votre quotidien.",
                 },
                 {
-                  icon: (
-                    <ShowerHead className="text-primary w-6 h-6 mt-1 shrink-0" />
-                  ),
+                  icon: <ShowerHead className="text-primary w-6 h-6 mt-1 shrink-0" />,
                   title: "Rénovation complète",
-                  desc: "Démolition, plomberie, carrelage, mobilier... je m’occupe de tout.",
+                  desc: "Du sol au plafond : démontage, cloisons, carrelage, mobilier. Je gère tout, sans sous-traitance.",
                 },
                 {
-                  icon: (
-                    <Wrench className="text-primary w-6 h-6 mt-1 shrink-0" />
-                  ),
+                  icon: <Wrench className="text-primary w-6 h-6 mt-1 shrink-0" />,
                   title: "Installation professionnelle",
-                  desc: "Pose soignée et finitions robustes, prêtes à durer dans le temps.",
+                  desc: "Finitions robustes et soignées, pour un résultat net, fiable, et sans surprise.",
                 },
               ].map((item, i) => (
                 <motion.div
@@ -161,12 +150,8 @@ export default function Experts() {
                 >
                   {item.icon}
                   <div>
-                    <h4 className="font-semibold text-text-dark  text-lg md:text-xl">
-                      {item.title}
-                    </h4>
-                    <p className="text-text-light text-base md:text-md leading-relaxed">
-                      {item.desc}
-                    </p>
+                    <h4 className="font-semibold text-text-dark text-lg md:text-xl">{item.title}</h4>
+                    <p className="text-text-light text-base md:text-md leading-relaxed">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -182,7 +167,7 @@ export default function Experts() {
         </div>
       </motion.section>
 
-      {/* POURQUOI CHOISIR */}
+      {/* POURQUOI ME CHOISIR */}
       <motion.section
         variants={fadeIn}
         initial="hidden"
@@ -191,39 +176,29 @@ export default function Experts() {
         className="bg-white py-16 px-4 sm:px-6 lg:px-8 text-center"
       >
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text-dark mb-10 ">
+          <h2 className="text-2xl sm:text-3xl font-bold text-text-dark mb-10">
             Pourquoi choisir <span className="text-primary">BJD-PRO</span> ?
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
-                icon: (
-                  <ThumbsUp className="text-primary w-10 h-10 mx-auto mb-4" />
-                ),
+                icon: <ThumbsUp className="text-primary w-10 h-10 mx-auto mb-4" />,
                 title: "Satisfaction garantie",
-                desc: "Je m’engage à livrer un travail soigné, conforme à vos attentes, dans les délais convenus.",
+                desc: "Un engagement clair : un travail rigoureux, dans les temps, conforme à vos attentes.",
               },
               {
-                icon: (
-                  <PackageCheck className="text-primary w-10 h-10 mx-auto mb-4" />
-                ),
-                title: "Solution complète",
-                desc: "De la conception au montage, tout est pris en charge avec précision et transparence.",
+                icon: <PackageCheck className="text-primary w-10 h-10 mx-auto mb-4" />,
+                title: "Solution clé en main",
+                desc: "Un accompagnement complet : je prends en charge toutes les étapes, de l’idée à la pose.",
               },
               {
-                icon: (
-                  <UserCheck className="text-primary w-10 h-10 mx-auto mb-4" />
-                ),
+                icon: <UserCheck className="text-primary w-10 h-10 mx-auto mb-4" />,
                 title: "Un seul interlocuteur",
-                desc: "Plus de perte de temps ou de malentendus, vous parlez directement à celui qui conçoit et réalise.",
+                desc: "Un gain de temps et de clarté : je conçois, réalise et vous informe à chaque étape.",
               },
             ].map((card, i) => (
-              <motion.div
-                key={i}
-                variants={slideIn(i % 2 === 0 ? "left" : "right", i * 0.15)}
-                className="h-full"
-              >
+              <motion.div key={i} variants={slideIn(i % 2 === 0 ? "left" : "right", i * 0.15)} className="h-full">
                 <Card>
                   <div className="p-6 sm:p-8 min-h-[320px] flex flex-col justify-between rounded-2xl bg-secondary shadow-card hover:shadow-xl transition-all duration-500 group cursor-pointer">
                     {card.icon}
@@ -232,9 +207,7 @@ export default function Experts() {
                         {card.title}
                         <span className="absolute left-0 bottom-[-2px] w-0 h-[2px] bg-primary transition-all duration-500 group-hover:w-full" />
                       </h4>
-                      <p className="text-text-light text-base md:text-md leading-relaxed">
-                        {card.desc}
-                      </p>
+                      <p className="text-text-light text-base md:text-md leading-relaxed">{card.desc}</p>
                     </div>
                   </div>
                 </Card>
@@ -244,7 +217,7 @@ export default function Experts() {
         </div>
       </motion.section>
 
-      {/* ENGAGEMENT */}
+      {/* ENGAGEMENT FINAL */}
       <motion.section
         variants={fadeIn}
         initial="hidden"
@@ -253,44 +226,34 @@ export default function Experts() {
         className="bg-secondary py-16 px-4 sm:px-6 lg:px-8"
       >
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text-dark mb-10 ">
+          <h2 className="text-2xl sm:text-3xl font-bold text-text-dark mb-10">
             Mon engagement au-delà des travaux
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
               {
-                icon: (
-                  <ClipboardList className="text-primary w-10 h-10 mx-auto mb-4" />
-                ),
-                title: "Accompagnement",
-                desc: "Je vous accompagne à chaque étape : conseil, planification, choix des matériaux, suivi de chantier.",
+                icon: <ClipboardList className="text-primary w-10 h-10 mx-auto mb-4" />,
+                title: "Présence",
+                desc: "Présent à chaque étape : conseils, plans, choix de matériaux, suivi chantier.",
               },
               {
-                icon: (
-                  <ShieldCheck className="text-primary w-10 h-10 mx-auto mb-4" />
-                ),
-                title: "Fiabilité & transparence",
-                desc: "Des devis clairs, des délais respectés, une qualité irréprochable à chaque livraison.",
+                icon: <ShieldCheck className="text-primary w-10 h-10 mx-auto mb-4" />,
+                title: "Fiabilité",
+                desc: "Des devis lisibles, des délais réalistes, et un rendu qui respecte vos exigences.",
               },
               {
                 icon: <Smile className="text-primary w-10 h-10 mx-auto mb-4" />,
-                title: "Écoute & proximité",
-                desc: "Je prends le temps de comprendre votre besoin et d’y répondre au plus juste, avec attention.",
+                title: "Écoute",
+                desc: "Je prends le temps de comprendre votre projet et vos envies, sans jamais forcer.",
               },
               {
-                icon: (
-                  <UserCheck className="text-primary w-10 h-10 mx-auto mb-4" />
-                ),
-                title: "Polyvalence rare",
-                desc: "Allier artisanat, design, technique et digital me permet d’offrir une réponse complète et unique.",
+                icon: <UserCheck className="text-primary w-10 h-10 mx-auto mb-4" />,
+                title: "Polyvalence",
+                desc: "Mon profil hybride (dessin, technique, terrain) me permet une réponse unique et cohérente.",
               },
             ].map((item, i) => (
-              <motion.div
-                key={i}
-                variants={slideIn(i % 2 === 0 ? "right" : "left", i * 0.2)}
-                className="h-full"
-              >
+              <motion.div key={i} variants={slideIn(i % 2 === 0 ? "right" : "left", i * 0.2)} className="h-full">
                 <Card>
                   <div className="bg-white p-6 sm:p-8 min-h-[320px] flex flex-col justify-between rounded-2xl shadow-card hover:shadow-xl transition-all duration-500 group cursor-pointer">
                     {item.icon}
@@ -299,9 +262,7 @@ export default function Experts() {
                         {item.title}
                         <span className="absolute left-0 bottom-[-2px] w-0 h-[2px] bg-primary transition-all duration-500 group-hover:w-full" />
                       </h4>
-                      <p className="text-base md:text-md text-text-light leading-relaxed">
-                        {item.desc}
-                      </p>
+                      <p className="text-base md:text-md text-text-light leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
                 </Card>

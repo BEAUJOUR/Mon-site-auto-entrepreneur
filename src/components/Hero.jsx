@@ -30,29 +30,22 @@ export default function Hero() {
       <div className="relative z-20 mx-auto max-w-7xl grid items-center gap-12 md:grid-cols-2">
         {/* Texte gauche */}
         <div className="text-center md:text-left">
-          <motion.h1
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.8, type: "spring" }}
-            className="text-2xl sm:text-4xl md:text-5xl font-title font-extrabold uppercase tracking-tight text-text-dark leading-[1.4] sm:leading-[1.25]"
-          >
-            CRÉATEUR D’ESPACES <span className="text-primary">TECHNIQUES</span>
-            <br />
-            ET ESTHÉTIQUES
-          </motion.h1>
+       <motion.h1
+ 
+  className="text-2xl sm:text-4xl md:text-5xl font-title font-extrabold uppercase tracking-tight text-text-dark leading-[1.4] sm:leading-[1.25]"
+>
+  TRANSFORMER VOS IDÉES<br />
+  EN ESPACES VIVANTS ET BIEN PENSÉS
+</motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.8, type: "spring" }}
-            className="mt-6 text-md md:text-lg text-text-light max-w-prose mx-auto md:mx-0 leading-relaxed"
-          >
-            Agencement intérieur, mobilier sur mesure, conception 2D/3D et
-            développement web : un seul interlocuteur pour des projets pensés,
-            réalisés et livrés avec précision.
-          </motion.p>
+
+<motion.p
+
+  className="mt-6 text-md md:text-lg text-text-light max-w-prose mx-auto md:mx-0 leading-relaxed"
+>
+  Derrière chaque cloison posée, chaque meuble monté, il y a une intention : créer un lieu qui vous ressemble. Je suis artisan et métreur, je vous accompagne avec écoute, rigueur et passion, du premier croquis jusqu’à la dernière finition.
+</motion.p>
+
 
           <motion.div
             initial={{ opacity: 0, y: 25 }}

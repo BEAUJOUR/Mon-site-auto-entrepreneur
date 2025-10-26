@@ -101,7 +101,7 @@ export default function Contact() {
               Décrivez-moi votre besoin — je vous réponds vite avec une solution
               claire et sur mesure.
             </p>
-
+  
             <form
               action="https://formspree.io/f/xanpbndr"
               method="POST"
