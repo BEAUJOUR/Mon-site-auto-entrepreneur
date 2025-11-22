@@ -180,7 +180,7 @@ export default function Experts() {
             </div>
 
             <Link
-              to="/services"
+              to="/projets"
               className="inline-block bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark transition-all duration-500 text-base"
             >
               Voir mes réalisations
@@ -199,7 +199,7 @@ export default function Experts() {
       >
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-text-dark mb-10">
-            Pourquoi choisir <span className="text-primary">BJD-PRO</span> ?
+            Pourquoi choisir <span className="text-primary">BJD-HOME-PRO</span> ?
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">

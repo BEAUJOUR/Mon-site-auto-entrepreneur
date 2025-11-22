@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { projectsData } from "../data/projectsData";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
 
 export default function Project() {
   const [index, setIndex] = useState(0);
@@ -42,6 +44,8 @@ export default function Project() {
     initial: { opacity: 0, scale: 0.95, y: 50 },
     visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 1.2 } },
   };
+  const [openImage, setOpenImage] = useState(false);
+
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center px-4 md:px-10 py-16 bg-white overflow-hidden">
@@ -122,15 +126,39 @@ export default function Project() {
       </AnimatePresence>
 
       <div className="mt-10 text-center">
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={() => setOpenImage(true)}
           className="inline-block bg-primary text-white font-semibold px-8 py-3 rounded-full hover:bg-primary-dark shadow-md"
         >
           Voir le projet
-        </a>
+        </button>
       </div>
+      {openImage && (
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[999] flex items-center justify-center p-4">
+          {/* Fermer */}
+          <button
+            onClick={() => setOpenImage(false)}
+            className="absolute top-6 right-6 bg-white/10 p-3 rounded-full border border-white/20 text-white hover:bg-primary transition"
+          >
+            ✕
+          </button>
+
+          {/* Image */}
+          <img
+            src={project.img}
+            alt={project.title}
+            className="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl"
+          />
+
+          {/* Texte en dessous */}
+          <div className="absolute bottom-10 text-center text-white px-4">
+            <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
+            <p className="text-sm opacity-80 max-w-xl mx-auto">
+              {project.infos}
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
