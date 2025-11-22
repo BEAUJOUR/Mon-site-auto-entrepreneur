@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import { Hammer, Ruler, DraftingCompass, ClipboardList } from "lucide-react";
-import heroImage from "../assets/atelier-bjdpro.png";
+import heroImage from "../assets/logo_bjd.png";
 
 export default function About() {
   const fadeIn = {

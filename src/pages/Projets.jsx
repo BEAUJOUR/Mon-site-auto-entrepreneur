@@ -75,12 +75,12 @@ export default function Project() {
               {project.title}
             </motion.h1>
 
-            <p className="text-text-light text-base md:text-lg">
+            {/* <p className="text-text-light text-base md:text-lg">
               {project.date}
-            </p>
+            </p> */}
 
             <ul className="space-y-1 text-lg text-text-dark font-medium">
-              {project.languages?.map((lang) => (
+              {project.description?.map((lang) => (
                 <li key={lang}>{lang}</li>
               ))}
             </ul>

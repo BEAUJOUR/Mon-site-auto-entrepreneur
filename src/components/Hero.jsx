@@ -2,6 +2,8 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Link } from "react-router-dom";
+import logo from "../assets/photos/DSC_0960.JPG";
+import acceuil from "../assets/photos/DSC_0960.JPG";
 
 export default function Hero() {
   const ref = useRef(null);
@@ -21,7 +23,7 @@ export default function Hero() {
       {/* Arrière-plan parallaxe doux */}
       <motion.div
         style={{ y }}
-        className="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1581092588422-4c9c4f3cf1d5?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center opacity-25"
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-25"
         aria-hidden="true"
       />
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-white/85 to-white/95" />
@@ -87,7 +89,7 @@ export default function Hero() {
             style={{ perspective: "1200px" }}
           >
             <motion.img
-              src="https://images.ctfassets.net/j4m9q0fykyy4/1ueLP85DJ1Fh3gHwzOeB4T/1e3810d41a84d8a5ab2b197ec18bc436/2021-10-Outils-electroportatifs-scaled.jpg"
+              src={logo}
               alt="Atelier outillage"
               className="rounded-2xl shadow-card w-full object-cover"
               initial={{ rotateY: -35, opacity: 0 }}

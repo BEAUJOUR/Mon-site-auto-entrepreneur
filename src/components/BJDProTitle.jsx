@@ -9,9 +9,9 @@ export default function BJDProTitle() {
                    text-[clamp(1rem,2.5vw,1.4rem)] font-semibold"
       >
         <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-          BJD
+          BJD - HOME
         </span>
-        <span className="ml-1 text-text-dark">-PRO</span>
+        <span className="ml-1 text-text-dark">- PRO</span>
       </h1>
     </div>
   );
