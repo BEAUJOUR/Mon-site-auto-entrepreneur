@@ -34,7 +34,7 @@ export const projectsData = [
   },
   {
     id: 4,
-    title: "Aménagement intérieur – cloison & faux‑plafond",
+    title: "Aménagement intérieur – cloison et faux‑plafond",
     date: "Octobre 2023",
     description: ["Cloison modulaire et faux‑plafond sur mesure"],
     infos:
@@ -62,7 +62,7 @@ export const projectsData = [
       "Finitions menuiserie intérieure",
     ],
     infos:
-      "Réaménagement intérieur avec mobilier sur mesure, éclairage LED indirect et ambiance haut de gamme.",
+      "Réaménagement intérieur espace commercial avec mobilier sur mesure, éclairage LED indirect et ambiance haut de gamme.",
     img: "https://res.cloudinary.com/dl3ntuzaz/image/upload/v1763819838/DSC_0936_sqycqb.jpg",
     link: "https://res.cloudinary.com/dl3ntuzaz/image/upload/v1763819838/DSC_0936_sqycqb.jpg",
   },
@@ -81,27 +81,23 @@ export const projectsData = [
   },
   {
     id: 8, // adapter selon ta numérotation
-    title: "Aménagement intérieur – mobilier & finition",
+    title: "Aménagement intérieur",
     date: "Août 2023", // à ajuster selon la vraie date
-    description: [
-      "Création et installation de mobilier sur mesure",
-      "Finitions haut de gamme",
-    ],
+    description: ["Création espace sur mesure", "Finitions haut de gamme"],
     infos:
-      "Réalisation d’un projet d’agencement intérieur avec mobilier sur mesure, finitions laquées et éclairage intégré dans un espace commercial ou professionnel épuré.",
+      "Aménagement d’un espace commercial comprenant mobilier sur mesure, finitions laquées blanc satinée, sol en carrelage gris clair et éclairage LED encastré — design épuré et fonctionnel",
     img: "https://res.cloudinary.com/dl3ntuzaz/image/upload/v1763819831/20180716_123747_mlxmzq.jpg",
     link: "https://res.cloudinary.com/dl3ntuzaz/image/upload/v1763819831/20180716_123747_mlxmzq.jpg",
   },
   {
     id: 9, // adapte l’id si besoin
-    title: "Aménagement intérieur – agencement complet",
+    title: "Aménagement cuisine sur mesure",
     date: "Août 2023", // à adapter si la date réelle est différente
     description: [
-      "Agencement mobilier sur mesure",
-      "Pose et finition d’un espace commercial",
+      "Réalisation sur mesure",
+      "Pose et finition haut gamme",
     ],
-    infos:
-      "Aménagement d’un espace commercial comprenant mobilier sur mesure, finitions laquées blanc satinée, sol en carrelage gris clair et éclairage LED encastré — design épuré et fonctionnel.",
+    infos: "Réalisation d’une cuisine  sur mesure, finitions laquées.",
     img: "https://res.cloudinary.com/dl3ntuzaz/image/upload/v1763819830/20180817_165527_q1u2co.jpg",
     link: "https://res.cloudinary.com/dl3ntuzaz/image/upload/v1763819830/20180817_165527_q1u2co.jpg",
   },
@@ -153,11 +149,11 @@ export const projectsData = [
   },
   {
     id: 14, // adapte selon ta numérotation
-    title: "Comptoir bar & cuisine sur mesure",
+    title: "Comptoir bar et cuisine sur mesure",
     date: "Mars 2024", // ajuste à la vraie date du projet
     description: [
-      "Création de comptoir bar en magasin",
-      "Aménagement d’espace cuisine & bar",
+      "Création de comptoir bar",
+      "Aménagement d’espace cuisine et bar",
     ],
     infos:
       "Conception d’un îlot bar/cuisine sur mesure avec base laquée blanc, plan de travail noir épais, tabourets design blancs et agencement soigné.",

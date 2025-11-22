@@ -31,7 +31,7 @@ export default function Services() {
       icon: Wrench,
     },
     {
-      title: "Cuisine & Dressing",
+      title: "Cuisine et Dressing",
       desc: "Création sur mesure alliant esthétique, durabilité et fonctionnalité. Fabrication et pose clé en main.",
       icon: Hammer,
     },
@@ -51,7 +51,7 @@ export default function Services() {
       icon: Ruler,
     },
     {
-      title: "Métrage & devis",
+      title: "Métrage et devis",
       desc: "Mesures exactes, calculs précis et estimations détaillées pour un budget clair et maîtrisé.",
       icon: Ruler,
     },
@@ -178,22 +178,22 @@ export default function Services() {
           {[
             {
               icon: "💬",
-              title: "Premier contact & devis",
+              title: "Premier contact et devis",
               text: "Échange sur vos besoins, conseils personnalisés et devis clair et détaillé.",
             },
             {
               icon: "🧭",
-              title: "Étude & conception",
+              title: "Étude et conception",
               text: "Plans techniques, rendus 3D et validation des matériaux selon votre budget et vos goûts.",
             },
             {
               icon: "🪚",
-              title: "Fabrication & pose",
+              title: "Fabrication et pose",
               text: "Travail artisanal, finitions soignées et respect des délais convenus.",
             },
             {
               icon: "✅",
-              title: "Contrôle & satisfaction",
+              title: "Contrôle et satisfaction",
               text: "Livraison conforme à vos attentes avec accompagnement après projet.",
             },
           ].map((step, i) => (
@@ -275,7 +275,7 @@ export default function Services() {
                 </button>
 
                 <AnimatePresence>
-                  {openIndex === i && (
+                  {openIndex === i&(
                     <motion.p
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}

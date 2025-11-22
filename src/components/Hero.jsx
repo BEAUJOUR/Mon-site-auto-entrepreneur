@@ -32,22 +32,18 @@ export default function Hero() {
       <div className="relative z-20 mx-auto max-w-7xl grid items-center gap-12 md:grid-cols-2">
         {/* Texte gauche */}
         <div className="text-center md:text-left">
-       <motion.h1
- 
-  className="text-2xl sm:text-4xl md:text-5xl font-title font-extrabold uppercase tracking-tight text-text-dark leading-[1.4] sm:leading-[1.25]"
->
-  TRANSFORMER VOS IDÉES<br />
-  EN ESPACES VIVANTS ET BIEN PENSÉS
-</motion.h1>
+          <motion.h1 className="text-2xl sm:text-4xl md:text-5xl font-title font-extrabold uppercase tracking-tight text-text-dark leading-[1.4] sm:leading-[1.25]">
+            TRANSFORMER VOS IDÉES
+            <br />
+            EN ESPACES VIVANTS ET BIEN PENSÉS
+          </motion.h1>
 
-
-<motion.p
-
-  className="mt-6 text-md md:text-lg text-text-light max-w-prose mx-auto md:mx-0 leading-relaxed"
->
-  Derrière chaque cloison posée, chaque meuble monté, il y a une intention : créer un lieu qui vous ressemble. Je suis artisan et métreur, je vous accompagne avec écoute, rigueur et passion, du premier croquis jusqu’à la dernière finition.
-</motion.p>
-
+          <motion.p className="mt-6 text-md md:text-lg text-text-light max-w-prose mx-auto md:mx-0 leading-relaxed">
+            Derrière chaque cloison posée, chaque meuble monté, il y a une
+            intention : créer un lieu qui vous ressemble. Je suis artisan et
+            métreur, je vous accompagne avec écoute, rigueur et passion, du
+            premier croquis jusqu’à la dernière finition.
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 25 }}
@@ -91,7 +87,13 @@ export default function Hero() {
             <motion.img
               src={logo}
               alt="Atelier outillage"
-              className="rounded-2xl shadow-card w-full object-cover"
+              className="
+    rounded-2xl shadow-card
+    w-full
+    object-cover
+    h-auto
+    max-h-[70vh]   /* ⬅️ Limite la hauteur sur TOUTES les tailles d’écran */
+  "
               initial={{ rotateY: -35, opacity: 0 }}
               whileInView={{ rotateY: -40, opacity: 1 }}
               viewport={{ once: true }}

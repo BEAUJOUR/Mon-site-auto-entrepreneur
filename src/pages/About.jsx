@@ -18,7 +18,6 @@ export default function About() {
   return (
     <>
       {/* SECTION HERO – IMAGE ENTIÈRE */}
-     
 
       {/* SECTION À PROPOS */}
       <section className="py-20 px-6 bg-white text-center">
@@ -29,7 +28,7 @@ export default function About() {
             whileInView="visible"
             className="text-4xl md:text-5xl font-bold text-text-dark mb-8"
           >
-            À propos de <span className="text-primary">BJD PRO</span>
+            À propos de <span className="text-primary">BJD-HOME-PRO</span>
           </motion.h2>
 
           <motion.p
@@ -39,14 +38,14 @@ export default function About() {
             className="text-lg text-text-light leading-relaxed max-w-3xl mx-auto"
           >
             Je suis <strong>Jean Danor Beaujour</strong>, fondateur de{" "}
-            <strong>BJD PRO</strong>, une structure qui allie savoir-faire du
-            bâtiment, précision du métré et innovation dans l’agencement. Mon
+            <strong>BJD-HOME-PRO</strong>, une structure qui allie savoir-faire
+            du bâtiment, précision du métré et innovation dans l’agencement. Mon
             parcours débute en 2007 comme apprenti maçon avant d’évoluer chef
             d’équipe, puis chef de chantier, et enfin spécialiste en menuiserie
             et agencement intérieur. Après une formation de métreur tous corps
             d’état et en dessin 2D/3D, j’ai perfectionné ma maîtrise de la
             conception et du suivi technique de chantier. Aujourd’hui,{" "}
-            <strong>BJD PRO</strong> incarne une vision : unir l’artisanat, la
+            <strong>BJD-HOME-PRO</strong> incarne une vision : unir l’artisanat, la
             technique et la précision pour des projets modernes, fiables et sur
             mesure.
           </motion.p>
@@ -66,8 +65,8 @@ export default function About() {
               Un partenaire de confiance pour vos projets
             </h3>
             <p className="text-text-light text-lg leading-relaxed mb-6">
-              De l’étude à la pose, BJD PRO intervient sur tous types de projets
-              d’agencement intérieur, de rénovation ou de transformation
+              De l’étude à la pose, BJD-HOME-PRO intervient sur tous types de
+              projets d’agencement intérieur, de rénovation ou de transformation
               d’espaces. Chaque chantier est conduit avec sérieux, méthode et
               souci du détail, en respectant les délais et les exigences du
               client.
@@ -89,8 +88,27 @@ export default function About() {
           >
             <img
               src={heroImage}
-              alt="Chantier BJD PRO"
-              className="rounded-3xl shadow-xl w-full object-cover"
+              alt="logo BJD PRO"
+              className="
+      rounded-2xl 
+      shadow-xl 
+      object-cover 
+      w-full 
+      h-auto 
+      max-h-[65vh]
+      transition-transform 
+      duration-700 
+      hover:scale-[1.02]
+    "
+              style={{
+                transform: `
+        perspective(1100px) 
+        rotateY(-35deg)   
+         
+        translateZ(0px)
+      `,
+                transformStyle: "preserve-3d",
+              }}
             />
           </motion.div>
         </div>

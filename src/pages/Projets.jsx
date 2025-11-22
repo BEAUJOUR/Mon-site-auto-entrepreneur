@@ -39,58 +39,51 @@ export default function Project() {
   };
 
   const imgAnim = {
-    initial: {
-      opacity: 0,
-      scale: 0.95,
-      y: 50,
-    },
+    initial: { opacity: 0, scale: 0.95, y: 50 },
     visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 1.2 } },
   };
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center px-4 md:px-10 py-16 bg-white overflow-hidden">
-      {/* Cercle décoratif */}
+      {/* Cercle background (desktop only) */}
       <span
-        className="absolute bg-secondary rounded-full w-[380px] h-[380px] z-[-1] animate-[circleAnim_16s_infinite_alternate] hidden md:block"
+        className="absolute bg-secondary rounded-full w-[300px] h-[300px] z-[-1] animate-[circleAnim_16s_infinite_alternate] hidden md:block"
         style={{ left, top, transform: size }}
       ></span>
 
       <AnimatePresence mode="wait">
         <motion.div
           key={project.id}
-          className="w-full grid md:grid-cols-[38%,62%] gap-6 items-center max-w-6xl mx-auto"
+          className="w-full grid grid-cols-1 md:grid-cols-[38%,62%] gap-8 items-center max-w-6xl mx-auto"
           variants={variants}
           initial="initial"
           animate="visible"
           exit="exit"
         >
-          {/* Texte à gauche */}
-          <div className="text-center md:text-left space-y-4 px-2">
+          {/* TEXTE */}
+          <div className="text-center md:text-left space-y-3 px-2">
             <motion.h1
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="text-4xl md:text-5xl font-bold font-title text-primary-dark origin-right"
+              transition={{ duration: 1 }}
+              className="text-2xl sm:text-3xl md:text-5xl font-bold font-title text-primary-dark origin-right"
             >
               {project.title}
             </motion.h1>
 
-            {/* <p className="text-text-light text-base md:text-lg">
-              {project.date}
-            </p> */}
-
-            <ul className="space-y-1 text-lg text-text-dark font-medium">
+            <ul className="space-y-1 text-base sm:text-lg text-text-dark font-medium">
               {project.description?.map((lang) => (
                 <li key={lang}>{lang}</li>
               ))}
             </ul>
           </div>
 
-          {/* Image immersive avec boutons intégrés */}
+          {/* IMAGE */}
           <div className="relative flex justify-center items-center group w-full">
-            {/* Image */}
             <motion.div
-              className="rounded-3xl shadow-xl overflow-hidden w-full max-w-[800px] h-[460px] relative"
+              className="rounded-3xl shadow-xl overflow-hidden w-full max-w-[800px] 
+                         h-[230px] sm:h-[300px] md:h-[460px] 
+                         max-h-[60vh]"
               initial="initial"
               animate="visible"
               variants={imgAnim}
@@ -98,45 +91,42 @@ export default function Project() {
               <img
                 src={project.img}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
+                className="w-full h-full object-cover mx-auto"
               />
 
-              {/* Overlay info */}
-              <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 via-black/30 to-transparent text-white p-6 transition-all duration-500 opacity-0 group-hover:opacity-100">
-                <h3 className="text-2xl font-semibold text-primary mb-1">
+              {/* Hover infos */}
+              <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 via-black/30 to-transparent text-white p-6 opacity-0 group-hover:opacity-100">
+                <h3 className="text-xl sm:text-2xl font-semibold text-primary mb-1">
                   {project.title}
                 </h3>
-                <p className="text-sm leading-relaxed">{project.infos}</p>
+                <p className="text-sm">{project.infos}</p>
               </div>
 
-              {/* Bouton gauche sur image */}
+              {/* Boutons */}
               <button
                 onClick={prevProject}
-                className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/30 hover:bg-primary-dark text-white backdrop-blur-sm border border-white/20 p-3 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center"
+                className="absolute top-1/2 left-3 -translate-y-1/2 bg-black/30 hover:bg-primary-dark text-white p-2 sm:p-3 rounded-full"
               >
-                <ArrowLeft size={26} />
+                <ArrowLeft size={22} />
               </button>
 
-              {/* Bouton droite sur image */}
               <button
                 onClick={nextProject}
-                className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/30 hover:bg-primary-dark text-white backdrop-blur-sm border border-white/20 p-3 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center"
+                className="absolute top-1/2 right-3 -translate-y-1/2 bg-black/30 hover:bg-primary-dark text-white p-2 sm:p-3 rounded-full"
               >
-                <ArrowRight size={26} />
+                <ArrowRight size={22} />
               </button>
             </motion.div>
           </div>
         </motion.div>
       </AnimatePresence>
 
-      {/* Bouton Voir le site */}
       <div className="mt-10 text-center">
         <a
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block bg-primary text-white font-semibold px-8 py-3 rounded-full hover:bg-primary-dark transition-all duration-300 shadow-md"
+          className="inline-block bg-primary text-white font-semibold px-8 py-3 rounded-full hover:bg-primary-dark shadow-md"
         >
           Voir le projet
         </a>

@@ -101,11 +101,21 @@ export default function Experts() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
           <motion.div custom={0} variants={fadeIn} className="md:w-1/2 w-full">
             <img
-              src="https://cdn.manomano.com/promo-pages/inspirational-images/V2/FR/salle-de-bain-contemporain/image_0_0.jpg"
+              src="https://res.cloudinary.com/dl3ntuzaz/image/upload/v1763819839/DSC_0959_rj7mdy.jpg"
               alt="Salle de bain rénovée"
-              className="rounded-2xl shadow-xl object-cover w-full h-auto transition-transform duration-700 hover:scale-[1.02]"
+              className="
+      rounded-2xl 
+      shadow-xl 
+      object-cover 
+      w-full 
+      h-auto 
+      max-h-[75vh]      /* ⬅️ limite la hauteur en mobile + desktop */
+      transition-transform 
+      duration-700 
+      hover:scale-[1.02]
+    "
               style={{
-                transform: "perspective(1000px) rotateY(45deg)",
+                transform: "perspective(1000px) rotateY(35deg)",
               }}
             />
           </motion.div>
