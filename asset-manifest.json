@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Mon-site-auto-entrepreneur/static/css/main.0f29cb0a.css",
-    "main.js": "/Mon-site-auto-entrepreneur/static/js/main.1e5ebf62.js",
+    "main.css": "/Mon-site-auto-entrepreneur/static/css/main.32da92f3.css",
+    "main.js": "/Mon-site-auto-entrepreneur/static/js/main.797ecab3.js",
     "static/media/DSC_0960.JPG": "/Mon-site-auto-entrepreneur/static/media/DSC_0960.328cd8463e81f4b00cce.JPG",
     "static/media/logo_bjd.png": "/Mon-site-auto-entrepreneur/static/media/logo_bjd.d950e02d1b06a9c7f84a.png",
     "static/media/montserrat-latin-ext-700-normal.woff": "/Mon-site-auto-entrepreneur/static/media/montserrat-latin-ext-700-normal.7ce254c30a28da090e0f.woff",
@@ -45,11 +45,11 @@
     "static/media/montserrat-vietnamese-300-normal.woff": "/Mon-site-auto-entrepreneur/static/media/montserrat-vietnamese-300-normal.8d0a4e4202c04fb6ebb3.woff",
     "static/media/montserrat-vietnamese-500-normal.woff": "/Mon-site-auto-entrepreneur/static/media/montserrat-vietnamese-500-normal.e8417c6c86cec1596ca8.woff",
     "index.html": "/Mon-site-auto-entrepreneur/index.html",
-    "main.0f29cb0a.css.map": "/Mon-site-auto-entrepreneur/static/css/main.0f29cb0a.css.map",
-    "main.1e5ebf62.js.map": "/Mon-site-auto-entrepreneur/static/js/main.1e5ebf62.js.map"
+    "main.32da92f3.css.map": "/Mon-site-auto-entrepreneur/static/css/main.32da92f3.css.map",
+    "main.797ecab3.js.map": "/Mon-site-auto-entrepreneur/static/js/main.797ecab3.js.map"
   },
   "entrypoints": [
-    "static/css/main.0f29cb0a.css",
-    "static/js/main.1e5ebf62.js"
+    "static/css/main.32da92f3.css",
+    "static/js/main.797ecab3.js"
   ]
 }
