@@ -1,3 +1,6 @@
+/* ------------------------------------ */
+/* 1) BASE LAYER                        */
+/* ------------------------------------ */
 @layer base {
   body {
     -webkit-font-smoothing: antialiased;
@@ -5,26 +8,39 @@
     background-color: theme("colors.white");
   }
 }
+
+/* ------------------------------------ */
+/* 2) TAILWIND                          */
+/* ------------------------------------ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ------------------------------------ */
+/* 3) GOOGLE FONTS                      */
+/* ------------------------------------ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
 
-
+/* ------------------------------------ */
+/* 4) VARIABLES ROOT                    */
+/* ------------------------------------ */
 :root {
   --bg: 0 0% 100%;
   --fg: 224 71% 4%;
   --muted: 220 14% 96%;
-  --primary: 172 100% 36%;       /* #00b8a9 */
-  --primary-dark: 172 100% 28%;  /* #00917c */
-  --secondary: 185 100% 98%;     /* #f1fbfc */
-  --text-dark: 212 70% 20%;      /* #10375c */
-  --text-light: 210 10% 60%;     /* #6c7a89 */
+  --primary: 172 100% 36%;
+  --primary-dark: 172 100% 28%;
+  --secondary: 185 100% 98%;
+  --text-dark: 212 70% 20%;
+  --text-light: 210 10% 60%;
   --white: 0 0% 100%;
   --border: 220 14% 90%;
   --ring: 172 100% 36%;
 }
 
+/* ------------------------------------ */
+/* 5) MODE DARK                         */
+/* ------------------------------------ */
 .dark {
   --bg: 224 10% 10%;
   --fg: 0 0% 100%;
@@ -37,4 +53,63 @@
   --white: 0 0% 100%;
   --border: 224 10% 20%;
   --ring: 172 100% 50%;
+}
+
+
+/* ------------------------------------ */
+/* 6) 🔥🔥🔥 TON CODE SERPENT DOIT ÊTRE ICI 🔥🔥🔥 */
+/* ------------------------------------ */
+
+/* === CARD WRAPPER === */
+.perfect-runner {
+  position: relative;
+  overflow: hidden;
+}
+
+/* === SVG OVERLAY === */
+.snake-border {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Le contenu passe devant */
+.perfect-runner>*:not(.snake-border) {
+  position: relative;
+  z-index: 1;
+}
+
+/* === PROPRIÉTÉS GLOBALES DES SERPENTS === */
+.snake-path {
+  fill: none;
+  stroke-width: 2px;
+  /* FIN */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 500 250;
+  /* Serpent + vide */
+  animation: snakeMove 15s linear infinite;
+  /* LENT */
+}
+
+/* === SERPENT BLEU === */
+.snake-path-blue {
+  stroke:#00b8a9;
+  filter: drop-shadow(0 0 4px #00b8a9);
+}
+
+/* === SERPENT ROSE OPPOSÉ === */
+/* .snake-path-dark {
+  stroke: #10375c;
+  filter: drop-shadow(0 0 4px #10375c);
+  animation-delay: -7s;
+}  */
+/* OPPOSÉ PARFAIT (50% d’un cycle de 14s) */
+
+/* Animation du mouvement — périmètre approximé mais stable */
+@keyframes snakeMove {
+  to {
+    stroke-dashoffset: -500;
+  }
 }

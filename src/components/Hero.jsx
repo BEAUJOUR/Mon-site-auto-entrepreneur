@@ -2,8 +2,8 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Link } from "react-router-dom";
-import logo from "../assets/photos/DSC_0960.JPG";
-import acceuil from "../assets/photos/DSC_0960.JPG";
+// import logo from "../assets/photos/DSC_0960.JPG";
+
 
 export default function Hero() {
   const ref = useRef(null);
@@ -85,7 +85,7 @@ export default function Hero() {
             style={{ perspective: "1200px" }}
           >
             <motion.img
-              src={logo}
+              src="https://res.cloudinary.com/dl3ntuzaz/image/upload/v1763819840/DSC_0960_i8ogjk.jpg"
               alt="Atelier outillage"
               className="
     rounded-2xl shadow-card

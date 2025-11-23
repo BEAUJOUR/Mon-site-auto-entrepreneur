@@ -28,7 +28,10 @@ export default function About() {
             whileInView="visible"
             className="text-4xl md:text-5xl font-bold text-text-dark mb-8"
           >
-            À propos de <span className="text-primary">BJD-HOME-PRO</span>
+            À propos de{" "}
+            <span className="font-title font-semibold text-primary">
+              BJD-HOME-PRO
+            </span>
           </motion.h2>
 
           <motion.p
@@ -45,9 +48,9 @@ export default function About() {
             et agencement intérieur. Après une formation de métreur tous corps
             d’état et en dessin 2D/3D, j’ai perfectionné ma maîtrise de la
             conception et du suivi technique de chantier. Aujourd’hui,{" "}
-            <strong>BJD-HOME-PRO</strong> incarne une vision : unir l’artisanat, la
-            technique et la précision pour des projets modernes, fiables et sur
-            mesure.
+            <strong>BJD-HOME-PRO</strong> incarne une vision : unir l’artisanat,
+            la technique et la précision pour des projets modernes, fiables et
+            sur mesure.
           </motion.p>
         </div>
       </section>
@@ -61,7 +64,7 @@ export default function About() {
             whileInView="visible"
             className="order-2 md:order-1 text-left"
           >
-            <h3 className="text-3xl font-bold text-text-dark mb-4">
+            <h3 className="text-3xl font-bold text-text-dark mb-4 font-title">
               Un partenaire de confiance pour vos projets
             </h3>
             <p className="text-text-light text-lg leading-relaxed mb-6">
@@ -122,7 +125,7 @@ export default function About() {
           whileInView="visible"
           className="max-w-5xl mx-auto"
         >
-          <h3 className="text-3xl font-semibold text-text-dark mb-8">
+          <h3 className="text-3xl font-semibold text-text-dark mb-8 font-title ">
             Nos valeurs
           </h3>
 

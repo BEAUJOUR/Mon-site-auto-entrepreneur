@@ -142,17 +142,50 @@ export default function Services() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.25 }}
-              className="bg-white/90 backdrop-blur-sm border border-primary/10 rounded-2xl shadow-md p-8 sm:p-10 text-center hover:shadow-xl hover:border-primary/30 transition-all duration-500"
+              className="perfect-runner bg-white/90 rounded-2xl shadow-md p-8 sm:p-10 text-center 
+             transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 
+             hover:shadow-xl hover:shadow-primary/20 relative"
             >
+              {/* 🐍 Border serpent animée */}
+              <svg className="snake-border" width="100%" height="100%">
+                <rect
+                  className="snake-path snake-path-blue"
+                  x="0"
+                  y="0"
+                  width="100%"
+                  height="100%"
+                  rx="22"
+                  ry="22"
+                />
+                <rect
+                  className="snake-path snake-path-dark"
+                  x="0"
+                  y="0"
+                  width="100%"
+                  height="100%"
+                  rx="22"
+                  ry="22"
+                />
+              </svg>
+
+              {/* 🔥 Icône animée + Glow + Plus haute */}
               <motion.div
                 style={{ y: iconY, scale: iconScale }}
-                className="flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-6 rounded-full bg-primary/10 text-primary-dark shadow-inner"
+                className="flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 mx-auto 
+               mb-8 rounded-full bg-primary/10 text-primary-dark shadow-inner 
+               shadow-primary/30 ring-2 ring-primary/30 backdrop-blur-sm
+               transition-all duration-500 hover:shadow-primary hover:ring-primary"
               >
-                <service.icon size={38} />
+                <service.icon
+                  size={48}
+                  className="drop-shadow-[0_0_8px_rgba(0,184,169,0.6)]"
+                />
               </motion.div>
+
               <h3 className="text-xl md:text-2xl font-semibold mb-3">
                 {service.title}
               </h3>
+
               <p className="text-base md:text-md text-gray-700 leading-relaxed max-w-xs mx-auto">
                 {service.desc}
               </p>
@@ -232,9 +265,7 @@ export default function Services() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.25 }}
-      >
-        <Testimonials />
-      </motion.div>
+      ></motion.div>
 
       <motion.section
         variants={fadeIn}
@@ -275,7 +306,7 @@ export default function Services() {
                 </button>
 
                 <AnimatePresence>
-                  {openIndex === i&(
+                  {openIndex === i && (
                     <motion.p
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
@@ -292,7 +323,7 @@ export default function Services() {
           </div>
         </div>
       </motion.section>
-
+      <Testimonials />
       <motion.section
         variants={fadeIn}
         initial="hidden"

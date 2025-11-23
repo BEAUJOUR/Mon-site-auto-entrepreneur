@@ -125,16 +125,16 @@ export default function Experts() {
             variants={fadeIn}
             className="md:w-1/2 w-full text-center md:text-left"
           >
-            <h2 className="font-bold text-text-dark mb-6 leading-snug text-[clamp(1.5rem,4vw,2.5rem)] sm:text-[clamp(2rem,3vw,2.8rem)]">
+            <h2 className="font-title font-semibold text-text-dark mb-6 leading-snug text-[clamp(1.5rem,4vw,2.5rem)] sm:text-[clamp(2rem,3vw,2.8rem)]">
               <span className="block text-primary">
                 L’utile devient esthétique
               </span>
             </h2>
 
-            <p className="text-text-light mb-6 text-md md:text-lg leading-relaxed">
+            {/* <p className="text-text-light mb-6 text-md md:text-lg leading-relaxed">
               Artisan du second œuvre, je conçois et rénove chaque pièce avec
               soin et précision.
-            </p>
+            </p> */}
 
             <div className="space-y-5 mb-8">
               {[
@@ -198,8 +198,12 @@ export default function Experts() {
         className="bg-white py-16 px-4 sm:px-6 lg:px-8 text-center"
       >
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text-dark mb-10">
-            Pourquoi choisir <span className="text-primary">BJD-HOME-PRO</span> ?
+          <h2 className="text-2xl sm:text-3xl  text-text-dark mb-10 font-title font-semibold">
+            Pourquoi choisir{" "}
+            <span className="text-primary font-title font-semibold">
+              BJD-HOME-PRO
+            </span>{" "}
+            ?
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -260,7 +264,7 @@ export default function Experts() {
         className="bg-secondary py-16 px-4 sm:px-6 lg:px-8"
       >
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text-dark mb-10">
+          <h2 className="text-2xl sm:text-3xl font-title font-semibold text-text-dark mb-10">
             Mon engagement au-delà des travaux
           </h2>
 

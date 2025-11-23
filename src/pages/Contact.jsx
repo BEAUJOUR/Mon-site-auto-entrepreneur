@@ -50,7 +50,7 @@ export default function Contact() {
 
             <div className="relative z-10 max-w-md space-y-5">
               <h2 className="text-xl md:text-2xl font-title font-semibold ">
-                BJD‑PRO
+                BJD‑HOME-PRO
               </h2>
               <p className="text-base md:text-lg leading-relaxed text-white/90">
                 Artisan polyvalent, je transforme vos espaces avec soin,
