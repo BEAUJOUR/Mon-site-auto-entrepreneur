@@ -7,7 +7,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 
 ### `npm start`
-Trigger deploy
+
+echo "deploy trigger" >> README.md
 
 
 Runs the app in the development mode.\
