@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
-import { Hammer, Ruler, DraftingCompass, ClipboardList } from "lucide-react";
+import { Hammer, Ruler, DraftingCompass } from "lucide-react";
 import heroImage from "../assets/logo_bjd.png";
 
 export default function About() {

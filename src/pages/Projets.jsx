@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { projectsData } from "../data/projectsData";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 export default function Project() {
