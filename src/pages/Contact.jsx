@@ -139,7 +139,7 @@ export default function Contact() {
             <div className="text-sm md:text-base text-text-light border-t pt-4 space-y-2">
               <div
                 className="flex items-center gap-2 cursor-pointer hover:underline"
-                onClick={() => handleCopy("contact@bjd-pro.com")}
+                onClick={() => handleCopy("contact@bjd-pro.fr")}
               >
                 <Mail className="text-primary" size={18} /> contact@bjd-home-pro.fr
               </div>
