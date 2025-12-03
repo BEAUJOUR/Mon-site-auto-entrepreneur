@@ -141,7 +141,7 @@ export default function Contact() {
                 className="flex items-center gap-2 cursor-pointer hover:underline"
                 onClick={() => handleCopy("contact@bjd-pro.com")}
               >
-                <Mail className="text-primary" size={18} /> contact@bjd-home-pro.com
+                <Mail className="text-primary" size={18} /> contact@bjd-home-pro.fr
               </div>
               <div
                 className="flex items-center gap-2 cursor-pointer hover:underline"
