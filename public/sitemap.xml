@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- PAGE D’ACCUEIL -->
   <url>
     <loc>https://www.bjd-home-pro.fr</loc>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- PAGES PRINCIPALES -->
+  <url>
+    <loc>https://www.bjd-home-pro.fr/#/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bjd-home-pro.fr/#/services</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.bjd-home-pro.fr/#/projets</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.bjd-home-pro.fr/#/services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -24,10 +33,36 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- ⭐ PAGES SEO LOCALES (BOOST RÉFÉRENCEMENT GOOGLE) -->
+
   <url>
-    <loc>https://www.bjd-home-pro.fr/#/about</loc>
+    <loc>https://www.bjd-home-pro.fr/#/metreur-tce-seine-et-marne-77</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bjd-home-pro.fr/#/metreur-tce-seine-saint-denis-93</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bjd-home-pro.fr/#/agencement-interieur-idf</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bjd-home-pro.fr/#/apporteur-affaires-btp-idf</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bjd-home-pro.fr/#/paris-metreur-tce</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
 </urlset>
