@@ -43,8 +43,11 @@ export default function ProjectGallery() {
                 <img
                   src={project.img}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-[260px] object-cover"
                 />
+
                 <div className="absolute inset-0 bg-black/0 hover:bg-black/40 transition flex items-end">
                   <div className="p-5 text-white opacity-0 hover:opacity-100 transition">
                     <h3 className="text-lg font-semibold">{project.title}</h3>
@@ -67,36 +70,45 @@ export default function ProjectGallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="
-        fixed inset-0 z-[999]
-        bg-black/90 backdrop-blur-sm
-        overflow-y-auto
-      "
+              fixed inset-0 z-[999]
+              bg-black/90 backdrop-blur-sm
+              overflow-y-auto
+            "
           >
-            {/* Close */}
+            {/* CLOSE */}
             <button
               onClick={close}
-              className="fixed top-6 right-6 z-[1000] text-white bg-white/10 hover:bg-primary p-3 rounded-full transition"
+              className="fixed top-6 right-6 z-[1000]
+                         text-white bg-white/10
+                         hover:bg-primary
+                         p-3 rounded-full transition"
             >
               <X />
             </button>
 
-            {/* Prev */}
+            {/* PREV */}
             <button
               onClick={prev}
-              className="fixed left-6 top-1/2 -translate-y-1/2 z-[1000] text-white bg-white/10 hover:bg-primary p-3 rounded-full transition"
+              className="fixed left-6 top-1/2 -translate-y-1/2 z-[1000]
+                         text-white bg-white/10
+                         hover:bg-primary
+                         p-3 rounded-full transition"
             >
               <ArrowLeft />
             </button>
 
-            {/* Next */}
+            {/* NEXT */}
             <button
               onClick={next}
-              className="fixed right-6 top-1/2 -translate-y-1/2 z-[1000] text-white bg-white/10 hover:bg-primary p-3 rounded-full transition"
+              className="fixed right-6 top-1/2 -translate-y-1/2 z-[1000]
+                         text-white bg-white/10
+                         hover:bg-primary
+                         p-3 rounded-full transition"
             >
               <ArrowRight />
             </button>
 
-            {/* CONTENU */}
+            {/* CONTENT */}
             <div className="min-h-screen flex flex-col items-center justify-center px-6 py-20">
               {/* IMAGE */}
               <motion.img
@@ -105,13 +117,14 @@ export default function ProjectGallery() {
                 transition={{ duration: 0.4 }}
                 src={projectsData[activeIndex].img}
                 alt={projectsData[activeIndex].title}
+                decoding="async"
                 className="
-            max-w-full
-            max-h-[70vh]
-            object-contain
-            rounded-xl
-            shadow-2xl
-          "
+                  max-w-full
+                  max-h-[70vh]
+                  object-contain
+                  rounded-xl
+                  shadow-2xl
+                "
               />
 
               {/* TEXTE */}
