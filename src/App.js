@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -24,28 +24,26 @@ export default function App() {
           <Route path="/projets" element={<Projets />} />
           <Route path="/contact" element={<Contact />} />
 
+          {/* Pages locales SEO */}
           <Route
             path="/metreur-tce-seine-et-marne-77"
             element={<Metreur77 />}
           />
-
           <Route
             path="/metreur-tce-seine-saint-denis-93"
             element={<Metreur93 />}
           />
-
           <Route
             path="/agencement-interieur-idf"
             element={<IDFMetreurAgencement />}
           />
-
           <Route
             path="/apporteur-affaires-btp-idf"
             element={<ApporteurAffairesBtpIdf />}
           />
-
           <Route path="/paris-metreur-tce" element={<ParisMetreurTCE />} />
 
+          {/* Fallback */}
           <Route path="*" element={<Home />} />
         </Routes>
       </main>

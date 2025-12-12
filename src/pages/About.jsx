@@ -7,7 +7,7 @@ import heroImage from "../assets/logo_bjd.png";
 
 export default function About() {
   const fadeIn = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
@@ -17,99 +17,85 @@ export default function About() {
 
   return (
     <>
-      {/* SECTION HERO – IMAGE ENTIÈRE */}
+      {/* ===== HERO SECTION ===== */}
+      <section className="relative w-full h-[55vh] flex items-center justify-center bg-gradient-to-b from-black/70 to-black/40 overflow-hidden">
+        <img
+          src={heroImage}
+          alt="BJD-HOME-PRO"
+          className="absolute inset-0 w-full h-full object-contain opacity-10"
+        />
 
-      {/* SECTION À PROPOS */}
-      <section className="py-20 px-6 bg-white text-center">
-        <div className="max-w-5xl mx-auto">
-          <motion.h2
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            className="text-4xl md:text-5xl font-bold text-text-dark mb-8"
-          >
-            À propos de{" "}
-            <span className="font-title font-semibold text-primary">
-              BJD-HOME-PRO
-            </span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            className="text-lg text-text-light leading-relaxed max-w-3xl mx-auto"
-          >
-            Je suis <strong>Jean Danor Beaujour</strong>, fondateur de{" "}
-            <strong>BJD-HOME-PRO</strong>, une structure qui allie savoir-faire
-            du bâtiment, précision du métré et innovation dans l’agencement. Mon
-            parcours débute en 2007 comme apprenti maçon avant d’évoluer chef
-            d’équipe, puis chef de chantier, et enfin spécialiste en menuiserie
-            et agencement intérieur. Après une formation de métreur tous corps
-            d’état et en dessin 2D/3D, j’ai perfectionné ma maîtrise de la
-            conception et du suivi technique de chantier. Aujourd’hui,{" "}
-            <strong>BJD-HOME-PRO</strong> incarne une vision : unir l’artisanat,
-            la technique et la précision pour des projets modernes, fiables et
-            sur mesure.
-          </motion.p>
-        </div>
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+          className="relative z-10 text-center text-white px-4"
+        >
+          <h1 className="text-5xl font-title font-bold tracking-wide">
+            À propos de BJD-HOME-PRO
+          </h1>
+          <p className="max-w-2xl mx-auto mt-4 text-lg opacity-90">
+            Expertise, précision et excellence au service de vos projets.
+          </p>
+        </motion.div>
       </section>
 
-      {/* SECTION MÉTIER */}
-      <section className="bg-secondary py-20 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      {/* ===== SECTION BIO ===== */}
+      <section className="py-20 px-6 bg-gray-50">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center">
+          {/* TEXT */}
           <motion.div
             variants={fadeIn}
             initial="hidden"
             whileInView="visible"
-            className="order-2 md:order-1 text-left"
+            className="space-y-6"
           >
-            <h3 className="text-3xl font-bold text-text-dark mb-4 font-title">
-              Un partenaire de confiance pour vos projets
-            </h3>
-            <p className="text-text-light text-lg leading-relaxed mb-6">
-              De l’étude à la pose, BJD-HOME-PRO intervient sur tous types de
-              projets d’agencement intérieur, de rénovation ou de transformation
-              d’espaces. Chaque chantier est conduit avec sérieux, méthode et
-              souci du détail, en respectant les délais et les exigences du
-              client.
+            <h2 className="text-4xl font-bold text-text-dark font-title">
+              Agencement et Métré
+            </h2>
+
+            <p className="text-lg text-text-light leading-relaxed">
+              Je suis <strong>Jean Danor Beaujour</strong>, fondateur de{" "}
+              <strong>BJD-HOME-PRO</strong>. J’accompagne particuliers,
+              architectes et entreprises grâce à une expertise qui allie
+              précision du métré, maîtrise technique du bâtiment et sens du
+              détail dans l’agencement intérieur.
             </p>
 
-            <ul className="space-y-3 text-text-dark font-medium">
-              <li>🏗️ Travaux tous corps d’état – coordination globale</li>
-              <li>🪵 Fabrication et pose de mobilier sur mesure</li>
-              <li>📐 Métrage, relevés et plans d’exécution</li>
-              <li>🏠 Agencement complet d’espaces professionnels ou privés</li>
-            </ul>
+            <p className="text-lg text-text-light leading-relaxed">
+              Fort d’une expérience confirmée et d’une formation spécialisée en{" "}
+              <strong>métré TCE</strong>, je garantis des interventions fiables,
+              documentées et adaptées à chaque projet, du relevé initial à la
+              mise en œuvre finale.
+            </p>
           </motion.div>
 
+          {/* IMAGE — VERSION 3D PERSPECTIVE */}
           <motion.div
             variants={fadeIn}
             initial="hidden"
             whileInView="visible"
-            className="order-1 md:order-2"
+            className="flex justify-center"
           >
             <img
               src={heroImage}
-              alt="logo BJD PRO"
+              alt="logo BJD HOME PRO"
               className="
-      rounded-2xl 
-      shadow-xl 
-      object-cover 
-      w-full 
-      h-auto 
-      max-h-[65vh]
-      transition-transform 
-      duration-700 
-      hover:scale-[1.02]
-    "
+                rounded-2xl 
+                shadow-2xl
+                w-full 
+                max-w-md 
+                transition-transform 
+                duration-700 
+                hover:scale-[1.05]
+                hover:rotate-y-0
+              "
               style={{
                 transform: `
-        perspective(1100px) 
-        rotateY(-35deg)   
-         
-        translateZ(0px)
-      `,
+                  perspective(1200px)
+                  rotateY(-35deg)
+                  translateZ(0px)
+                `,
                 transformStyle: "preserve-3d",
               }}
             />
@@ -117,48 +103,47 @@ export default function About() {
         </div>
       </section>
 
-      {/* SECTION VALEURS */}
-      <section className="bg-white py-20 px-6 text-center">
-        <motion.div
-          variants={fadeIn}
-          initial="hidden"
-          whileInView="visible"
-          className="max-w-5xl mx-auto"
-        >
-          <h3 className="text-3xl font-semibold text-text-dark mb-8 font-title ">
-            Nos valeurs
+      {/* ===== SECTION EXPERTISE ===== */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto text-center">
+          <h3 className="text-3xl font-title font-semibold text-text-dark mb-12">
+            Mes domaines d’expertise
           </h3>
 
           <div className="grid md:grid-cols-3 gap-10">
-            <div>
-              <Hammer size={42} className="mx-auto text-primary mb-4" />
-              <h4 className="text-xl font-bold mb-2">Savoir-faire</h4>
+            <div className="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-xl transition">
+              <Hammer size={50} className="mx-auto text-primary mb-4" />
+              <h4 className="text-xl font-bold mb-2">Agencement intérieur</h4>
               <p className="text-text-light">
-                Hérité de plus de 15 ans d’expérience terrain, le goût du
-                travail bien fait est au cœur de chaque réalisation.
+                Création sur mesure, optimisation d’espace, cuisines, mobilier,
+                dressing et rénovation intérieure.
               </p>
             </div>
-            <div>
-              <Ruler size={42} className="mx-auto text-primary mb-4" />
-              <h4 className="text-xl font-bold mb-2">Précision</h4>
+
+            <div className="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-xl transition">
+              <Ruler size={50} className="mx-auto text-primary mb-4" />
+              <h4 className="text-xl font-bold mb-2">Métré TCE</h4>
               <p className="text-text-light">
-                Un travail rigoureux, basé sur le détail, la mesure et la
-                fiabilité technique de chaque étape.
+                Relevés précis, quantitatifs, estimations et plans techniques
+                pour particuliers, artisans et architectes.
               </p>
             </div>
-            <div>
+
+            <div className="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-xl transition">
               <DraftingCompass
-                size={42}
+                size={50}
                 className="mx-auto text-primary mb-4"
               />
-              <h4 className="text-xl font-bold mb-2">Accompagnement</h4>
+              <h4 className="text-xl font-bold mb-2">
+                Apporteur d’affaires BTP
+              </h4>
               <p className="text-text-light">
-                Une écoute attentive et un accompagnement personnalisé, de la
-                conception à la livraison.
+                Mise en relation fiable et sérieuse entre clients et
+                professionnels du bâtiment.
               </p>
             </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       <Footer />
