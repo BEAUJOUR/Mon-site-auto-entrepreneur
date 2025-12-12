@@ -103,6 +103,8 @@ export default function Experts() {
             <img
               src="https://res.cloudinary.com/dl3ntuzaz/image/upload/v1763819839/DSC_0959_rj7mdy.jpg"
               alt="Salle de bain rénovée"
+              width="900"
+              height="600"
               className="
       rounded-2xl 
       shadow-xl 
@@ -168,9 +170,9 @@ export default function Experts() {
                 >
                   {item.icon}
                   <div>
-                    <h4 className="font-semibold text-text-dark text-lg md:text-xl">
+                    <h3 className="font-semibold text-text-dark text-lg md:text-xl">
                       {item.title}
-                    </h4>
+                    </h3>
                     <p className="text-text-light text-base md:text-md leading-relaxed">
                       {item.desc}
                     </p>
@@ -239,10 +241,10 @@ export default function Experts() {
                   <div className="p-6 sm:p-8 min-h-[320px] flex flex-col justify-between rounded-2xl bg-secondary shadow-card hover:shadow-xl transition-all duration-500 group cursor-pointer">
                     {card.icon}
                     <div>
-                      <h4 className="text-lg md:text-xl font-semibold text-text-dark mb-2 relative inline-block">
+                      <h3 className="text-lg md:text-xl font-semibold text-text-dark mb-2 relative inline-block">
                         {card.title}
                         <span className="absolute left-0 bottom-[-2px] w-0 h-[2px] bg-primary transition-all duration-500 group-hover:w-full" />
-                      </h4>
+                      </h3>
                       <p className="text-text-light text-base md:text-md leading-relaxed">
                         {card.desc}
                       </p>
@@ -306,10 +308,10 @@ export default function Experts() {
                   <div className="bg-white p-6 sm:p-8 min-h-[320px] flex flex-col justify-between rounded-2xl shadow-card hover:shadow-xl transition-all duration-500 group cursor-pointer">
                     {item.icon}
                     <div>
-                      <h4 className="text-lg md:text-xl font-semibold text-text-dark mb-2 relative inline-block">
+                      <h3 className="text-lg md:text-xl font-semibold text-text-dark mb-2 relative inline-block">
                         {item.title}
                         <span className="absolute left-0 bottom-[-2px] w-0 h-[2px] bg-primary transition-all duration-500 group-hover:w-full" />
-                      </h4>
+                      </h3>
                       <p className="text-base md:text-md text-text-light leading-relaxed">
                         {item.desc}
                       </p>

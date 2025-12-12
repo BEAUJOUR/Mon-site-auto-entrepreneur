@@ -322,7 +322,7 @@ export default function Services() {
       </motion.section>
 
       {/* ⭐ Témoignages */}
-      <Testimonials />
+      {/* <Testimonials /> */}
 
       {/* ⭐ CTA */}
       <motion.section

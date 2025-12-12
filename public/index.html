@@ -1,51 +1,92 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+    <!-- ================= BASE ================= -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <title>
-      BJD-HOME-PRO : Agencement intérieur, Menuiserie sur mesure et Métreur en
-      Île-de-France
+      BJD-HOME-PRO – Agencement intérieur, Menuiserie sur mesure et Métreur en Île-de-France
     </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#00b8a9" />
-    <meta name="author" content="Jean Danor" />
-    <meta name="copyright"  content="BJD-HOME-PRO" />
+    <meta name="author" content="Jean Danor Beaujour" />
+    <meta name="copyright" content="BJD-HOME-PRO" />
     <meta name="robots" content="index, follow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no" />
 
-    <!-- ⭐ META DESCRIPTION SEO (IMPORTANT) -->
-   <meta name="description" content="BJD-HOME-PRO : agencement intérieur, menuiserie sur mesure, cloisons, plâtrerie, cuisines, dressings, salles de bain, travaux de finition et services de métreur en Île-de-France. Artisan spécialisé pour particuliers et professionnels." />
+    <!-- ================= SEO ================= -->
+    <meta
+      name="description"
+      content="BJD-HOME-PRO : agencement intérieur, menuiserie sur mesure, cloisons, plâtrerie, cuisines, dressings, salles de bain, travaux de finition et services de métreur en Île-de-France. Artisan spécialisé pour particuliers et professionnels."
+    />
 
+    <link rel="canonical" href="https://www.bjd-home-pro.fr/" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="%PUBLIC_URL%/logo_bjd.png" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo_bjd.png" />
+    <!-- ================= FAVICON ================= -->
+    <link rel="icon" href="%PUBLIC_URL%/logo_bjd.webp" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo_bjd.webp" />
+
+    <!-- ================= GOOGLE FONTS (OPTIMISÉ) ================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap"
       rel="stylesheet"
     />
 
-    <!-- ⭐ OPEN GRAPH PROPRE (pour Google + Réseaux sociaux) -->
+    <!-- ================= OPEN GRAPH ================= -->
+    <meta property="og:locale" content="fr_FR" />
     <meta
       property="og:title"
-      content="BJD-HOME-PRO – Agencement, Menuiserie, Cloisons & Métreur"
+      content="BJD-HOME-PRO – Agencement intérieur, Menuiserie et Métreur"
     />
     <meta
       property="og:description"
-      content="Agencement intérieur, menuiserie sur mesure, cloisons, plâtrerie, cuisine, dressing, salle de bain, finitions et services de métreur en Île-de-France."
+      content="Agencement intérieur, menuiserie sur mesure, cuisines, dressings, salles de bain, finitions et services de métreur en Île-de-France."
     />
-
-    <meta property="og:image" content="%PUBLIC_URL%/logo_bjd.png" />
+    <meta property="og:image" content="https://www.bjd-home-pro.fr/logo_bjd.png" />
     <meta property="og:url" content="https://www.bjd-home-pro.fr/" />
     <meta property="og:type" content="website" />
 
-    <!-- Twitter -->
+    <!-- ================= TWITTER ================= -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="BJD-HOME-PRO – Agencement intérieur et Métreur en Île-de-France"
+    />
+    <meta
+      name="twitter:description"
+      content="Agencement intérieur, menuiserie sur mesure et services de métreur en Île-de-France. Artisan pour particuliers et professionnels."
+    />
+    <meta name="twitter:image" content="https://www.bjd-home-pro.fr/logo_bjd.webp" />
+
+    <!-- ================= SCHEMA.ORG ================= -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HomeAndConstructionBusiness",
+        "name": "BJD-HOME-PRO",
+        "url": "https://www.bjd-home-pro.fr",
+        "logo": "https://www.bjd-home-pro.fr/logo_bjd.webp",
+        "telephone": "+33745494620",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "60 rue François Ier",
+          "postalCode": "75008",
+          "addressLocality": "Paris",
+          "addressCountry": "FR"
+        },
+        "areaServed": "Île-de-France",
+        "founder": "Jean Danor Beaujour"
+      }
+    </script>
   </head>
 
   <body>
+    <!-- ================= CLEAN URL (HASH / PARAMS) ================= -->
     <script>
       (function () {
         var params = new URLSearchParams(window.location.search);
@@ -57,9 +98,10 @@
       })();
     </script>
 
-    <noscript
-      >Activez JavaScript pour profiter de l'expérience complète.</noscript
-    >
+    <noscript>
+      Activez JavaScript pour profiter de l'expérience complète du site BJD-HOME-PRO.
+    </noscript>
+
     <div id="root"></div>
   </body>
 </html>

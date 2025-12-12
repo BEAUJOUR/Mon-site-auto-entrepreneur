@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Testimonials() {
   const testimonials = [
@@ -35,87 +36,94 @@ export default function Testimonials() {
     },
   ];
 
+  // 👇 Détection mobile
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   return (
-    <section className="relative py-32 bg-gradient-to-tr from-white to-secondary overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-gradient-to-tr from-white to-secondary overflow-hidden">
       {/* Titre */}
       <motion.h2
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="text-4xl font-bold text-text-dark text-center mb-20 tracking-tight"
+        transition={{ duration: 0.6 }}
+        className="text-3xl md:text-4xl font-bold text-text-dark text-center mb-14 md:mb-20"
       >
         Ils nous ont fait confiance
       </motion.h2>
 
-      {/* Défilement horizontal premium */}
+      {/* Défilement */}
       <div className="relative w-full overflow-hidden">
         <motion.div
-          className="flex gap-10"
+          className="flex gap-6 md:gap-10"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
             repeat: Infinity,
-            duration: 60,
+            duration: isMobile ? 28 : 40, // 🚀 plus rapide en mobile
             ease: "linear",
           }}
         >
           {[...testimonials, ...testimonials].map((t, i) => (
-            <motion.article
+            <article
               key={i}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.3 }}
               className="
                 flex-shrink-0
-                w-[440px]
-                bg-white/85
+                w-[85vw] sm:w-[360px] md:w-[420px]
+                bg-white/90
                 backdrop-blur-md
                 border border-primary/10
                 rounded-xl
                 shadow-soft
-                px-10
-                py-8
-                hover:shadow-card
+                px-6 md:px-8
+                py-6 md:py-8
               "
             >
               {/* Étoiles */}
-              <div className="flex gap-1 mb-4">
+              <div className="flex gap-1 mb-3">
                 {Array.from({ length: t.rating }).map((_, idx) => (
                   <Star
                     key={idx}
-                    size={18}
+                    size={16}
                     className="fill-primary text-primary"
                   />
                 ))}
               </div>
 
               {/* Texte */}
-              <p className="text-text-light italic leading-relaxed text-lg mb-6">
+              <p className="text-text-light italic leading-relaxed text-base md:text-lg mb-5">
                 “{t.text}”
               </p>
 
               {/* Séparateur */}
-              <div className="w-12 h-[2px] bg-primary/30 mb-4 rounded-full" />
+              <div className="w-10 h-[2px] bg-primary/30 mb-3 rounded-full" />
 
               {/* Nom */}
-              <cite className="block text-text-dark font-semibold tracking-wide">
+              <cite className="block text-text-dark font-semibold text-sm md:text-base">
                 {t.name}
               </cite>
-            </motion.article>
+            </article>
           ))}
         </motion.div>
 
-        {/* Dégradés latéraux */}
-        <div className="pointer-events-none absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white via-white/80 to-transparent" />
-        <div className="pointer-events-none absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white via-white/80 to-transparent" />
+        {/* Dégradés */}
+        <div className="pointer-events-none absolute top-0 left-0 w-20 md:w-32 h-full bg-gradient-to-r from-white via-white/80 to-transparent" />
+        <div className="pointer-events-none absolute top-0 right-0 w-20 md:w-32 h-full bg-gradient-to-l from-white via-white/80 to-transparent" />
       </div>
 
-      {/* Phrase de crédibilité */}
+      {/* Texte bas */}
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.6, duration: 1 }}
-        className="mt-20 max-w-2xl mx-auto text-center text-text-light text-lg leading-relaxed px-6"
+        transition={{ delay: 0.4, duration: 0.8 }}
+        className="mt-14 md:mt-20 max-w-2xl mx-auto text-center text-text-light text-base md:text-lg leading-relaxed px-6"
       >
         Une exigence constante dans la qualité d’exécution, le respect des
         engagements et le soin du détail.

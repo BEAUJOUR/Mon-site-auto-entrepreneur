@@ -2,8 +2,6 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Link } from "react-router-dom";
-// import logo from "../assets/photos/DSC_0960.JPG";
-
 
 export default function Hero() {
   const ref = useRef(null);
@@ -20,31 +18,34 @@ export default function Hero() {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      {/* Arrière-plan parallaxe doux */}
+      {/* Parallax background */}
       <motion.div
         style={{ y }}
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-25"
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-20"
         aria-hidden="true"
       />
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-white/85 to-white/95" />
 
-      {/* Contenu Hero */}
+      {/* Overlay plus contrasté */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-white/90 to-white/100" />
+
+      {/* Contenu */}
       <div className="relative z-20 mx-auto max-w-7xl grid items-center gap-12 md:grid-cols-2">
-        {/* Texte gauche */}
+        {/* Texte */}
         <div className="text-center md:text-left">
-          <motion.h1 className="text-2xl sm:text-4xl md:text-5xl font-title font-extrabold uppercase tracking-tight text-text-dark leading-[1.4] sm:leading-[1.25]">
-            TRANSFORMER VOS IDÉES
+          <motion.h1 className="text-2xl sm:text-4xl md:text-5xl font-title font-extrabold uppercase tracking-tight text-text-dark leading-[1.35] sm:leading-[1.25]">
+            Transformer vos idées
             <br />
-            EN ESPACES VIVANTS ET BIEN PENSÉS
+            en espaces vivants et bien pensés
           </motion.h1>
 
-          <motion.p className="mt-6 text-md md:text-lg text-text-light max-w-prose mx-auto md:mx-0 leading-relaxed">
+          <motion.p className="mt-6 text-base md:text-lg text-text-dark/80 max-w-prose mx-auto md:mx-0 leading-relaxed">
             Derrière chaque cloison posée, chaque meuble monté, il y a une
-            intention : créer un lieu qui vous ressemble. Je suis artisan et
-            métreur, je vous accompagne avec écoute, rigueur et passion, du
-            premier croquis jusqu’à la dernière finition.
+            intention : créer un lieu qui vous ressemble. Artisan et métreur, je
+            vous accompagne avec écoute, rigueur et passion, du premier croquis
+            jusqu’à la dernière finition.
           </motion.p>
 
+          {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -54,22 +55,42 @@ export default function Hero() {
           >
             <Link
               to="/services"
-              className="bg-primary text-white px-6 py-3 rounded-2xl font-semibold shadow-soft hover:bg-primary-dark transition-all duration-500"
+              aria-label="Découvrir les services BJD-HOME-PRO"
+              className="
+                bg-primary text-white
+                px-6 py-3 rounded-2xl font-semibold
+                shadow-soft
+                hover:bg-primary-dark
+                focus-visible:outline
+                focus-visible:outline-2
+                focus-visible:outline-primary-dark
+                transition-all duration-300
+              "
             >
               Découvrir mes services
             </Link>
+
             <Link
               to="/contact"
-              className="border-2 border-primary text-primary px-6 py-3 rounded-2xl font-semibold hover:bg-primary hover:text-white transition-all duration-500"
+              aria-label="Contacter BJD-HOME-PRO"
+              className="
+                border-2 border-primary text-primary
+                px-6 py-3 rounded-2xl font-semibold
+                hover:bg-primary hover:text-white
+                focus-visible:outline
+                focus-visible:outline-2
+                focus-visible:outline-primary
+                transition-all duration-300
+              "
             >
               Me contacter
             </Link>
           </motion.div>
         </div>
 
-        {/* Image flottante 3D droite */}
+        {/* Image */}
         <motion.div
-          className="flex justify-center items-center"
+          className="flex justify-center items-center mb-12 sm:mb-0"
           animate={{
             x: [0, 6, 0, -6, 0],
             y: [0, -4, 0, 4, 0],
@@ -86,14 +107,14 @@ export default function Hero() {
           >
             <motion.img
               src="https://res.cloudinary.com/dl3ntuzaz/image/upload/v1763819840/DSC_0960_i8ogjk.jpg"
-              alt="Atelier outillage"
+              alt="Atelier et outillage professionnel"
+              width="900"
+              height="600"
               className="
-    rounded-2xl shadow-card
-    w-full
-    object-cover
-    h-auto
-    max-h-[70vh]   /* ⬅️ Limite la hauteur sur TOUTES les tailles d’écran */
-  "
+                rounded-2xl shadow-card
+                w-full object-cover h-auto
+                max-h-[70vh]
+              "
               initial={{ rotateY: -35, opacity: 0 }}
               whileInView={{ rotateY: -40, opacity: 1 }}
               viewport={{ once: true }}

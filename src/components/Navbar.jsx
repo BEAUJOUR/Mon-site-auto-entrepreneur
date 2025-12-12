@@ -24,15 +24,19 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-border">
       <div className="mx-auto max-w-7xl px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-       <Link to="/" className="flex items-center gap-2">
- <img
-  src={logo}
-  alt="BJD Build logo"
-  className="h-14 w-auto hover:scale-100 transition-transform duration-300"
-/>
-  <BJDProTitle/>
-</Link>
+        <Link to="/" className="flex items-center gap-2">
+          <img
+            src="/logo_bjd.webp"
+            alt="Logo BJD-HOME-PRO"
+            width="96"
+            height="96"
+            loading="eager"
+            decoding="async"
+            className="h-14 w-auto"
+          />
 
+          <BJDProTitle />
+        </Link>
 
         {/* Menu Desktop */}
         <nav className="hidden md:flex gap-6 text-sm text-text-dark font-medium uppercase">
