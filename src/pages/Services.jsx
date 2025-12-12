@@ -225,10 +225,15 @@ export default function Services() {
                   <div className="flex justify-end pr-24">
                     {isLeft ? (
                       <div className="flex items-center justify-center w-24 h-24 rounded-full bg-white/40 backdrop-blur-xl shadow-lg ring-2 ring-primary/30 overflow-hidden">
+                      
                         <img
                           src={step.icon}
                           alt={step.title}
-                          className="w-full h-full object-cover rounded-full"
+                          width="96"
+                          height="96"
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-contain rounded-full"
                         />
                       </div>
                     ) : (
