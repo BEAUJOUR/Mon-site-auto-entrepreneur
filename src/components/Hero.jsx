@@ -106,15 +106,20 @@ export default function Hero() {
             style={{ perspective: "1200px" }}
           >
             <motion.img
-              src="https://res.cloudinary.com/dl3ntuzaz/image/upload/v1763819840/DSC_0960_i8ogjk.jpg"
+              src="https://res.cloudinary.com/dl3ntuzaz/image/upload/f_auto,q_auto,w_800/DSC_0960_i8ogjk.jpg"
+              srcSet="
+    https://res.cloudinary.com/dl3ntuzaz/image/upload/f_auto,q_auto,w_400/DSC_0960_i8ogjk.jpg 400w,
+    https://res.cloudinary.com/dl3ntuzaz/image/upload/f_auto,q_auto,w_800/DSC_0960_i8ogjk.jpg 800w,
+    https://res.cloudinary.com/dl3ntuzaz/image/upload/f_auto,q_auto,w_1200/DSC_0960_i8ogjk.jpg 1200w
+  "
+              sizes="(max-width: 768px) 90vw, 800px"
               alt="Atelier et outillage professionnel"
               width="900"
               height="600"
-              className="
-                rounded-2xl shadow-card
-                w-full object-cover h-auto
-                max-h-[70vh]
-              "
+              fetchpriority="high"
+              loading="eager"
+              decoding="async"
+              className="rounded-2xl shadow-card w-full object-cover h-auto max-h-[70vh]"
               initial={{ rotateY: -35, opacity: 0 }}
               whileInView={{ rotateY: -40, opacity: 1 }}
               viewport={{ once: true }}
