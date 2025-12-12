@@ -78,10 +78,12 @@ export default function ProjectGallery() {
             {/* CLOSE */}
             <button
               onClick={close}
-              className="fixed top-6 right-6 z-[1000]
-                         text-white bg-white/10
-                         hover:bg-primary
-                         p-3 rounded-full transition"
+              className="
+                fixed top-6 right-6 z-[1000]
+                text-white bg-white/10
+                hover:bg-primary
+                p-3 rounded-full transition
+              "
             >
               <X />
             </button>
@@ -89,10 +91,12 @@ export default function ProjectGallery() {
             {/* PREV */}
             <button
               onClick={prev}
-              className="fixed left-6 top-1/2 -translate-y-1/2 z-[1000]
-                         text-white bg-white/10
-                         hover:bg-primary
-                         p-3 rounded-full transition"
+              className="
+                fixed left-6 top-1/2 -translate-y-1/2 z-[1000]
+                text-white bg-white/10
+                hover:bg-primary
+                p-3 rounded-full transition
+              "
             >
               <ArrowLeft />
             </button>
@@ -100,10 +104,12 @@ export default function ProjectGallery() {
             {/* NEXT */}
             <button
               onClick={next}
-              className="fixed right-6 top-1/2 -translate-y-1/2 z-[1000]
-                         text-white bg-white/10
-                         hover:bg-primary
-                         p-3 rounded-full transition"
+              className="
+                fixed right-6 top-1/2 -translate-y-1/2 z-[1000]
+                text-white bg-white/10
+                hover:bg-primary
+                p-3 rounded-full transition
+              "
             >
               <ArrowRight />
             </button>
