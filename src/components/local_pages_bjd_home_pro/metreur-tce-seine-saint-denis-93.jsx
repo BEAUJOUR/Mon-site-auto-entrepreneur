@@ -1,3 +1,4 @@
+// src/pages/local/Metreur93.jsx
 import React from "react";
 import { Helmet } from "react-helmet";
 
@@ -8,35 +9,49 @@ export default function Metreur93() {
         <title>Métreur TCE Seine-Saint-Denis (93) | BJD-HOME-PRO</title>
         <meta
           name="description"
-          content="Métreur TCE en Seine-Saint-Denis (93) – BJD-HOME-PRO : métré, estimation de travaux, plans techniques, menuiserie sur mesure et agencement intérieur. Intervention rapide dans tout le 93."
+          content="Métreur TCE en Seine-Saint-Denis (93). BJD-HOME-PRO vous accompagne pour le métré, le chiffrage, l’estimation de travaux, l’agencement intérieur et la menuiserie sur mesure."
         />
-        <meta
-          name="keywords"
-          content="métreur 93, métreur Seine-Saint-Denis, métré travaux 93, estimation BTP 93, métreur TCE 93, agencement 93, BJD-HOME-PRO"
+        <link
+          rel="canonical"
+          href="https://www.bjd-home-pro.fr/metreur-tce-seine-saint-denis-93"
         />
       </Helmet>
 
-      <main className="p-6 max-w-3xl mx-auto local-page">
-        {/* HERO */}
-        <section className="local-hero">
-          <h1>Métreur TCE en Seine-Saint-Denis (93) – BJD-HOME-PRO</h1>
-          <p>
-            J&apos;interviens dans tout le département du{" "}
-            <strong>Seine-Saint-Denis (93)</strong> pour vos besoins en métré
-            TCE, chiffrage, plans techniques, menuiserie intérieure et
-            agencement sur-mesure.
+      <main className="max-w-5xl mx-auto px-6 py-20 text-text-dark">
+        {/* ==================== HERO ==================== */}
+        <section className="mb-16">
+          <h1 className="text-3xl md:text-4xl font-bold mb-6">
+            Métreur TCE en Seine-Saint-Denis (93) – BJD-HOME-PRO
+          </h1>
+
+          <p className="text-lg leading-relaxed text-text-light max-w-3xl">
+            BJD-HOME-PRO intervient dans tout le département de la
+            Seine-Saint-Denis (93) pour vos besoins en{" "}
+            <strong>métré TCE</strong>,{" "}
+            <strong>chiffrage et estimation de travaux</strong>,{" "}
+            <strong>plans techniques</strong>,{" "}
+            <strong>agencement intérieur</strong> et{" "}
+            <strong>menuiserie sur mesure</strong>.
+            <br />
+            <br />
+            L’objectif est de sécuriser vos projets grâce à des{" "}
+            <strong>quantitatifs fiables</strong> et un{" "}
+            <strong>budget maîtrisé</strong>, avant le lancement des travaux.
           </p>
         </section>
 
-        {/* PRESTATIONS */}
-        <section>
-          <h2>Prestations proposées en Seine-Saint-Denis</h2>
-          <ul>
-            <li>Métré TCE (tous corps d&apos;état)</li>
+        {/* ==================== PRESTATIONS ==================== */}
+        <section className="mb-14">
+          <h2 className="text-2xl font-semibold mb-4">
+            Prestations proposées en Seine-Saint-Denis
+          </h2>
+
+          <ul className="list-disc pl-6 space-y-2 text-text-light">
+            <li>Métré TCE (tous corps d’état)</li>
             <li>Relevés sur site et quantitatifs détaillés</li>
-            <li>Plans techniques, croquis et notes d&apos;agencement</li>
-            <li>Estimation, préparation de devis et analyse budgétaire</li>
-            <li>Études menuiserie intérieure &amp; agencement sur-mesure</li>
+            <li>Analyse de plans architecte et documents techniques</li>
+            <li>Chiffrage, estimation et préparation des devis</li>
+            <li>Études d’agencement intérieur et menuiserie sur mesure</li>
             <li>
               Accompagnement pour particuliers, architectes et entreprises du
               BTP
@@ -44,22 +59,32 @@ export default function Metreur93() {
           </ul>
         </section>
 
-        {/* POURQUOI */}
-        <section>
-          <h2>Pourquoi faire appel à BJD-HOME-PRO&nbsp;?</h2>
-          <ul>
+        {/* ==================== POURQUOI ==================== */}
+        <section className="mb-14">
+          <h2 className="text-2xl font-semibold mb-4">
+            Pourquoi faire appel à BJD-HOME-PRO&nbsp;?
+          </h2>
+
+          <ul className="list-disc pl-6 space-y-2 text-text-light">
             <li>Expertise en métré TCE et second œuvre</li>
-            <li>Précision, réactivité et sérieux</li>
-            <li>Connaissance du terrain en Seine-Saint-Denis</li>
-            <li>Accompagnement complet : métré, plans, estimation</li>
+            <li>Précision, rigueur et réactivité</li>
+            <li>Bonne connaissance du terrain en Seine-Saint-Denis (93)</li>
+            <li>Accompagnement complet : métré, plans et estimation</li>
           </ul>
         </section>
 
-        {/* ZONES */}
+        {/* ==================== ZONES ==================== */}
         <section>
-          <h2>Zones d&apos;intervention dans le 93</h2>
-          <p>Intervention dans tout le département du 93 :</p>
-          <ul>
+          <h2 className="text-2xl font-semibold mb-4">
+            Zones d’intervention en Seine-Saint-Denis (93)
+          </h2>
+
+          <p className="leading-relaxed text-text-light mb-6">
+            BJD-HOME-PRO intervient sur l’ensemble du département, notamment
+            dans les communes suivantes :
+          </p>
+
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-10 text-text-light">
             <li>Saint-Denis</li>
             <li>Aubervilliers</li>
             <li>La Courneuve</li>

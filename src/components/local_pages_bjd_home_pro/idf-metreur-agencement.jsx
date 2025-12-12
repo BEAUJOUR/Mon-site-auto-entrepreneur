@@ -3,64 +3,76 @@ import React from "react";
 
 export default function IDFMetreurAgencement() {
   return (
-    <main className="local-page">
-      {/* -------------------- HERO -------------------- */}
-      <section className="local-hero">
-        <h1>
-          Métreur &amp; Agencement intérieur en Île-de-France – BJD-HOME-PRO
+    <main className="max-w-5xl mx-auto px-6 py-20 text-text-dark">
+      {/* ==================== HERO ==================== */}
+      <section className="mb-16">
+        <h1 className="text-3xl md:text-4xl font-bold mb-6">
+          Métreur &amp; agencement intérieur en Île-de-France
         </h1>
-        <p>
-          J&apos;interviens sur toute l&apos;Île-de-France pour vos projets
-          d&apos;agencement intérieur : étude, métré, conception, chiffrage et
-          suivi de la partie menuiserie &amp; agencement sur mesure.
+
+        <p className="text-lg leading-relaxed text-text-light max-w-3xl">
+          J’interviens sur toute l’Île-de-France pour vos projets d’
+          <strong>agencement intérieur</strong> et de{" "}
+          <strong>menuiserie sur mesure</strong> : étude, relevés, métré,
+          conception, chiffrage et accompagnement technique, avec une approche
+          précise et orientée résultat.
         </p>
       </section>
 
-      {/* -------------------- SECTION 1 -------------------- */}
-      <section>
-        <h2>Un interlocuteur unique pour vos projets en Île-de-France</h2>
-        <ul>
+      {/* ==================== INTERLOCUTEUR UNIQUE ==================== */}
+      <section className="mb-14">
+        <h2 className="text-2xl font-semibold mb-4">
+          Un interlocuteur unique pour vos projets en Île-de-France
+        </h2>
+
+        <p className="leading-relaxed text-text-light mb-6">
+          En tant que <strong>métreur TCE</strong> spécialisé en menuiserie
+          intérieure et agencement, je sécurise votre projet avec une méthode
+          claire : relevés précis, quantitatifs, estimation réaliste, et
+          accompagnement dans les choix techniques.
+        </p>
+
+        <ul className="list-disc pl-6 space-y-2 text-text-light">
+          <li>Métreur TCE orienté agencement / menuiserie intérieure</li>
           <li>
-            Métreur TCE spécialisé en menuiserie intérieure et agencement
-            sur-mesure
-          </li>
-          <li>
-            Conception et optimisation d&apos;espaces : cuisines, dressings,
-            rangements, bureaux, aménagement de locaux professionnels
+            Optimisation d’espaces : cuisines, dressings, rangements, bureaux,
+            locaux professionnels
           </li>
           <li>
             Travail collaboratif avec architectes, décorateurs, artisans et
-            entreprises du BTP
+            entreprises BTP
           </li>
-          <li>
-            Relevés précis, quantitatifs, plans, notes techniques et estimations
-          </li>
+          <li>Relevés, quantitatifs, notes techniques et estimations</li>
         </ul>
       </section>
 
-      {/* -------------------- SECTION 2 -------------------- */}
-      <section>
-        <h2>Prestations proposées</h2>
-        <ul>
+      {/* ==================== PRESTATIONS ==================== */}
+      <section className="mb-14">
+        <h2 className="text-2xl font-semibold mb-4">Prestations proposées</h2>
+
+        <ul className="list-disc pl-6 space-y-2 text-text-light">
           <li>Métré complet TCE ou spécialisé menuiserie/agencement</li>
-          <li>Analyse des plans architectes et CCTP</li>
-          <li>Étude faisabilité et optimisation du budget</li>
+          <li>Analyse des plans architecte et CCTP</li>
+          <li>Étude de faisabilité et optimisation du budget</li>
           <li>
-            Conception : plans, croquis techniques, modélisation si nécessaire
+            Conception : plans, croquis techniques, modélisation si besoin
           </li>
-          <li>
-            Suivi d&apos;atelier et vérification des éléments avant fabrication
-          </li>
+          <li>Vérification des éléments et cohérence avant fabrication</li>
         </ul>
       </section>
 
-      {/* -------------------- SECTION 3 -------------------- */}
-      <section>
-        <h2>Zones d&apos;intervention en Île-de-France</h2>
-        <p>
-          J&apos;interviens dans l&apos;ensemble de la région Île-de-France :
+      {/* ==================== ZONES ==================== */}
+      <section className="mb-14">
+        <h2 className="text-2xl font-semibold mb-4">
+          Zones d’intervention en Île-de-France
+        </h2>
+
+        <p className="leading-relaxed text-text-light mb-6">
+          Intervention sur l’ensemble de la région Île-de-France, selon la
+          nature du projet et les contraintes chantier.
         </p>
-        <ul>
+
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-10 text-text-light">
           <li>Paris (75)</li>
           <li>Seine-et-Marne (77)</li>
           <li>Yvelines (78)</li>
@@ -68,29 +80,31 @@ export default function IDFMetreurAgencement() {
           <li>Hauts-de-Seine (92)</li>
           <li>Seine-Saint-Denis (93)</li>
           <li>Val-de-Marne (94)</li>
-          <li>Val-d&apos;Oise (95)</li>
+          <li>Val-d’Oise (95)</li>
         </ul>
       </section>
 
-      {/* -------------------- SECTION 4 -------------------- */}
+      {/* ==================== POURQUOI NOUS ==================== */}
       <section>
-        <h2>Pourquoi choisir BJD-HOME-PRO&nbsp;?</h2>
-        <ul>
+        <h2 className="text-2xl font-semibold mb-4">
+          Pourquoi choisir BJD HOME PRO ?
+        </h2>
+
+        <ul className="list-disc pl-6 space-y-2 text-text-light">
           <li>
-            Expertise en agencement intérieur haut de gamme et menuiserie
-            sur-mesure
+            Expertise en agencement intérieur et menuiserie sur mesure, avec un
+            niveau de finition exigeant
           </li>
           <li>
-            Compétences techniques d&apos;un métreur TCE : précision,
-            méthodologie, rigueur
+            Méthode de métreur TCE : précision, rigueur, quantitatifs fiables,
+            chiffrage cohérent
           </li>
           <li>
-            Interlocuteur unique du premier contact jusqu&apos;au chiffrage
-            final
+            Accompagnement clair du premier contact jusqu’au chiffrage final
           </li>
           <li>
-            Accompagnement clair et professionnel pour particuliers, architectes
-            et entreprises BTP
+            Approche professionnelle pour particuliers, architectes et
+            entreprises du BTP
           </li>
         </ul>
       </section>
