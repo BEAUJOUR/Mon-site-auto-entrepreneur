@@ -3,6 +3,9 @@ import { projectsData } from "../data/projectsData";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowLeft, ArrowRight } from "lucide-react";
 
+const cloudinary = (src, options = "f_auto,q_auto,w_900") =>
+  src.replace("/upload/", `/upload/${options}/`);
+
 export default function ProjectGallery() {
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -31,34 +34,43 @@ export default function ProjectGallery() {
 
         {/* GALERIE */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {projectsData.map((project, index) => (
-            <motion.article
-              key={project.id}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.3 }}
-              className="cursor-pointer"
-              onClick={() => open(index)}
-            >
-              <div className="relative overflow-hidden rounded-xl shadow-soft">
-                <img
-                  src={project.img}
-                  alt={project.title}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-[260px] object-cover"
-                />
+          {projectsData.map((project, index) => {
+            const isLCP = index === 0; // ⭐ image LCP
 
-                <div className="absolute inset-0 bg-black/0 hover:bg-black/40 transition flex items-end">
-                  <div className="p-5 text-white opacity-0 hover:opacity-100 transition">
-                    <h3 className="text-lg font-semibold">{project.title}</h3>
-                    {project.infos && (
-                      <p className="text-sm opacity-80 mt-1">{project.infos}</p>
-                    )}
+            return (
+              <motion.article
+                key={project.id}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="cursor-pointer"
+                onClick={() => open(index)}
+              >
+                <div className="relative overflow-hidden rounded-xl shadow-soft">
+                  <img
+                    src={cloudinary(project.img)}
+                    alt={project.title}
+                    width="900"
+                    height="520"
+                    loading={isLCP ? "eager" : "lazy"}
+                    fetchpriority={isLCP ? "high" : "auto"}
+                    decoding="async"
+                    className="w-full h-[260px] object-cover"
+                  />
+
+                  <div className="absolute inset-0 bg-black/0 hover:bg-black/40 transition flex items-end">
+                    <div className="p-5 text-white opacity-0 hover:opacity-100 transition">
+                      <h3 className="text-lg font-semibold">{project.title}</h3>
+                      {project.infos && (
+                        <p className="text-sm opacity-80 mt-1">
+                          {project.infos}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.article>
-          ))}
+              </motion.article>
+            );
+          })}
         </div>
       </div>
 
@@ -69,11 +81,7 @@ export default function ProjectGallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="
-              fixed inset-0 z-[999]
-              bg-black/90 backdrop-blur-sm
-              overflow-y-auto
-            "
+            className="fixed inset-0 z-[999] bg-black/90 backdrop-blur-sm overflow-y-auto"
           >
             {/* CLOSE */}
             <button
@@ -110,24 +118,19 @@ export default function ProjectGallery() {
 
             {/* CONTENT */}
             <div className="min-h-screen flex flex-col items-center justify-center px-6 py-20">
-              {/* IMAGE */}
               <motion.img
                 initial={{ scale: 0.97, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.4 }}
-                src={projectsData[activeIndex].img}
+                src={cloudinary(
+                  projectsData[activeIndex].img,
+                  "f_auto,q_auto,w_1600"
+                )}
                 alt={projectsData[activeIndex].title}
                 decoding="async"
-                className="
-                  max-w-full
-                  max-h-[70vh]
-                  object-contain
-                  rounded-xl
-                  shadow-2xl
-                "
+                className="max-w-full max-h-[70vh] object-contain rounded-xl shadow-2xl"
               />
 
-              {/* TEXTE */}
               <div className="mt-8 text-center text-white max-w-3xl">
                 <h3 className="text-2xl font-semibold mb-2">
                   {projectsData[activeIndex].title}

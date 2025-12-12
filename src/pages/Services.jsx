@@ -143,6 +143,10 @@ export default function Services() {
                 <img
                   src={service.icon}
                   alt={service.title}
+                  width="96"
+                  height="96"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-contain rounded-full"
                 />
               </motion.div>
