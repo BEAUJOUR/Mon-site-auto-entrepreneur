@@ -270,7 +270,8 @@ export default function Experts() {
             Mon engagement au-delà des travaux
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {/* ✅ items-stretch ajouté */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-stretch">
             {[
               {
                 icon: (
@@ -304,14 +305,17 @@ export default function Experts() {
                 variants={slideIn(i % 2 === 0 ? "right" : "left", i * 0.2)}
                 className="h-full"
               >
-                <Card>
-                  <div className="bg-white p-6 sm:p-8 min-h-[320px] flex flex-col justify-between rounded-2xl shadow-card hover:shadow-xl transition-all duration-500 group cursor-pointer">
+                {/* ✅ h-full ajouté */}
+                <Card className="h-full">
+                  <div className="bg-white p-6 sm:p-8 min-h-[320px] flex flex-col justify-between rounded-2xl shadow-card hover:shadow-xl transition-all duration-500 group cursor-pointer h-full">
                     {item.icon}
+
                     <div>
                       <h3 className="text-lg md:text-xl font-semibold text-text-dark mb-2 relative inline-block">
                         {item.title}
                         <span className="absolute left-0 bottom-[-2px] w-0 h-[2px] bg-primary transition-all duration-500 group-hover:w-full" />
                       </h3>
+
                       <p className="text-base md:text-md text-text-light leading-relaxed">
                         {item.desc}
                       </p>
