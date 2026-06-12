@@ -85,6 +85,7 @@ export default function ProjectGallery() {
           >
             {/* CLOSE */}
             <button
+              aria-label="Fermer la galerie"
               onClick={close}
               className="fixed top-6 right-6 z-[1000]
                          text-white bg-white/10
@@ -96,6 +97,7 @@ export default function ProjectGallery() {
 
             {/* PREV */}
             <button
+              aria-label="Voir le projet précédent"
               onClick={prev}
               className="fixed left-6 top-1/2 -translate-y-1/2 z-[1000]
                          text-white bg-white/10
@@ -107,6 +109,7 @@ export default function ProjectGallery() {
 
             {/* NEXT */}
             <button
+              aria-label="Voir le projet suivant"
               onClick={next}
               className="fixed right-6 top-1/2 -translate-y-1/2 z-[1000]
                          text-white bg-white/10

@@ -71,8 +71,8 @@ export default function Hero() {
             </Link>
 
             <Link
-              to="/contact"
-              aria-label="Contacter BJD-HOME-PRO"
+              to="/estimation-projet"
+              aria-label="Estimer votre projet avec BJD-HOME-PRO"
               className="
                 border-2 border-primary text-primary
                 px-6 py-3 rounded-2xl font-semibold
@@ -83,7 +83,7 @@ export default function Hero() {
                 transition-all duration-300
               "
             >
-              Me contacter
+              Estimer mon projet
             </Link>
           </motion.div>
         </div>

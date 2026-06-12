@@ -6,7 +6,6 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import Testimonials from "../components/Testimonials";
 import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
@@ -102,7 +101,7 @@ export default function Services() {
   const floatY = useTransform(scrollYProgress, [0, 1], [0, -20]);
 
   return (
-    <div className="bg-white text-text-dark overflow-hidden font-[Didot,serif]">
+    <div className="bg-white text-text-dark overflow-hidden font-title">
       {/* ⭐ SECTION SERVICES */}
       <motion.section
         ref={sectionRef}
@@ -178,28 +177,7 @@ export default function Services() {
             {/* ┃ Ligne verticale centrale */}
             <div className="absolute left-1/2 top-0 bottom-0 w-[3px] bg-primary/30 -translate-x-1/2 rounded-full" />
 
-            {[
-              {
-                icon: require("../assets/photos/bulle.gif"),
-                title: "Premier contact et devis",
-                text: "Échange sur vos besoins, conseils personnalisés et devis clair et détaillé.",
-              },
-              {
-                icon: require("../assets/photos/horloge.gif"),
-                title: "Étude et conception",
-                text: "Plans techniques, rendus 3D et validation des matériaux selon votre budget et vos goûts.",
-              },
-              {
-                icon: require("../assets/photos/percer.gif"),
-                title: "Fabrication et pose",
-                text: "Travail artisanal, finitions soignées et respect des délais convenus.",
-              },
-              {
-                icon: require("../assets/photos/verifie.gif"),
-                title: "Contrôle et satisfaction",
-                text: "Livraison conforme à vos attentes avec accompagnement après projet.",
-              },
-            ].map((step, i) => {
+            {steps.map((step, i) => {
               const isLeft = i % 2 === 0;
 
               return (
@@ -329,9 +307,6 @@ export default function Services() {
           </div>
         </div>
       </motion.section>
-
-      {/* ⭐ Témoignages */}
-      {/* <Testimonials /> */}
 
       {/* ⭐ CTA */}
       <motion.section

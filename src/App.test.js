@@ -1,8 +1,10 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
+test("renders the current site navigation", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getAllByText(/accueil/i).length).toBeGreaterThan(0);
+  expect(screen.getAllByText(/services/i).length).toBeGreaterThan(0);
+  expect(screen.getAllByText(/contact/i).length).toBeGreaterThan(0);
+  expect(screen.getAllByText(/estimer mon projet/i).length).toBeGreaterThan(0);
 });

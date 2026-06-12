@@ -5,10 +5,6 @@ import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import BJDProTitle from "./BJDProTitle";
 
-import logo from '../assets/logo_bjd.png';
-
-
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -55,10 +51,10 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           {/* Bouton visible seulement en desktop */}
           <Link
-            to="/contact"
+            to="/estimation-projet"
             className="hidden md:inline-block bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark hover:scale-105 transition uppercase"
           >
-            Demander un devis
+            Estimer mon projet
           </Link>
           <button
             className="md:hidden p-2"
@@ -92,6 +88,15 @@ export default function Navbar() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/estimation-projet"
+                  onClick={() => setIsOpen(false)}
+                  className="block rounded-xl bg-primary px-4 py-3 text-white hover:bg-primary-dark transition-colors duration-300"
+                >
+                  Estimer mon projet
+                </Link>
+              </li>
             </ul>
           </motion.nav>
         )}

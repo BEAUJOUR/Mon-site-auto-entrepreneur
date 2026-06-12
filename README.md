@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# BJD-HOME-PRO
 
+Site vitrine de BJD-HOME-PRO, artisan specialise en agencement interieur, menuiserie sur mesure, travaux de finition et metrage TCE.
 
+Le projet est une application React basee sur Create React App, stylisee avec Tailwind CSS, et deployee depuis GitHub vers OVH.
 
-## Available Scripts
+## Stack
 
-In the project directory, you can run:
+- React 18
+- Create React App / react-scripts
+- Tailwind CSS
+- React Router
+- Framer Motion
+- Lucide React
 
-### `npm start`
+## Pages actives
 
-echo "deploy trigger" >> README.md
-COOL
+- `/` : accueil
+- `/about` : presentation
+- `/services` : services
+- `/projets` : realisations
+- `/contact` : formulaire et coordonnees
+- `/estimation-projet` : landing page Ads avec formulaire multi-etapes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Toute route inconnue revient vers l'accueil.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## SEO actuel
 
-### `npm test`
+Le site contient :
 
+- un `robots.txt` ;
+- un `sitemap.xml` limite aux pages actives ;
+- des balises meta principales dans `public/index.html` ;
+- des balises Open Graph et Twitter ;
+- un bloc Schema.org pour l'activite.
 
+Les anciennes pages SEO locales et idees Google Ads / Meta Ads non utilisees ont ete retirees du projet actif.
 
-### `npm run build`
+## Commandes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Installer les dependances :
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Lancer le site en developpement :
 
-### `npm run eject`
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Construire la version production :
 
+```bash
+npm run build
+```
 
+Lancer les tests :
 
+```bash
+npm test -- --watchAll=false
+```
 
+## Deploiement
 
-## Learn More
+Le site est deploye via un flux GitHub vers OVH. Le dossier genere par `npm run build` contient la version production a servir.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Prochaines evolutions prevues
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Ajouter de nouvelles landing pages dediees Google Ads / Meta Ads.
+- Garder le site vitrine actuel stable pendant l'ajout des pages publicitaires.
+- Eviter de reactiver les anciennes pages SEO locales abandonnees.
+- Connecter plus tard le formulaire d'estimation a `POST /api/public/leads`.

@@ -1,3 +1,9 @@
+import cuisineRenov from "../assets/photos/cuisine-renov.jpg";
+import cuisineSquart from "../assets/photos/cuisine-squart.JPG";
+import dressingPhoto from "../assets/photos/dressing.jpg";
+import parquetSol from "../assets/photos/parquet-sol.jpg";
+import salleDeBain from "../assets/photos/Salle-de-bain.jpg";
+
 export const projectsData = [
   {
     id: 1,
@@ -159,5 +165,55 @@ export const projectsData = [
       "Conception d’un îlot bar/cuisine sur mesure avec base laquée blanc, plan de travail noir épais, tabourets design blancs et agencement soigné.",
     img: "https://res.cloudinary.com/dl3ntuzaz/image/upload/v1763819834/DSC_0767_n54g3o.jpg",
     link: "https://res.cloudinary.com/dl3ntuzaz/image/upload/v1763819834/DSC_0767_n54g3o.jpg",
+  },
+  {
+    id: 15,
+    title: "Cuisine renovee sur mesure",
+    date: "Projet recent",
+    description: ["Pose de cuisine", "Agencement et finitions"],
+    infos:
+      "Cuisine renovee avec implantation fonctionnelle, rangements optimises, plan de travail et finitions propres pour un espace compact.",
+    img: cuisineRenov,
+    link: cuisineRenov,
+  },
+  {
+    id: 16,
+    title: "Cuisine en angle",
+    date: "Projet recent",
+    description: ["Cuisine sur mesure", "Optimisation d'espace"],
+    infos:
+      "Amenagement d'une cuisine en angle avec mobilier integre, surfaces faciles d'entretien et circulation optimisee.",
+    img: cuisineSquart,
+    link: cuisineSquart,
+  },
+  {
+    id: 17,
+    title: "Dressing sur mesure",
+    date: "Projet recent",
+    description: ["Rangements", "Menuiserie interieure"],
+    infos:
+      "Creation d'un dressing sur mesure avec rangements adaptes, volumes optimises et finitions sobres.",
+    img: dressingPhoto,
+    link: dressingPhoto,
+  },
+  {
+    id: 18,
+    title: "Renovation de sol",
+    date: "Projet recent",
+    description: ["Parquet", "Second oeuvre"],
+    infos:
+      "Renovation de sol avec pose soignee et finition propre pour moderniser l'espace interieur.",
+    img: parquetSol,
+    link: parquetSol,
+  },
+  {
+    id: 19,
+    title: "Salle de bain renovee",
+    date: "Projet recent",
+    description: ["Salle de bain", "Renovation interieure"],
+    infos:
+      "Renovation de salle de bain avec travail de second oeuvre, finitions nettes et agencement pratique.",
+    img: salleDeBain,
+    link: salleDeBain,
   },
 ];

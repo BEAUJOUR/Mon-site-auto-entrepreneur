@@ -5,12 +5,8 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Projets from "./pages/Projets";
-
-import Metreur93 from "./components/local_pages_bjd_home_pro/metreur-tce-seine-saint-denis-93";
-import IDFMetreurAgencement from "./components/local_pages_bjd_home_pro/idf-metreur-agencement";
-import ApporteurAffairesBtpIdf from "./components/local_pages_bjd_home_pro/ApporteurAffairesBtpIdf";
-import ParisMetreurTCE from "./components/local_pages_bjd_home_pro/paris-metreur-tce";
-import Metreur77 from "./components/local_pages_bjd_home_pro/metreur-tce-seine-et-marne-77";
+import EstimationProjet from "./pages/EstimationProjet";
+import MerciEstimation from "./pages/MerciEstimation";
 
 export default function App() {
   return (
@@ -23,25 +19,8 @@ export default function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/projets" element={<Projets />} />
           <Route path="/contact" element={<Contact />} />
-
-          {/* Pages locales SEO */}
-          <Route
-            path="/metreur-tce-seine-et-marne-77"
-            element={<Metreur77 />}
-          />
-          <Route
-            path="/metreur-tce-seine-saint-denis-93"
-            element={<Metreur93 />}
-          />
-          <Route
-            path="/agencement-interieur-idf"
-            element={<IDFMetreurAgencement />}
-          />
-          <Route
-            path="/apporteur-affaires-btp-idf"
-            element={<ApporteurAffairesBtpIdf />}
-          />
-          <Route path="/paris-metreur-tce" element={<ParisMetreurTCE />} />
+          <Route path="/estimation-projet" element={<EstimationProjet />} />
+          <Route path="/merci-estimation" element={<MerciEstimation />} />
 
           {/* Fallback */}
           <Route path="*" element={<Home />} />
