@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_API_URL || "";
+const API_URL ="https://backend-prospection.onrender.com";
 const LEADS_API_PATH = "/api/public/leads";
 const LEADS_REQUEST_TIMEOUT_MS = 10000;
 
