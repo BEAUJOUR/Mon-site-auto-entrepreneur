@@ -1,12 +1,24 @@
-<!-- public/404.html -->
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>BJD-HOME-PRO — Page introuvable</title>
+    <title>BJD-HOME-PRO - Page introuvable</title>
 
-    <!-- IMPORTANT : recharge l'app React -->
-    <meta http-equiv="refresh" content="0; url=/" />
+    <!-- ================= GOOGLE TAGS ================= -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18236565518"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18236565518');
+      gtag('config', 'G-M3WTW30KSW');
+    </script>
+
+    <!-- Recharge l'app React en conservant la route demandee. -->
+    <script>
+      var path = window.location.pathname + window.location.search + window.location.hash;
+      window.location.replace("/?p=" + encodeURIComponent(path));
+    </script>
 
     <meta name="robots" content="noindex" />
   </head>
