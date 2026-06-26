@@ -9,6 +9,12 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import Footer from "../components/Footer";
+import {
+  trackGenerateLead,
+  trackGoogleAdsLeadConversion,
+} from "../services/tracking";
+
+let hasTrackedMerciLead = false;
 
 export default function MerciEstimation() {
   useEffect(() => {
@@ -34,6 +40,29 @@ export default function MerciEstimation() {
         robots?.setAttribute("content", previousRobots);
       }
     };
+  }, []);
+
+  useEffect(() => {
+    if (hasTrackedMerciLead) return;
+
+    hasTrackedMerciLead = true;
+
+    let leadPayload = { source: "site_vitrine", landingPage: "/merci-estimation" };
+
+    try {
+      const storedPayload = window.sessionStorage.getItem("bjd_last_lead_payload");
+      if (storedPayload) {
+        leadPayload = {
+          ...leadPayload,
+          ...JSON.parse(storedPayload),
+        };
+      }
+    } catch (storageError) {
+      console.warn("Payload lead indisponible pour le tracking merci", storageError);
+    }
+
+    trackGenerateLead(leadPayload);
+    trackGoogleAdsLeadConversion(leadPayload);
   }, []);
 
   return (

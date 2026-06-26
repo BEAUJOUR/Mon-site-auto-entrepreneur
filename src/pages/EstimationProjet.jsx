@@ -28,7 +28,7 @@ import {
   mapEstimationFormToLeadPayload,
   submitLead,
 } from "../services/leadsApi";
-import { trackLandingEvent, trackLeadSuccess } from "../services/tracking";
+import { trackLandingEvent, trackMetaLead } from "../services/tracking";
 import { projectsData } from "../data/projectsData";
 import cuisineRenov from "../assets/photos/cuisine-renov.jpg";
 import cuisineSquart from "../assets/photos/cuisine-squart.JPG";
@@ -472,7 +472,15 @@ export default function EstimationProjet() {
       const leadPayload = mapEstimationFormToLeadPayload(formData);
       const leadResponse = await submitLead(leadPayload);
       console.info("Lead BJD-HOME-PRO cree", leadResponse);
-      trackLeadSuccess(leadPayload);
+      try {
+        window.sessionStorage.setItem(
+          "bjd_last_lead_payload",
+          JSON.stringify(leadPayload)
+        );
+      } catch (storageError) {
+        console.warn("Payload lead non sauvegarde pour le tracking", storageError);
+      }
+      trackMetaLead(leadPayload);
       formSubmittedRef.current = true;
       setIsSubmitted(true);
       window.setTimeout(() => navigate("/merci-estimation"), 450);
