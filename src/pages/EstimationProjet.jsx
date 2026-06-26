@@ -28,6 +28,8 @@ import {
   mapEstimationFormToLeadPayload,
   submitLead,
 } from "../services/leadsApi";
+import { trackLandingEvent, trackLeadSuccess } from "../services/tracking";
+import { projectsData } from "../data/projectsData";
 import cuisineRenov from "../assets/photos/cuisine-renov.jpg";
 import cuisineSquart from "../assets/photos/cuisine-squart.JPG";
 import dressingPhoto from "../assets/photos/dressing.jpg";
@@ -103,9 +105,9 @@ const photos = [
 
 const reassurance = [
   { icon: Medal, title: "Savoir-faire terrain", text: "agencement et finitions" },
-  { icon: Clock3, title: "Retour rapide", text: "premiere lecture du besoin" },
-  { icon: ShieldCheck, title: "Etude gratuite", text: "et sans engagement" },
-  { icon: UserRound, title: "Accompagnement", text: "interlocuteur unique" },
+  { icon: Clock3, title: "Reponse personnalisee", text: "projet et budget cadres" },
+  { icon: ShieldCheck, title: "Estimation gratuite", text: "et sans engagement" },
+  { icon: UserRound, title: "Rappel possible", text: "interlocuteur unique" },
 ];
 
 const whyChoose = [
@@ -141,6 +143,24 @@ const trustCards = [
   },
 ];
 
+const landingTitle =
+  "Estimation gratuite travaux et agencement | BJD-HOME-PRO";
+const landingDescription =
+  "Cuisine, dressing, placard, salle de bain, meuble sur mesure ou renovation second oeuvre : demandez une estimation gratuite et un retour personnalise en Ile-de-France.";
+const heroProject = projectsData.find((project) => project.id === 10);
+const heroImage = heroProject?.img || cuisineSquart;
+
+function setMetaAttribute(selector, attribute, value) {
+  const element = document.querySelector(selector);
+  const previousValue = element?.getAttribute(attribute);
+  element?.setAttribute(attribute, value);
+  return () => {
+    if (previousValue) {
+      element?.setAttribute(attribute, previousValue);
+    }
+  };
+}
+
 const initialFormData = {
   projectType: "",
   city: "",
@@ -158,38 +178,38 @@ const steps = [
   {
     label: "Projet",
     title: "Quel type de projet ?",
-    hint: "Selectionnez la categorie la plus proche.",
+    hint: "Cuisine, dressing, placard, salle de bain ou autre amenagement.",
   },
   {
     label: "Localisation",
     title: "Ou se situe le projet ?",
-    hint: "Ville et code postal.",
+    hint: "Pour verifier la zone d'intervention et preparer le retour.",
   },
   {
     label: "Budget et delai",
     title: "Quel budget et quel delai ?",
-    hint: "Une fourchette suffit pour commencer.",
+    hint: "Une fourchette suffit. Vous pourrez ajuster ensuite.",
   },
   {
     label: "Details",
-    title: "Ajoutez quelques precisions",
-    hint: "Dimensions, contraintes, style, photos disponibles.",
+    title: "Quelques details utiles",
+    hint: "Deux ou trois phrases suffisent pour comprendre le besoin.",
   },
   {
     label: "Coordonnees",
-    title: "Vos coordonnees",
-    hint: "Pour vous recontacter au sujet du projet.",
-  },
-  {
-    label: "Validation",
-    title: "Recapitulatif",
-    hint: "Verifiez avant envoi.",
+    title: "Ou vous recontacter ?",
+    hint: "Un retour personnalise demande vos coordonnees.",
   },
 ];
 
 export default function EstimationProjet() {
   const navigate = useNavigate();
   const formRef = useRef(null);
+  const formStartedRef = useRef(false);
+  const formSubmittedRef = useRef(false);
+  const formAbandonedRef = useRef(false);
+  const currentStepRef = useRef(0);
+  const completedStepsRef = useRef(new Set());
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
@@ -198,45 +218,196 @@ export default function EstimationProjet() {
   const [submitError, setSubmitError] = useState("");
   const [realizationIndex, setRealizationIndex] = useState(0);
 
+  const realizationPhotos = useMemo(() => photos.slice(0, 5), []);
+
   const progress = useMemo(
     () => Math.round(((currentStep + 1) / steps.length) * 100),
     [currentStep]
   );
 
   useEffect(() => {
-    const previousTitle = document.title;
-    const canonical = document.querySelector('link[rel="canonical"]');
-    const description = document.querySelector('meta[name="description"]');
-    const previousDescription = description?.getAttribute("content");
+    currentStepRef.current = currentStep;
+  }, [currentStep]);
 
-    document.title = "Estimation gratuite agencement interieur | BJD-HOME-PRO";
-    description?.setAttribute(
+  useEffect(() => {
+    const previousTitle = document.title;
+    const restoreDescription = setMetaAttribute(
+      'meta[name="description"]',
       "content",
-      "Demandez une estimation pour votre projet de cuisine, dressing, placard, meuble sur mesure, renovation interieure ou second oeuvre avec BJD-HOME-PRO."
+      landingDescription
     );
-    canonical?.setAttribute(
+    const restoreCanonical = setMetaAttribute(
+      'link[rel="canonical"]',
       "href",
       "https://www.bjd-home-pro.fr/estimation-projet"
     );
+    const restoreOgTitle = setMetaAttribute(
+      'meta[property="og:title"]',
+      "content",
+      landingTitle
+    );
+    const restoreOgDescription = setMetaAttribute(
+      'meta[property="og:description"]',
+      "content",
+      landingDescription
+    );
+    const restoreOgUrl = setMetaAttribute(
+      'meta[property="og:url"]',
+      "content",
+      "https://www.bjd-home-pro.fr/estimation-projet"
+    );
+    const restoreTwitterTitle = setMetaAttribute(
+      'meta[name="twitter:title"]',
+      "content",
+      landingTitle
+    );
+    const restoreTwitterDescription = setMetaAttribute(
+      'meta[name="twitter:description"]',
+      "content",
+      landingDescription
+    );
+    const structuredData = document.createElement("script");
+    structuredData.type = "application/ld+json";
+    structuredData.dataset.page = "estimation-projet";
+    structuredData.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "Estimation gratuite agencement interieur",
+      provider: {
+        "@type": "HomeAndConstructionBusiness",
+        name: "BJD-HOME-PRO",
+        url: "https://www.bjd-home-pro.fr",
+      },
+      areaServed: "Ile-de-France",
+      serviceType:
+        "Cuisine, dressing, placard, meuble sur mesure, salle de bain et renovation second oeuvre",
+      url: "https://www.bjd-home-pro.fr/estimation-projet",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "EUR",
+        availability: "https://schema.org/InStock",
+      },
+    });
+    document.head.appendChild(structuredData);
+
+    document.title = landingTitle;
 
     return () => {
       document.title = previousTitle;
-      if (previousDescription) {
-        description?.setAttribute("content", previousDescription);
-      }
-      canonical?.setAttribute("href", "https://www.bjd-home-pro.fr/");
+      restoreDescription();
+      restoreCanonical();
+      restoreOgTitle();
+      restoreOgDescription();
+      restoreOgUrl();
+      restoreTwitterTitle();
+      restoreTwitterDescription();
+      structuredData.remove();
     };
   }, []);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setRealizationIndex((index) => (index + 1) % 5);
+      setRealizationIndex((index) => (index + 1) % realizationPhotos.length);
     }, 5200);
 
     return () => window.clearInterval(timer);
+  }, [realizationPhotos.length]);
+
+  useEffect(() => {
+    const viewedSections = new Set();
+    const sections = document.querySelectorAll("[data-section-track]");
+
+    if (!("IntersectionObserver" in window) || sections.length === 0) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const sectionName = entry.target.getAttribute("data-section-track");
+          if (!entry.isIntersecting || viewedSections.has(sectionName)) return;
+
+          viewedSections.add(sectionName);
+          trackLandingEvent("section_view", {
+            section_name: sectionName,
+          });
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const trackAbandon = () => {
+      if (
+        !formStartedRef.current ||
+        formSubmittedRef.current ||
+        formAbandonedRef.current
+      ) {
+        return;
+      }
+
+      formAbandonedRef.current = true;
+      trackLandingEvent("form_abandoned", {
+        step_index: currentStepRef.current + 1,
+        step_label: steps[currentStepRef.current]?.label || "",
+      });
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        trackAbandon();
+      }
+    };
+
+    window.addEventListener("beforeunload", trackAbandon);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("beforeunload", trackAbandon);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
+  const trackStepCompleted = (stepIndex) => {
+    if (completedStepsRef.current.has(stepIndex)) return;
+
+    completedStepsRef.current.add(stepIndex);
+    trackLandingEvent("step_completed", {
+      step_index: stepIndex + 1,
+      step_label: steps[stepIndex]?.label || "",
+    });
+  };
+
+  const handleCtaClick = (location, detail = "") => {
+    const eventName =
+      location === "footer"
+        ? "cta_footer_click"
+        : location === "category"
+          ? "project_category_cta_click"
+          : "hero_cta_click";
+
+    trackLandingEvent(eventName, {
+      cta_location: location,
+      cta_detail: detail,
+    });
+  };
+
   const updateField = (field, value) => {
+    if (!formStartedRef.current) {
+      formStartedRef.current = true;
+      trackLandingEvent("form_started", {
+        first_field: field,
+        step_index: currentStep + 1,
+        step_label: activeStep?.label || "",
+      });
+    }
+
     setFormData((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: "" }));
     setSubmitError("");
@@ -255,13 +426,13 @@ export default function EstimationProjet() {
 
     if (currentStep === 4) {
       if (!formData.firstName.trim()) {
-        nextErrors.firstName = "Indiquez votre prenom.";
+        nextErrors.firstName = "Indiquez votre prenom pour personnaliser le retour.";
       }
       if (!formData.phone.trim()) {
-        nextErrors.phone = "Indiquez votre telephone.";
+        nextErrors.phone = "Indiquez un telephone pour etre rappele.";
       }
       if (!formData.email.trim()) {
-        nextErrors.email = "Indiquez votre email.";
+        nextErrors.email = "Indiquez votre email pour recevoir une trace de la demande.";
       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
         nextErrors.email = "Indiquez un email valide.";
       }
@@ -277,6 +448,7 @@ export default function EstimationProjet() {
 
   const goNext = () => {
     if (!validateStep()) return;
+    trackStepCompleted(currentStep);
     setCurrentStep((step) => Math.min(step + 1, steps.length - 1));
     window.setTimeout(scrollToForm, 60);
   };
@@ -292,6 +464,7 @@ export default function EstimationProjet() {
 
     if (!validateStep()) return;
 
+    trackStepCompleted(currentStep);
     setIsSendingLead(true);
     setSubmitError("");
 
@@ -299,8 +472,10 @@ export default function EstimationProjet() {
       const leadPayload = mapEstimationFormToLeadPayload(formData);
       const leadResponse = await submitLead(leadPayload);
       console.info("Lead BJD-HOME-PRO cree", leadResponse);
+      trackLeadSuccess(leadPayload);
+      formSubmittedRef.current = true;
       setIsSubmitted(true);
-      window.setTimeout(() => navigate("/merci-estimation"), 300);
+      window.setTimeout(() => navigate("/merci-estimation"), 450);
     } catch (error) {
       setSubmitError(
         error.message ||
@@ -313,8 +488,15 @@ export default function EstimationProjet() {
 
   const renderError = (field) =>
     errors[field] ? (
-      <p className="mt-2 text-xs font-semibold text-red-700">{errors[field]}</p>
+      <p id={`${field}-error`} className="mt-2 text-xs font-semibold text-red-700">
+        {errors[field]}
+      </p>
     ) : null;
+
+  const getFieldErrorProps = (field) =>
+    errors[field]
+      ? { "aria-invalid": "true", "aria-describedby": `${field}-error` }
+      : {};
 
   const inputClass =
     "mt-1.5 h-11 w-full rounded-xl border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary";
@@ -337,6 +519,10 @@ export default function EstimationProjet() {
               setFormData(initialFormData);
               setCurrentStep(0);
               setIsSubmitted(false);
+              formStartedRef.current = false;
+              formSubmittedRef.current = false;
+              formAbandonedRef.current = false;
+              completedStepsRef.current = new Set();
             }}
             className="mt-6 rounded-xl bg-primary px-5 py-3 text-sm font-semibold uppercase text-white transition hover:bg-primary-dark"
           >
@@ -352,10 +538,14 @@ export default function EstimationProjet() {
           <fieldset>
             <legend className="sr-only">Type de projet</legend>
             <select
+              id="projectType"
+              name="projectType"
               value={formData.projectType}
               onChange={(event) => updateField("projectType", event.target.value)}
               className={inputClass}
               aria-label="Type de projet"
+              autoComplete="off"
+              {...getFieldErrorProps("projectType")}
             >
               <option value="">Selectionnez votre projet</option>
               {projectTypes.map((type) => (
@@ -383,6 +573,8 @@ export default function EstimationProjet() {
                 onChange={(event) => updateField("city", event.target.value)}
                 className={inputClass}
                 placeholder="Ville"
+                autoComplete="address-level2"
+                {...getFieldErrorProps("city")}
               />
               {renderError("city")}
             </div>
@@ -404,6 +596,7 @@ export default function EstimationProjet() {
                 }
                 className={inputClass}
                 placeholder="75008"
+                autoComplete="postal-code"
               />
             </div>
           </div>
@@ -422,6 +615,7 @@ export default function EstimationProjet() {
                 value={formData.budget}
                 onChange={(event) => updateField("budget", event.target.value)}
                 className={inputClass}
+                autoComplete="off"
               >
                 <option value="">Selectionnez</option>
                 {budgetOptions.map((budget) => (
@@ -446,6 +640,7 @@ export default function EstimationProjet() {
                   updateField("timeline", event.target.value)
                 }
                 className={inputClass}
+                autoComplete="off"
               >
                 <option value="">Selectionnez</option>
                 {timelineOptions.map((timeline) => (
@@ -477,6 +672,7 @@ export default function EstimationProjet() {
               }
               className="mt-1.5 w-full rounded-xl border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Dimensions, style, contraintes, photos disponibles..."
+              autoComplete="off"
             />
           </div>
         );
@@ -501,6 +697,8 @@ export default function EstimationProjet() {
                     updateField("firstName", event.target.value)
                   }
                   className={inputClass}
+                  autoComplete="given-name"
+                  {...getFieldErrorProps("firstName")}
                 />
                 {renderError("firstName")}
               </div>
@@ -520,6 +718,7 @@ export default function EstimationProjet() {
                     updateField("lastName", event.target.value)
                   }
                   className={inputClass}
+                  autoComplete="family-name"
                 />
               </div>
             </div>
@@ -536,6 +735,8 @@ export default function EstimationProjet() {
                   onChange={(event) => updateField("phone", event.target.value)}
                   className={inputClass}
                   placeholder="06 00 00 00 00"
+                  autoComplete="tel"
+                  {...getFieldErrorProps("phone")}
                 />
                 {renderError("phone")}
               </div>
@@ -551,6 +752,8 @@ export default function EstimationProjet() {
                   onChange={(event) => updateField("email", event.target.value)}
                   className={inputClass}
                   placeholder="email@exemple.fr"
+                  autoComplete="email"
+                  {...getFieldErrorProps("email")}
                 />
                 {renderError("email")}
               </div>
@@ -588,32 +791,43 @@ export default function EstimationProjet() {
   return (
     <>
       <div className="bg-white text-text-dark font-title">
-        <section className="relative bg-secondary">
+        <section className="relative bg-secondary" data-section-track="hero">
           <div className="absolute inset-0">
             <img
-              src={photos[0].image}
-              alt="Cuisine et agencement sur mesure"
-              className="h-full w-full object-cover"
+              src={heroImage}
+              alt="Cuisine laquee et agencement interieur sur mesure"
+              className="h-full w-full object-cover object-center"
+              width="1920"
+              height="1080"
               loading="eager"
+              fetchPriority="high"
               decoding="async"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/62 to-white/18" />
+            <div className="absolute inset-0 bg-gradient-to-r from-white/65 via-white/30 to-white/5" />
           </div>
 
           <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-6 px-5 py-7 sm:px-8 md:py-9 lg:min-h-[660px] lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
-            <div className="max-w-2xl">
+            <div className="max-w-2xl rounded-2xl bg-white/92 p-5 shadow-xl ring-1 ring-white/70 backdrop-blur-sm sm:p-7">
               <h1 className="font-title text-3xl font-extrabold leading-[1.08] tracking-tight text-text-dark sm:text-5xl lg:text-6xl">
-                Votre projet merite une etude{" "}
-                <span className="text-primary">serieuse</span>
+                Votre projet sur mesure merite une{" "}
+                <span className="text-primary">estimation claire</span>
               </h1>
               <p className="mt-3 max-w-xl text-sm font-semibold leading-6 text-text-dark sm:mt-5 sm:text-base sm:leading-7">
-                Cuisine, dressing, placard, salle de bain, meuble sur mesure,
-                agencement interieur et renovation second oeuvre.
+                Cuisine, dressing, placard, salle de bain, meuble sur mesure et
+                renovation second oeuvre en Ile-de-France.
               </p>
               <p className="mt-2 hidden max-w-xl text-sm leading-6 text-text-dark sm:mt-3 sm:block sm:leading-7">
-                BJD-HOME-PRO vous accompagne de l'etude a la realisation avec
-                un interlocuteur unique et un suivi personnalise.
+                Decrivez votre besoin en quelques etapes. BJD-HOME-PRO vous aide
+                a cadrer le budget, la faisabilite et les prochaines actions,
+                sans engagement.
               </p>
+              <a
+                href="#demande-etude"
+                onClick={() => handleCtaClick("hero", "hero_primary")}
+                className="mt-5 inline-flex h-12 items-center justify-center gap-3 rounded-xl bg-primary px-5 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-primary-dark sm:hidden"
+              >
+                Demander une estimation <ArrowRight size={16} />
+              </a>
 
               <div className="mt-8 hidden max-w-xl grid-cols-2 gap-4 sm:grid sm:grid-cols-4">
                 {reassurance.map(({ icon: Icon, title, text }) => (
@@ -643,18 +857,25 @@ export default function EstimationProjet() {
             <div
               ref={formRef}
               id="demande-etude"
+              data-section-track="form"
               className="rounded-2xl bg-white p-5 shadow-2xl sm:p-6 lg:ml-auto lg:w-[520px]"
             >
               <div className="text-center">
                 <h2 className="font-title text-2xl font-semibold text-text-dark">
-                  Obtenez votre estimation gratuite
+                  Recevez une premiere estimation
                 </h2>
                 <p className="mt-2 text-sm text-gray-600">
-                  Remplissez le formulaire en quelques etapes
+                  Un premier retour personnalise, sans engagement
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="mt-5">
+              <form
+                onSubmit={handleSubmit}
+                className="mt-5"
+                aria-busy={isSendingLead}
+                aria-label="Formulaire de demande d'estimation BJD-HOME-PRO"
+                noValidate
+              >
                 {!isSubmitted && (
                   <div className="mb-4">
                     <div className="flex items-center justify-between">
@@ -690,7 +911,7 @@ export default function EstimationProjet() {
                     <button
                       type="button"
                       onClick={goBack}
-                      disabled={currentStep === 0}
+                      disabled={currentStep === 0 || isSendingLead}
                       className="flex h-12 flex-1 items-center justify-center rounded-xl border border-gray-300 text-xs font-semibold uppercase text-text-dark transition hover:border-primary hover:text-primary disabled:opacity-40"
                     >
                       <ArrowLeft size={15} /> Retour
@@ -699,7 +920,9 @@ export default function EstimationProjet() {
                       <button
                         type="button"
                         onClick={goNext}
-                        className="flex h-12 flex-[1.5] items-center justify-center gap-4 rounded-xl bg-primary text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-primary-dark"
+                        disabled={isSendingLead}
+                        aria-label="Continuer la demande d'estimation"
+                        className="flex h-12 flex-[1.5] items-center justify-center gap-4 rounded-xl bg-primary text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-70"
                       >
                         Continuer <ArrowRight size={16} />
                       </button>
@@ -707,6 +930,7 @@ export default function EstimationProjet() {
                       <button
                         type="submit"
                         disabled={isSendingLead}
+                        aria-label="Envoyer ma demande d'estimation gratuite"
                         className="flex h-12 flex-[1.5] items-center justify-center gap-4 rounded-xl bg-primary text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-70"
                       >
                         {isSendingLead ? "Envoi en cours..." : "Recevoir mon estimation"}
@@ -717,14 +941,18 @@ export default function EstimationProjet() {
                 )}
 
                 {submitError && (
-                  <p className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-center text-xs font-semibold text-red-700">
+                  <p
+                    className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-center text-xs font-semibold text-red-700"
+                    role="alert"
+                    aria-live="polite"
+                  >
                     {submitError}
                   </p>
                 )}
 
                 {!isSubmitted && (
                   <p className="mt-4 text-center text-xs text-gray-500">
-                    Vos donnees restent confidentielles.
+                    Gratuit, sans engagement. Vos donnees restent confidentielles.
                   </p>
                 )}
               </form>
@@ -732,7 +960,10 @@ export default function EstimationProjet() {
           </div>
         </section>
 
-        <section className="border-y border-gray-200 bg-secondary">
+        <section
+          className="border-y border-gray-200 bg-secondary"
+          data-section-track="trust_bar"
+        >
           <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-5 py-5 sm:px-8 md:grid-cols-5">
             <div className="text-xs font-extrabold uppercase text-primary">
               Pourquoi nous choisir ?
@@ -749,7 +980,10 @@ export default function EstimationProjet() {
           </div>
         </section>
 
-        <section className="px-5 py-6 sm:px-8 md:py-8">
+        <section
+          className="px-5 py-6 sm:px-8 md:py-8"
+          data-section-track="project_categories"
+        >
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
               <h2 className="font-title text-3xl font-semibold text-text-dark">
@@ -775,6 +1009,8 @@ export default function EstimationProjet() {
                 <a
                   key={photo.title}
                   href="#demande-etude"
+                  onClick={() => handleCtaClick("category", photo.title)}
+                  aria-label={`Demander une estimation pour ${photo.title}`}
                   className="relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm"
                 >
                   <img
@@ -800,7 +1036,10 @@ export default function EstimationProjet() {
           </div>
         </section>
 
-        <section className="px-5 py-4 sm:px-8 md:py-6">
+        <section
+          className="px-5 py-4 sm:px-8 md:py-6"
+          data-section-track="process"
+        >
           <div className="mx-auto max-w-7xl">
             <h2 className="text-center font-title text-3xl font-semibold text-text-dark">
               Comment ca se passe ?
@@ -828,7 +1067,10 @@ export default function EstimationProjet() {
           </div>
         </section>
 
-        <section className="px-5 py-7 sm:px-8">
+        <section
+          className="px-5 py-7 sm:px-8"
+          data-section-track="realizations"
+        >
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 md:grid-cols-[1fr_2.7fr_1fr]">
             <div className="rounded-lg bg-secondary p-6">
               <h2 className="font-title text-2xl font-semibold leading-tight">
@@ -839,24 +1081,27 @@ export default function EstimationProjet() {
               </p>
             </div>
             <div className="relative h-56 overflow-hidden rounded-lg md:h-full md:min-h-[250px]">
-              {photos.slice(0, 5).map((photo, index) => (
+              {realizationPhotos.map((photo, index) => (
                 <img
                   key={photo.title}
                   src={photo.image}
                   alt={photo.title}
                   className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
-                    realizationIndex % 5 === index ? "opacity-100" : "opacity-0"
+                    realizationIndex % realizationPhotos.length === index
+                      ? "opacity-100"
+                      : "opacity-0"
                   }`}
                   loading="lazy"
                   decoding="async"
                 />
               ))}
               <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
-                {photos.slice(0, 5).map((photo, index) => (
+                {realizationPhotos.map((photo, index) => (
                   <span
                     key={photo.title}
+                    aria-hidden="true"
                     className={`h-2 w-2 rounded-full transition ${
-                      realizationIndex % 5 === index
+                      realizationIndex % realizationPhotos.length === index
                         ? "bg-white"
                         : "bg-white/45"
                     }`}
@@ -877,7 +1122,7 @@ export default function EstimationProjet() {
           </div>
         </section>
 
-        <section className="px-5 pb-8 sm:px-8">
+        <section className="px-5 pb-8 sm:px-8" data-section-track="testimonials">
           <div className="mx-auto max-w-7xl">
             <h2 className="text-center font-title text-2xl font-semibold">
               Ils nous font confiance
@@ -905,7 +1150,7 @@ export default function EstimationProjet() {
           </div>
         </section>
 
-        <section className="px-5 pb-0 sm:px-8">
+        <section className="px-5 pb-0 sm:px-8" data-section-track="footer_cta">
           <div className="mx-auto max-w-7xl overflow-hidden rounded-t-lg bg-primary-dark text-white">
             <div className="grid grid-cols-1 items-center gap-5 p-6 md:grid-cols-[1.5fr_1fr]">
               <div>
@@ -918,6 +1163,8 @@ export default function EstimationProjet() {
               </div>
               <a
                 href="#demande-etude"
+                onClick={() => handleCtaClick("footer", "footer_primary")}
+                aria-label="Aller au formulaire de demande d'estimation"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-white px-5 text-sm font-semibold uppercase text-primary-dark transition hover:bg-secondary"
               >
                 Recevoir mon estimation <ArrowRight size={16} />
