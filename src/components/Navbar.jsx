@@ -54,7 +54,7 @@ export default function Navbar() {
             to="/estimation-projet"
             className="hidden md:inline-block bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark hover:scale-105 transition uppercase"
           >
-            Estimer mon projet
+            Demande Devis
           </Link>
           <button
             className="md:hidden p-2"

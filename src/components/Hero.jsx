@@ -83,7 +83,7 @@ export default function Hero() {
                 transition-all duration-300
               "
             >
-              Estimer mon projet
+              Demande Devis
             </Link>
           </motion.div>
         </div>

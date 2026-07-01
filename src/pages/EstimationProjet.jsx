@@ -834,7 +834,7 @@ export default function EstimationProjet() {
                 onClick={() => handleCtaClick("hero", "hero_primary")}
                 className="mt-5 inline-flex h-12 items-center justify-center gap-3 rounded-xl bg-primary px-5 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-primary-dark sm:hidden"
               >
-                Demander une estimation <ArrowRight size={16} />
+                Demande devis <ArrowRight size={16} />
               </a>
 
               <div className="mt-8 hidden max-w-xl grid-cols-2 gap-4 sm:grid sm:grid-cols-4">
@@ -1018,7 +1018,7 @@ export default function EstimationProjet() {
                   key={photo.title}
                   href="#demande-etude"
                   onClick={() => handleCtaClick("category", photo.title)}
-                  aria-label={`Demander une estimation pour ${photo.title}`}
+                  aria-label={`Demande devis pour ${photo.title}`}
                   className="relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm"
                 >
                   <img
@@ -1175,7 +1175,7 @@ export default function EstimationProjet() {
                 aria-label="Aller au formulaire de demande d'estimation"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-white px-5 text-sm font-semibold uppercase text-primary-dark transition hover:bg-secondary"
               >
-                Recevoir mon estimation <ArrowRight size={16} />
+                Recevoir mon devis <ArrowRight size={16} />
               </a>
             </div>
             <div className="grid grid-cols-1 gap-5 bg-text-dark px-6 py-5 md:grid-cols-4">
